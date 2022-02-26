@@ -20,9 +20,9 @@ public class Choice
 
     public event ChooseEventHandler onChoose;
 
-    public Choice(int moneyCost, int lifeCost, int militaryCost, List<CardEvent> eventsToAdd, ChooseEventHandler onChoose )
+    public Choice(int moneyCost, int lifeCost, int militaryCost,string description, List<CardEvent> eventsToAdd, ChooseEventHandler onChoose )
     {
-
+        this.description = description;
         if (eventsToAdd != null)eventsToAdd = new List<CardEvent>(eventsToAdd);
         else eventsToAdd = new List<CardEvent>();
         MMoney = moneyCost;
