@@ -4,9 +4,10 @@ using UnityEngine;
 
 public class WarCounselor : CardEvent
 {
-    private Kingdom kingdomToFight;
+   private Kingdom kingdomToFight;
    public WarCounselor(int weight,int daysToPlay)
     {
+        Name = "War Counselor";
         kingdomToFight = GameManager.aiKingdoms[0];
         this.Weight = weight;
         
