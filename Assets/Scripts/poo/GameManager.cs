@@ -6,6 +6,7 @@ public class GameManager
 {
     public static Kingdom playerKingdom;
     public static List<Kingdom> aiKingdoms;
+    public static Kingdom fightOpponent = new KingdomAlien();
     public static int day = 1;
     private static EventDeck currentDeck;
     private static List<CardEvent> queudEvents;

@@ -4,7 +4,7 @@ using System.Collections.Generic;
 public class Choice
 {
 
-    private List<int> eventsToAdd;
+    private List<CardEvent> eventsToAdd;
     private int mMoney;
     private int mKingLife;
     private int mMilitaryPower;
@@ -20,11 +20,11 @@ public class Choice
 
     public event ChooseEventHandler onChoose;
 
-    public Choice(int moneyCost, int lifeCost, int militaryCost, List<int> eventsToAdd, ChooseEventHandler onChoose )
+    public Choice(int moneyCost, int lifeCost, int militaryCost, List<CardEvent> eventsToAdd, ChooseEventHandler onChoose )
     {
 
-        if (eventsToAdd != null) eventsToAdd = new List<int>(eventsToAdd);
-        else eventsToAdd = new List<int>();
+        if (eventsToAdd != null)eventsToAdd = new List<CardEvent>(eventsToAdd);
+        else eventsToAdd = new List<CardEvent>();
         MMoney = moneyCost;
         MKingLife = lifeCost;
         MMilitaryPower = militaryCost;

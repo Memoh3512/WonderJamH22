@@ -4,12 +4,10 @@ using UnityEngine;
 
 public class Kingdom
 {
-
-    private string name;
-    public static List<GameObject> Units => units;
-   
+    public List<Unit> Units => units;
+    private string name;   
     
-    private static List<GameObject> units; //toutes les units
+    private static List<Unit> units; //toutes les units
 
     private int gold = 0;
     private int militaryPower = 100;
@@ -22,6 +20,7 @@ public class Kingdom
     public int Gold => gold;
     public int MilitaryPower => militaryPower;
     public int KingdomLife => kingdomLife;
+    
 
     public string Name { get => name; set => name = value; }
 
