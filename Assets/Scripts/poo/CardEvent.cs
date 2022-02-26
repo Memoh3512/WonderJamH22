@@ -7,7 +7,8 @@ public class CardEvent
     private List<Choice> choices;
     private int daysToPlay;
     private int weight;
-
+    
+    public int DaysToPlay { get => daysToPlay; private set => daysToPlay=value; }
     public int Weight { get => weight; set => weight = value; }
 
 
@@ -26,7 +27,10 @@ public class CardEvent
             choiceChosen.process();
         }
     }
-
+    public void removeDays(int days)
+    {
+        daysToPlay -= days;
+    }
     public void drawEvent()
     {
         //draw :) 
