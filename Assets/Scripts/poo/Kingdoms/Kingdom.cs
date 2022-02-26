@@ -5,10 +5,10 @@ using UnityEngine;
 public class Kingdom
 {
     private string name;
-    public List<Unit> Units => units;
+    public List<Unit> Units { get => units; set => units = value; }
    
     
-    private static List<Unit> units; //toutes les units
+    private List<Unit> units; //toutes les units
 
     private int gold = 0;
     private int militaryPower = 100;

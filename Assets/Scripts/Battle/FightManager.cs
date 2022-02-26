@@ -13,7 +13,11 @@ public class FightManager : MonoBehaviour
     void Awake()
     {
         //DEBUG this
+        //TODO remove icitte quand on a les kingdoms
         GameManager.playerKingdom = new Kingdom();
+        GameManager.fightOpponent = new KingdomAlien();
+        GameManager.playerKingdom.Units = new List<Unit>(){new Unit(baseFighterPrefab.GetComponent<SpriteRenderer>().sprite,10,3,1)};
+        GameManager.fightOpponent.Units = new List<Unit>(){new Unit(baseFighterPrefab.GetComponent<SpriteRenderer>().sprite,10,3,1),new Unit(baseFighterPrefab.GetComponent<SpriteRenderer>().sprite,10,3,1),new Unit(baseFighterPrefab.GetComponent<SpriteRenderer>().sprite,10,3,1)};
         //Enemy
         spawnFighters(GameManager.fightOpponent,enSpawner,true);
 
@@ -28,9 +32,9 @@ public class FightManager : MonoBehaviour
         float rectHeight = spawner.GetComponent<SpriteRenderer>().sprite.bounds.extents.y*spawner.GetComponent<Transform>().localScale.y;
         
         List<Unit> units = kingdom.Units;
-        for (int i = 0; i < kingdom.MilitaryPower; i++)
+        for (int i = 0; i < units.Count; i++)
         {
-            Unit toInstantiate = units[Random.Range(0, units.Count)];
+            Unit toInstantiate = units[i];
             
             float xPos = spawnerPos.x + Random.Range(-rectHeight, rectHeight);
             float yPos = spawnerPos.z + Random.Range(-rectWidth, rectWidth);
