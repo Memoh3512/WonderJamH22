@@ -13,6 +13,7 @@ public class EventDeck
         eventList.Add(new AlienSeries1());
         eventList.Add(new WarCounselor(1, -10));
         eventList.Add(new HugeEgg());
+        eventList.Add(new Waiter());
     }
 
     public CardEvent getEvent()
