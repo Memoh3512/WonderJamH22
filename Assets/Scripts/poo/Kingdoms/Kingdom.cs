@@ -4,18 +4,18 @@ using UnityEngine;
 
 public class Kingdom
 {
-    public List<Unit> Units => units;
+    public List<Unit> Units { get => units; set => units = value; }
     private string name;   
     
-    private static List<Unit> units; //toutes les units
+    private List<Unit> units; //toutes les units
 
     private int gold = 0;
     private int militaryPower = 100;
     private int kingdomLife = 100;
 
-    private int greediness;
-    private int growth; //50 = moyen
-    private float variance; //TODO
+    protected int greediness; // Largeur de la bande
+    protected int growth; //50 = moyen + meilleur rendement
+    protected float variance; //1.7-2.5
     
     public int Gold => gold;
     public int MilitaryPower => militaryPower;
@@ -71,9 +71,6 @@ public class Kingdom
         {
             toAdd = (int)((variance - Mathf.Log10(random)) / variance * - greediness)* 1 - (growth/100);
         }
-
         militaryPower = militaryPower + toAdd;
-        
-
     }
 }
