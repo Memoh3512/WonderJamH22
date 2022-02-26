@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class Kingdom
 {
-    public List<Unit> Units => units;
+    public List<Unit> Units { get => units; set => units = value; }
     private string name;   
     
     private List<Unit> units; //toutes les units
