@@ -6,6 +6,7 @@ public class AlienSeries3 : CardEvent
 {
    public AlienSeries3()
     {
+        DaysToPlay = 2;
         Name = "Crashed Disc";
         Description = "While investigating the mysterious sightings our soldiers have found one of those " +
             "flying metalic discs crashed in the middle of the forest. After searching thoroughly " +

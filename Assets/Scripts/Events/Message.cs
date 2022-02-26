@@ -10,4 +10,12 @@ public class Message : CardEvent
         this.Description = description;
         getChoices.Add(new Choice(0, 0, 0, buttonDescription, () => { return false;}));
     }
+
+    public Message(string title, string description, string buttonDescription, Choice.ChooseEventHandler onChoose)
+    {
+        this.Name = title;
+        this.Description = description;
+        getChoices.Add(new Choice(0, 0, 0, buttonDescription, onChoose));
+    }
+
 }
