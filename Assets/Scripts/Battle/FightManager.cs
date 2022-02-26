@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using JetBrains.Annotations;
 using UnityEngine;
 
 public class FightManager : MonoBehaviour
@@ -8,10 +9,14 @@ public class FightManager : MonoBehaviour
     public GameObject enSpawner;
     public GameObject allySpawner;
     public GameObject baseFighterPrefab;
+    private List<GameObject> allEnemies;
+    private List<GameObject> allAllies;
     
     // Start is called before the first frame update
     void Awake()
     {
+        allEnemies = new List<GameObject>();
+        allAllies = new List<GameObject>();
         //DEBUG this
         //TODO remove icitte quand on a les kingdoms
         GameManager.playerKingdom = new Kingdom();
@@ -19,12 +24,12 @@ public class FightManager : MonoBehaviour
         GameManager.playerKingdom.Units = new List<Unit>(){new Unit(baseFighterPrefab.GetComponent<SpriteRenderer>().sprite,10,3,1)};
         GameManager.fightOpponent.Units = new List<Unit>(){new Unit(baseFighterPrefab.GetComponent<SpriteRenderer>().sprite,10,3,1),new Unit(baseFighterPrefab.GetComponent<SpriteRenderer>().sprite,10,3,1),new Unit(baseFighterPrefab.GetComponent<SpriteRenderer>().sprite,10,3,1)};
         //Enemy
-        spawnFighters(GameManager.fightOpponent,enSpawner,true);
+        spawnFighters(GameManager.fightOpponent,enSpawner,allEnemies,true);
 
         //Allies
-        spawnFighters(GameManager.playerKingdom,allySpawner);
+        spawnFighters(GameManager.playerKingdom,allySpawner,allAllies);
     }
-    void spawnFighters(Kingdom kingdom, GameObject spawner,bool flipSprite = false)
+    void spawnFighters(Kingdom kingdom, GameObject spawner,List<GameObject> allSpawned,bool flipSprite = false)
     {
         Vector3 spawnerPos=spawner.GetComponent<Transform>().position;
 
@@ -47,7 +52,10 @@ public class FightManager : MonoBehaviour
             
             currFighter.transform.position = new Vector3(xPos, spawnerPos.y+2.25f, yPos);
             if (flipSprite)
+            {
                 currFighter.GetComponent<SpriteRenderer>().flipX = !currFighter.GetComponent<SpriteRenderer>().flipX;
+            }
+            allSpawned.Add(currFighter);
         }
     }
 

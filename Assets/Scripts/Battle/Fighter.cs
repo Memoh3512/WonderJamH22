@@ -8,6 +8,12 @@ public class Fighter : MonoBehaviour
     private int damage = 3;
     private float baseCoolDown = 1;
     private float attackCoolDown;
+    private Unit representedUnit;
+    public Unit RepresentedUnit
+    {
+        get => representedUnit;
+        set => representedUnit = value;
+    }
     public int Life
     {
         get => life;
