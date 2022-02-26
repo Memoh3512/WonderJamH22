@@ -20,7 +20,11 @@ public class CardEvent
 
     public void choose(int choix)
     {
-        choices[choix].process();
+        Choice choiceChosen = choices[choix];
+        if(GameManager.playerKingdom.canBuy(choiceChosen.MMoney) && GameManager.playerKingdom.canMilitaryPower(choiceChosen.MMilitaryPower) && GameManager.playerKingdom.canKingdomlife(choiceChosen.MKingLife))
+        {
+            choiceChosen.process();
+        }
     }
 
     public void drawEvent()
