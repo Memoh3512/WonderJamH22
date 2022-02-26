@@ -11,7 +11,7 @@ public class CardEvent
     private string description = "This is a default card event description. Have fun debugging!";
     
     
-    public int DaysToPlay { get => daysToPlay; private set => daysToPlay=value; }
+    public int DaysToPlay { get => daysToPlay; set => daysToPlay=value; }
     public int Weight { get => weight; set => weight = value; }
     public string Name { get => name; set => name = value; }
     public string Description { get => description; set => description = value; }
