@@ -9,7 +9,7 @@ public class MainMenuButtons : MonoBehaviour
     public void StartGame()
     {
 
-        LevelLoader.instance.LoadScene("MainMenuScene", TransitionTypes.CrossFade);
+        LevelLoader.instance.LoadScene("GameplayScene", TransitionTypes.CrossFade);
 
     }
 
