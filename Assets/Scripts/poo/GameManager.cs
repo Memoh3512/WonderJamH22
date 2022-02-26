@@ -17,19 +17,24 @@ public class GameManager
     }
     public static void startGame()
     {
-        
+        day = 1;
+        //TODO reset decks/queud
+        queudEvents = null;
     }
     public static void endGame()
     {
         
     }
-    public static void addEvent()
+    public static void addEvent(CardEvent cardEvent)
     {
-        
+        currentDeck.addEvent(cardEvent);
     }
     public static void playTodaysEvents()
     {
-        
+        foreach (var cardEvent in queudEvents)
+        {
+            //cardEvent.
+        }
     }
     public static void getDeck()
     {
