@@ -48,5 +48,7 @@ public class CardEvent
         card.GetComponent<CardDisplay>().SetCardEvent(this);
         ui.GetComponent<RectTransform>().position = Vector3.zero;
 
+        GameManager.RemoveTodaysEvent(this);
+
     }
 }
