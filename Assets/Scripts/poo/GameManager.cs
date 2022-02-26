@@ -6,7 +6,7 @@ public class GameManager
 {
     public static Kingdom playerKingdom;
     public static List<Kingdom> aiKingdoms;
-    private static int day = 0;
+    public static int day = 1;
     private static EventDeck currentDeck;
     private static List<CardEvent> queudEvents;
 
@@ -15,7 +15,6 @@ public class GameManager
     public static void nextDay()
     {
         day++;
-        day--;
     }
     public static void startGame()
     {
