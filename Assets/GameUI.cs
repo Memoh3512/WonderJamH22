@@ -13,6 +13,8 @@ public class GameUI : MonoBehaviour
     void Start()
     {
         UpdateUIValues();
+        GameManager.AddEventForToday(new CardEvent());
+        
     }
 
     public void UpdateUIValues()
