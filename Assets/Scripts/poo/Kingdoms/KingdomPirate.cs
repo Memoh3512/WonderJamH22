@@ -8,8 +8,8 @@ public class KingdomPirate : Kingdom
     {
         Name = "Pirates";
         greediness = 150; // Largeur de la bande
-        growth = 60; //50 = moyen + meilleur rendement
-        variance = 2.2f; //1.7-2.5
+        growth = 70; //50 = moyen + meilleur rendement
+        variance = 2.5f; //1.7-2.5
     }
     // Start is called before the first frame update
     void Start()
