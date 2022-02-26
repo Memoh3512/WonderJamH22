@@ -8,7 +8,8 @@ public enum Songs
 {
     
     Village,
-    Fight
+    MainMenu,
+    War
     
 }
 
@@ -182,7 +183,8 @@ public class SoundPlayer : MonoBehaviour
         songs = new Dictionary<Songs, AudioClip>()
         {
             {Songs.Village, Resources.Load<AudioClip>("Music/Village")},
-            //{Songs.Fight, Resources.Load<AudioClip>("Sound/Music/Where Do I Belong")},
+            {Songs.War, Resources.Load<AudioClip>("Music/War")},
+            {Songs.MainMenu, Resources.Load<AudioClip>("Music/MainMenu")},
             //...
         };
 

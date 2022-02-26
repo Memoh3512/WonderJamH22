@@ -7,7 +7,7 @@ using UnityEngine.SceneManagement;
 public enum TransitionTypes
 {
     
-    CrossFade, Fight
+    CrossFade, Fight, Leaves
     
 }
 
@@ -20,6 +20,9 @@ public class LevelLoader : MonoBehaviour
     
     public float FightTime = 0.75f;
     public Animator Fight;
+
+    public ParticleSystem leaves;
+    public float LeavesTime = 0.75f;
     //singleton
     public static LevelLoader instance;
 
@@ -65,19 +68,35 @@ public class LevelLoader : MonoBehaviour
 
                 time = CrossfadeTime;
                 transitionObj = Crossfade;
+                StartCoroutine(TransitionRoutine(scene, transitionObj, time));
                 
                 break;
             case TransitionTypes.Fight:
 
                 time = FightTime;
                 transitionObj = Fight;
+                StartCoroutine(TransitionRoutine(scene, transitionObj, time));
                 
                 break;
+            case TransitionTypes.Leaves:
+
+                time = FightTime;
+                StartCoroutine(TransitionRoutine(scene, leaves, time));
+                break;
+            
 
         }
 
-        StartCoroutine(TransitionRoutine(scene, transitionObj, time));
+    }
+    
+    IEnumerator TransitionRoutine(string scene, ParticleSystem transition, float transitionTime)
+    {
 
+        transition.Play();
+        
+        yield return new WaitForSeconds(transitionTime);
+
+        SceneManager.LoadScene(scene);
 
     }
 
