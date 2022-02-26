@@ -7,10 +7,16 @@ public class CardEvent
     private List<Choice> choices;
     private int daysToPlay;
     private int weight;
+    private string name = "Card Event";
+    private string description = "This is a default card event description. Have fun debugging!";
     
     public int DaysToPlay { get => daysToPlay; private set => daysToPlay=value; }
     public int Weight { get => weight; set => weight = value; }
-
+    public string Name { get => name; set => name = value; }
+    public string Description { get => description; set => description = value; }
+    
+    public int getNbChoices => choices?.Count ?? 0;
+    public List<Choice> getChoices => choices;
 
     public CardEvent()
     {
@@ -31,6 +37,7 @@ public class CardEvent
     {
         daysToPlay -= days;
     }
+    
     public void drawEvent()
     {
         //draw :) 

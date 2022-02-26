@@ -20,7 +20,8 @@ public class Choice
     public Choice(int moneyCost, int lifeCost, int militaryCost, List<int> eventsToAdd, ChooseEventHandler onChoose )
     {
 
-        eventsToAdd = new List<int>(eventsToAdd);
+        if (eventsToAdd != null) eventsToAdd = new List<int>(eventsToAdd);
+        else eventsToAdd = new List<int>();
         MMoney = moneyCost;
         MKingLife = lifeCost;
         MMilitaryPower = militaryCost;
