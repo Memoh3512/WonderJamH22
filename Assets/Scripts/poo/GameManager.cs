@@ -18,6 +18,11 @@ public class GameManager
     public static void nextDay()
     {
         day++;
+        foreach (var kingdom in aiKingdoms)
+        {
+            kingdom.next();
+            Debug.Log(kingdom.Name + " | MP : " + kingdom.MilitaryPower);
+        }
     }
     public static void startGame(string name)
     {

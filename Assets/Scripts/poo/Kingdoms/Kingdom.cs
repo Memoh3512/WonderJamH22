@@ -71,9 +71,6 @@ public class Kingdom
         {
             toAdd = (int)((variance - Mathf.Log10(random)) / variance * - greediness)* 1 - (growth/100);
         }
-
         militaryPower = militaryPower + toAdd;
-        
-
     }
 }
