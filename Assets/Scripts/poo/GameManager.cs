@@ -105,7 +105,7 @@ public class GameManager
     public static void AddEventForToday(CardEvent e)
     {
         
-        todaysEventsToPlay.Add(e);
+        todaysEventsToPlay.Insert(0,e);
         //test
         //playTodaysEvents();
         
@@ -113,8 +113,15 @@ public class GameManager
     public static void drawNextDay()
     {
         //TODO draw le bouton dans le bas et bybye scroll
-        
-        
+        CardDisplay c = Object.FindObjectOfType<CardDisplay>();
+        c.DeleteButtons();
+        c.SetCardEvent(null);
+        c.GetComponent<Animator>().SetTrigger("Bebye");
+        CanvasGroup endDay = GameObject.FindGameObjectWithTag("EndDay").GetComponent<CanvasGroup>();
+        endDay.alpha = 1;
+        endDay.interactable = true;
+        endDay.blocksRaycasts = true;
+
     }
 
     public static void RemoveTodaysEvent(CardEvent e)

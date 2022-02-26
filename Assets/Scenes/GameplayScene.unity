@@ -6507,9 +6507,10 @@ GameObject:
   - component: {fileID: 1413945191}
   - component: {fileID: 1413945190}
   - component: {fileID: 1413945193}
+  - component: {fileID: 1413945194}
   m_Layer: 5
   m_Name: BtnEndDay
-  m_TagString: Untagged
+  m_TagString: EndDay
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -6640,6 +6641,18 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 52a6cf4e1c747f3418cfcc43a1fea013, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!225 &1413945194
+CanvasGroup:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1413945188}
+  m_Enabled: 1
+  m_Alpha: 0
+  m_Interactable: 0
+  m_BlocksRaycasts: 0
+  m_IgnoreParentGroups: 0
 --- !u!1 &1419797772
 GameObject:
   m_ObjectHideFlags: 0
