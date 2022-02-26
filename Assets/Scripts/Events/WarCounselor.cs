@@ -8,7 +8,7 @@ public class WarCounselor : CardEvent
     {
         this.Weight = weight;
         Choice choice1 = new Choice(0,0,0,new List<CardEvent>(),() => {
-
+        
         });
     }
 }

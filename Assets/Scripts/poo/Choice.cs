@@ -16,7 +16,7 @@ public class Choice
     
     public string Description { get => description; set => description = value; }
 
-    public delegate void ChooseEventHandler();
+    public delegate bool ChooseEventHandler();
 
     public event ChooseEventHandler onChoose;
 
@@ -35,7 +35,8 @@ public class Choice
     public void process()
     {
         
-        onChoose?.Invoke();
+        bool war = onChoose.Invoke();
+        if (!war) GameManager.playNextEvent();
         
     }
 

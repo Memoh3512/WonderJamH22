@@ -8,14 +8,11 @@ public class MainMenuButtons : MonoBehaviour
 
     public void StartGame()
     {
-
         LevelLoader.instance.LoadScene("GameplayScene", TransitionTypes.Fight);
-
     }
 
     public void QuitGame()
     {
-
         Application.Quit();
     }
 
