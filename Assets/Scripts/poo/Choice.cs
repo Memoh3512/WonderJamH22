@@ -37,7 +37,8 @@ public class Choice
         
         bool war = onChoose.Invoke();
         if (!war) GameManager.playNextEvent();
-        
+        else LevelLoader.instance.LoadScene("Combat", TransitionTypes.Fight);
+
     }
 
 }

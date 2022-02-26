@@ -5,7 +5,7 @@ using UnityEngine;
 public class GameManager
 {
     public static Kingdom playerKingdom;
-    public static List<Kingdom> aiKingdoms;
+    public static List<Kingdom> aiKingdoms = new List<Kingdom>();
     public static Kingdom fightOpponent = new KingdomAlien();
     public static int day = 1;
     private static EventDeck currentDeck = new EventDeck(new List<CardEvent>());
@@ -27,6 +27,9 @@ public class GameManager
         day = 1;
         //TODO reset decks/queud
         queudEvents.Clear();
+        
+        GameManager.AddEventForToday(new WarCounselor(1, 0));
+        
     }
     public static void endGame()
     {

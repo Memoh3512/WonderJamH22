@@ -8,7 +8,9 @@ public class WarCounselor : CardEvent
    public WarCounselor(int weight,int daysToPlay)
     {
         Name = "War Counselor";
-        kingdomToFight = GameManager.aiKingdoms[0];
+        //kingdomToFight = GameManager.aiKingdoms[0];
+        kingdomToFight = new Kingdom();
+        kingdomToFight.Name = "CUNGFU";
         this.Weight = weight;
         
     }
