@@ -7,9 +7,12 @@ public class EventDeck
     CardEvent cEvent;
     private List<CardEvent> eventList;
 
-    public EventDeck(List<CardEvent> eventList)
+    public EventDeck()
     {
-        this.eventList = eventList;
+        eventList = new List<CardEvent>();
+        eventList.Add(new AlienSeries1());
+        eventList.Add(new WarCounselor(1, -10));
+        eventList.Add(new HugeEgg());
     }
 
     public CardEvent getEvent()
@@ -30,8 +33,9 @@ public class EventDeck
                 cEvent = c;
             }
         }
-
+        eventList.Remove(cEvent);
         return cEvent;
+
 
     }
 
@@ -45,4 +49,8 @@ public class EventDeck
         eventList.Remove(ce);
     }
   
+    public int Count()
+    {
+        return eventList.Count;
+    }
 }
