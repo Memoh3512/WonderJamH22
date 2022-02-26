@@ -8,10 +8,13 @@ public class Choice
     private int mMoney;
     private int mKingLife;
     private int mMilitaryPower;
+    private string description;
 
     public int MMoney { get => mMoney; set => mMoney = value; }
     public int MKingLife { get => mKingLife; set => mKingLife = value; }
     public int MMilitaryPower { get => mMilitaryPower; set => mMilitaryPower = value; }
+    
+    public string Description { get => description; set => description = value; }
 
     public delegate void ChooseEventHandler();
 
