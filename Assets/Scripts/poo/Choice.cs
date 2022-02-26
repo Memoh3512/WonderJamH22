@@ -24,7 +24,7 @@ public class Choice
         this.onChoose = onChoose;
     }
 
-    public void Process()
+    public void process()
     {
         
         onChoose?.Invoke();
