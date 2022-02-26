@@ -20,7 +20,7 @@ public class Meteorite1 : CardEvent
             return false;
         }));
         getChoices.Add(new Choice(0,2,0,"He's dumb, lynch him",()=> {
-            return false;
+            return false;//TODO nique le chateau ennemie avec son experience
         }));
     }
 }

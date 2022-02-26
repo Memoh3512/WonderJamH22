@@ -83,15 +83,15 @@ public class NotificationManager : MonoBehaviour
         {
             amountStr = "+" + amountStr;
         }
-        // switch (type)
-        // {
-        //     case 0: ressourceSprite = Resources.Load<Sprite>("gold");
-        //         break;
-        //     case 1: ressourceSprite = Resources.Load<Sprite>("life");
-        //         break;
-        //     case 2: ressourceSprite = Resources.Load<Sprite>("power");
-        //         break;
-        // }
+        switch (type)
+        {
+            case 0: ressourceSprite = Resources.Load<Sprite>("gold");
+                break;
+            case 1: ressourceSprite = Resources.Load<Sprite>("heart");
+                break;
+            case 2: ressourceSprite = Resources.Load<Sprite>("sword");
+                break;
+        }
         toDisplay.Add(new Notification(ressourceSprite,amountStr));
     }
 }
