@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using System.Linq;
 using UnityEngine;
 
 public class GameManager
@@ -23,6 +24,10 @@ public class GameManager
             kingdom.next();
             Debug.Log(kingdom.Name + " | MP : " + kingdom.MilitaryPower);
         }
+        
+        
+        playTodaysEvents();
+        
     }
     public static void startGame(string name)
     {
@@ -44,7 +49,9 @@ public class GameManager
         //TODO reset decks/queud
         queudEvents.Clear();
         
-        GameManager.AddEventForToday(new WarCounselor(1, 0));
+        playTodaysEvents();
+        
+        //GameManager.AddEventForToday(new WarCounselor(1, 0));
         
     }
     public static void endGame()
@@ -62,7 +69,7 @@ public class GameManager
     }
     public static void playTodaysEvents()
     {
-        foreach (var cardEvent in queudEvents)
+        foreach (var cardEvent in queudEvents.ToList())
         {
             cardEvent.removeDays(1);
             if (cardEvent.DaysToPlay <= 0)
@@ -98,14 +105,23 @@ public class GameManager
     public static void AddEventForToday(CardEvent e)
     {
         
-        todaysEventsToPlay.Add(e);
+        todaysEventsToPlay.Insert(0,e);
         //test
-        playTodaysEvents();
+        //playTodaysEvents();
         
     }
     public static void drawNextDay()
     {
-        //TODO draw le bouton dans le bas
+        //TODO draw le bouton dans le bas et bybye scroll
+        CardDisplay c = Object.FindObjectOfType<CardDisplay>();
+        c.DeleteButtons();
+        c.SetCardEvent(null);
+        c.GetComponent<Animator>().SetTrigger("Bebye");
+        CanvasGroup endDay = GameObject.FindGameObjectWithTag("EndDay").GetComponent<CanvasGroup>();
+        endDay.alpha = 1;
+        endDay.interactable = true;
+        endDay.blocksRaycasts = true;
+
     }
 
     public static void RemoveTodaysEvent(CardEvent e)
