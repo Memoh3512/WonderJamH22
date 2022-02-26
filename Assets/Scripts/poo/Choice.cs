@@ -1,5 +1,6 @@
 using System;
 using System.Collections.Generic;
+using UnityEngine;
 
 public class Choice
 {
@@ -35,6 +36,12 @@ public class Choice
         bool war = onChoose.Invoke();
         if (!war) GameManager.playNextEvent();
         else LevelLoader.instance.LoadScene("Combat", TransitionTypes.Fight);
+        
+        GameManager.playerKingdom.removeGold(mMoney);
+        GameManager.playerKingdom.removeKingdomLife(mKingLife);
+        GameManager.playerKingdom.removeMilitaryPower(mMilitaryPower);
+        
+        GameObject.FindObjectOfType<GameUI>().UpdateUIValues();
 
     }
 

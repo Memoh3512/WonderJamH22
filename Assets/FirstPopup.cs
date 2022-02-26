@@ -10,8 +10,12 @@ public class FirstPopup : MonoBehaviour
 
     private void Start()
     {
-        
-        if (!GameManager.firstPlay) Destroy(gameObject);
+
+        if (!GameManager.firstPlay)
+        {
+            GameManager.playNextEvent();
+            Destroy(gameObject);
+        }
         
     }
 

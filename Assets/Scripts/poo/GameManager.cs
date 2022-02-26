@@ -46,6 +46,9 @@ public class GameManager
         
         day = 1;
         
+        Object.FindObjectOfType<GameUI>().UpdateUIValues();
+        
+        
         //TODO reset decks/queud
         queudEvents.Clear();
         
