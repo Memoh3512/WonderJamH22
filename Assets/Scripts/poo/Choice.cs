@@ -9,6 +9,10 @@ public class Choice
     private int mKingLife;
     private int mMilitaryPower;
 
+    public int MMoney { get => mMoney; set => mMoney = value; }
+    public int MKingLife { get => mKingLife; set => mKingLife = value; }
+    public int MMilitaryPower { get => mMilitaryPower; set => mMilitaryPower = value; }
+
     public delegate void ChooseEventHandler();
 
     public event ChooseEventHandler onChoose;
@@ -17,9 +21,9 @@ public class Choice
     {
 
         eventsToAdd = new List<int>(eventsToAdd);
-        mMoney = moneyCost;
-        mKingLife = lifeCost;
-        mMilitaryPower = militaryCost;
+        MMoney = moneyCost;
+        MKingLife = lifeCost;
+        MMilitaryPower = militaryCost;
 
         this.onChoose = onChoose;
     }
