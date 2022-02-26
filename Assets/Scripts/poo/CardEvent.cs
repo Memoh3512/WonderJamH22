@@ -39,7 +39,7 @@ public class CardEvent
         daysToPlay -= days;
     }
     
-    public void drawEvent()
+    public virtual void drawEvent()
     {
         //draw :) 
     }
