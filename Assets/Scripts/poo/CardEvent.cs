@@ -18,7 +18,10 @@ public class CardEvent
     
     public int getNbChoices => choices?.Count ?? 0;
     public List<Choice> getChoices => choices;
-
+    public void addChoice(Choice choice)
+    {
+        choices.Add(choice);
+    }
     public CardEvent()
     {
         daysToPlay = -10;
