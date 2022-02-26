@@ -6187,8 +6187,13 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1098431093}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+<<<<<<< HEAD
   m_LocalPosition: {x: 0.012, y: -2.3926, z: 0}
   m_LocalScale: {x: 17.76529, y: 3.9666889, z: 1}
+=======
+  m_LocalPosition: {x: 0.012, y: 0.6113, z: 0}
+  m_LocalScale: {x: 16, y: 9, z: 1}
+>>>>>>> Thomas
   m_Children: []
   m_Father: {fileID: 650277798}
   m_RootOrder: 1
@@ -8082,8 +8087,13 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1916928938}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+<<<<<<< HEAD
   m_LocalPosition: {x: -0, y: 0.6111, z: 0}
   m_LocalScale: {x: 3.3054512, y: 2.0627077, z: 1}
+=======
+  m_LocalPosition: {x: 0, y: 0.5838, z: 0}
+  m_LocalScale: {x: 1.4923927, y: 0.931301, z: 0.4514944}
+>>>>>>> Thomas
   m_Children: []
   m_Father: {fileID: 650277798}
   m_RootOrder: 0
@@ -8128,7 +8138,11 @@ SpriteRenderer:
   m_SortingLayerID: -682307125
   m_SortingLayer: -1
   m_SortingOrder: 0
+<<<<<<< HEAD
   m_Sprite: {fileID: 21300000, guid: 199fb5214b29c354385070a67b288ca8, type: 3}
+=======
+  m_Sprite: {fileID: 21300000, guid: 55dddda881fecab42b0a5fe327234b8d, type: 3}
+>>>>>>> Thomas
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
