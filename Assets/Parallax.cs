@@ -31,9 +31,9 @@ public class Parallax : MonoBehaviour
         int screenX = Screen.currentResolution.width;
         int screenY = Screen.currentResolution.height;
 
-        //Vector2 center = Vector2.one *0.5f;
+        Vector2 center = Vector2.one *0.5f;
 
-        Vector2 displacement = Input.mousePosition / new Vector2(screenX, screenY);
+        Vector2 displacement =  (Input.mousePosition / new Vector2(screenX, screenY)) - center;
 
         for (int i = 0; i < layers.Length; i++)
         {
