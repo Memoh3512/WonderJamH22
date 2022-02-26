@@ -3,8 +3,7 @@ using System.Collections.Generic;
 
 public class Choice
 {
-
-    private List<CardEvent> eventsToAdd;
+    
     private int mMoney;
     private int mKingLife;
     private int mMilitaryPower;
@@ -20,11 +19,9 @@ public class Choice
 
     public event ChooseEventHandler onChoose;
 
-    public Choice(int moneyCost, int lifeCost, int militaryCost,string description, List<CardEvent> eventsToAdd, ChooseEventHandler onChoose )
+    public Choice(int moneyCost, int lifeCost, int militaryCost,string description, ChooseEventHandler onChoose )
     {
         this.description = description;
-        if (eventsToAdd != null)eventsToAdd = new List<CardEvent>(eventsToAdd);
-        else eventsToAdd = new List<CardEvent>();
         MMoney = moneyCost;
         MKingLife = lifeCost;
         MMilitaryPower = militaryCost;
@@ -37,7 +34,8 @@ public class Choice
         
         bool war = onChoose.Invoke();
         if (!war) GameManager.playNextEvent();
-        
+        else LevelLoader.instance.LoadScene("Combat", TransitionTypes.Fight);
+
     }
 
 }

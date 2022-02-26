@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -8,6 +9,21 @@ public class Fighter : MonoBehaviour
     private int damage = 3;
     private float baseCoolDown = 1;
     private float attackCoolDown;
+    private Unit representedUnit;
+    private int team = -1; // 0 player, 1 ai
+    private GameObject target;
+    public List<GameObject> myEnemies;
+    public List<GameObject> myAllies;
+    public int Team
+    {
+        get => team;
+        set => team = value;
+    }
+    public Unit RepresentedUnit
+    {
+        get => representedUnit;
+        set => representedUnit = value;
+    }
     public int Life
     {
         get => life;
@@ -36,7 +52,14 @@ public class Fighter : MonoBehaviour
         {
             attackCoolDown-=Time.deltaTime;
         }
-        
+        if (target != null)
+        {
+            GetComponent<Rigidbody>().AddForce(Vector3.Normalize(target.transform.position-transform.position)*(800f * Time.deltaTime));
+        }
+        else
+        {
+            getClosestTarget();
+        }
     }
     void getDamaged(int damage)
     {
@@ -48,7 +71,47 @@ public class Fighter : MonoBehaviour
     }
     void die()
     {
+        myAllies.Remove(gameObject);
         //TODO anim death
+        Destroy(this);
         Destroy(gameObject);
+    }
+    private void OnCollisionEnter(Collision other)
+    {
+        //Peut attaquer, un fighterm pis dans lautre equipe
+        if (attackCoolDown <= 0 && other.gameObject.GetComponent<Fighter>()!=null && team != other.gameObject.GetComponent<Fighter>().team)
+        {
+            attack(other.gameObject);
+            getClosestTarget();
+        }
+    }
+    private void OnCollisionStay(Collision other)
+    {
+        //Peut attaquer, un fighterm pis dans lautre equipe
+        if (attackCoolDown <= 0 && other.gameObject.GetComponent<Fighter>()!=null && team != other.gameObject.GetComponent<Fighter>().team)
+        {
+            attack(other.gameObject);
+        }
+    }
+    private void attack(GameObject toAttack)
+    {
+        Debug.Log("Attacked");
+        toAttack.GetComponent<Fighter>().getDamaged(damage);
+        attackCoolDown = baseCoolDown;
+    }
+    public void getClosestTarget()
+    {
+        float closestDistance = 99999;
+        Vector3 myPos = gameObject.GetComponent<Transform>().position;
+        foreach (var enemy in myEnemies)
+        {
+            Vector3 enPos = enemy.GetComponent<Transform>().position;
+            float currEnDistance = Vector3.Distance(myPos, enPos);
+            if (currEnDistance < closestDistance)
+            {
+                target = enemy;
+                closestDistance = currEnDistance;
+            }
+        }
     }
 }
