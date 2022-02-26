@@ -13,12 +13,17 @@ public class GameManager
 
     private static List<CardEvent> todaysEventsToPlay;
 
+    public static bool firstPlay = true;
+
     public static void nextDay()
     {
         day++;
     }
-    public static void startGame()
+    public static void startGame(string name)
     {
+        playerKingdom = new Kingdom();
+        playerKingdom.Name = name;
+        firstPlay = false;
         day = 1;
         //TODO reset decks/queud
         queudEvents = null;
@@ -67,18 +72,6 @@ public class GameManager
         //TODO draw le bouton dans le bas
     }
     public static void getDeck()
-    {
-        
-    }
-    
-    // Start is called before the first frame update
-    void Start()
-    {
-        
-    }
-
-    // Update is called once per frame
-    void Update()
     {
         
     }
