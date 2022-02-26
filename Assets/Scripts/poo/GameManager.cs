@@ -6,7 +6,7 @@ public class GameManager
 {
     public static Kingdom playerKingdom;
     public static List<Kingdom> aiKingdoms;
-    public static Kingdom fightOpponent = new KingdomAlien();
+    public static Kingdom fightOpponent;
     public static int day = 1;
     private static EventDeck currentDeck = new EventDeck(new List<CardEvent>());
     private static List<CardEvent> queudEvents = new List<CardEvent>();
@@ -18,13 +18,29 @@ public class GameManager
     public static void nextDay()
     {
         day++;
+        foreach (var kingdom in aiKingdoms)
+        {
+            kingdom.next();
+            Debug.Log(kingdom.Name + " | MP : " + kingdom.MilitaryPower);
+        }
     }
     public static void startGame(string name)
     {
+        // Resets kingdoms
+        aiKingdoms = new List<Kingdom>()
+        {
+            new KingdomCowboy(),
+            new KingdomFurry(),
+            new KingdomPirate()
+        };
         playerKingdom = new Kingdom();
+        
         playerKingdom.Name = name;
+        
         firstPlay = false;
+        
         day = 1;
+        
         //TODO reset decks/queud
         queudEvents.Clear();
     }
