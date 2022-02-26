@@ -44,10 +44,12 @@ public class WarCounselor : CardEvent
 
         Choice choice1 = new Choice(0, 0, 0, "ALATAK!", new List<CardEvent>(), () => {
             GameManager.fightOpponent = kingdomToFight;
-            //START FIGHTO
+            
+            //STARTO FIGHTO
+            return true;
         });
         getChoices.Add(choice1);
-        getChoices.Add(new Choice(0, 0, 0, "Abstain from attacking", new List<CardEvent>(), () => { }));
+        getChoices.Add(new Choice(0, 0, 0, "Abstain from attacking", new List<CardEvent>(), () => { return false;}));
         base.drawEvent();
     }
 }
