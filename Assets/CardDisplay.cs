@@ -31,15 +31,8 @@ public class CardDisplay : MonoBehaviour
 
     }
 
-    private void UpdateUI()
+    public void DeleteButtons()
     {
-
-        //update text
-
-        if (choicePrefab == null || currentCard == null) return;
-        
-        title.text = currentCard.Name;
-        desc.text = currentCard.Description;
         
         //update choices
         foreach (Button b in transform.GetComponentsInChildren<Button>())
@@ -48,6 +41,20 @@ public class CardDisplay : MonoBehaviour
             Destroy(b.gameObject);
             
         }
+        
+    }
+
+    private void UpdateUI()
+    {
+
+        //update text
+
+        DeleteButtons();
+        
+        if (choicePrefab == null || currentCard == null) return;
+        
+        title.text = currentCard.Name;
+        desc.text = currentCard.Description;
 
         int nb = currentCard.getNbChoices;
         float width = GetComponent<RectTransform>().sizeDelta.x * 0.65f;
