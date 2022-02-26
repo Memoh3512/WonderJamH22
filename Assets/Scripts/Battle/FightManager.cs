@@ -31,14 +31,16 @@ public class FightManager : MonoBehaviour
         for (int i = 0; i < kingdom.MilitaryPower; i++)
         {
             Unit toInstantiate = units[Random.Range(0, units.Count)];
-            baseFighterPrefab.GetComponent<Fighter>().Damage = toInstantiate.Damage;
-            baseFighterPrefab.GetComponent<Fighter>().Life = toInstantiate.Hp;
-            baseFighterPrefab.GetComponent<Transform>().localScale = Vector3.one * toInstantiate.Scale;
-            baseFighterPrefab.GetComponent<SpriteRenderer>().sprite = toInstantiate.Sprite;
             
             float xPos = spawnerPos.x + Random.Range(-rectHeight, rectHeight);
             float yPos = spawnerPos.z + Random.Range(-rectWidth, rectWidth);
-            GameObject currFighter = Instantiate();
+            
+            GameObject currFighter = Instantiate(baseFighterPrefab);
+            currFighter.GetComponent<Fighter>().Damage = toInstantiate.Damage;
+            currFighter.GetComponent<Fighter>().Life = toInstantiate.Hp;
+            currFighter.GetComponent<Transform>().localScale = Vector3.one * toInstantiate.Scale;
+            currFighter.GetComponent<SpriteRenderer>().sprite = toInstantiate.Sprite;
+            
             currFighter.transform.position = new Vector3(xPos, spawnerPos.y+2.25f, yPos);
             if (flipSprite)
                 currFighter.GetComponent<SpriteRenderer>().flipX = !currFighter.GetComponent<SpriteRenderer>().flipX;
