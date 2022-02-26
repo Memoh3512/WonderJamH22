@@ -215,9 +215,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   spriteSquare: {fileID: 717284811}
   textAmount: {fileID: 1851916171}
-  gold: {fileID: 0}
-  militaryP: {fileID: 0}
-  life: {fileID: 0}
 --- !u!1 &314235056
 GameObject:
   m_ObjectHideFlags: 0
