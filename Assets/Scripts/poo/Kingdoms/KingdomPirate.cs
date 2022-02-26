@@ -4,6 +4,13 @@ using UnityEngine;
 
 public class KingdomPirate : Kingdom
 {
+    public KingdomPirate()
+    {
+        Name = "Pirates";
+        greediness = 150; // Largeur de la bande
+        growth = 60; //50 = moyen + meilleur rendement
+        variance = 2.2f; //1.7-2.5
+    }
     // Start is called before the first frame update
     void Start()
     {

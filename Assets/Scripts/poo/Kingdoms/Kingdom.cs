@@ -13,9 +13,9 @@ public class Kingdom
     private int militaryPower = 100;
     private int kingdomLife = 100;
 
-    private int greediness;
-    private int growth; //50 = moyen
-    private float variance; //TODO
+    protected int greediness; // Largeur de la bande
+    protected int growth; //50 = moyen + meilleur rendement
+    protected float variance; //1.7-2.5
     
     public int Gold => gold;
     public int MilitaryPower => militaryPower;

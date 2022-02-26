@@ -26,10 +26,21 @@ public class GameManager
     }
     public static void startGame(string name)
     {
+        // Resets kingdoms
+        aiKingdoms = new List<Kingdom>()
+        {
+            new KingdomCowboy(),
+            new KingdomFurry(),
+            new KingdomPirate()
+        };
         playerKingdom = new Kingdom();
+        
         playerKingdom.Name = name;
+        
         firstPlay = false;
+        
         day = 1;
+        
         //TODO reset decks/queud
         queudEvents = null;
     }

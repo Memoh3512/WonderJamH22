@@ -20,7 +20,7 @@ public class FightManager : MonoBehaviour
         //DEBUG this
         //TODO remove icitte quand on a les kingdoms
         GameManager.playerKingdom = new Kingdom();
-        GameManager.fightOpponent = new KingdomAlien();
+        //GameManager.fightOpponent = new KingdomAlien();
         GameManager.playerKingdom.Units = new List<Unit>(){new Unit(baseFighterPrefab.GetComponent<SpriteRenderer>().sprite,10,3,1)};
         GameManager.fightOpponent.Units = new List<Unit>(){new Unit(baseFighterPrefab.GetComponent<SpriteRenderer>().sprite,10,3,1),new Unit(baseFighterPrefab.GetComponent<SpriteRenderer>().sprite,10,3,1),new Unit(baseFighterPrefab.GetComponent<SpriteRenderer>().sprite,10,3,1)};
         //Enemy
