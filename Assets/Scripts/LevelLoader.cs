@@ -7,7 +7,7 @@ using UnityEngine.SceneManagement;
 public enum TransitionTypes
 {
     
-    CrossFade
+    CrossFade, Fight
     
 }
 
@@ -17,6 +17,9 @@ public class LevelLoader : MonoBehaviour
     //transition times for every transition
     public float CrossfadeTime = 1f;
     public Animator Crossfade;
+    
+    public float FightTime = 0.75f;
+    public Animator Fight;
     //singleton
     public static LevelLoader instance;
 
@@ -24,6 +27,7 @@ public class LevelLoader : MonoBehaviour
     {
 
         Crossfade.gameObject.SetActive(false);
+        Fight.gameObject.SetActive(false);
 
         if (instance == null)
         {
@@ -63,7 +67,13 @@ public class LevelLoader : MonoBehaviour
                 transitionObj = Crossfade;
                 
                 break;
-            
+            case TransitionTypes.Fight:
+
+                time = FightTime;
+                transitionObj = Fight;
+                
+                break;
+
         }
 
         StartCoroutine(TransitionRoutine(scene, transitionObj, time));
