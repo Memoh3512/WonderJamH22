@@ -5,7 +5,7 @@ using UnityEngine;
 public class Kingdom
 {
     public List<Unit> Units => units;
-   
+    private string name;   
     
     private static List<Unit> units; //toutes les units
 
@@ -21,6 +21,8 @@ public class Kingdom
     public int MilitaryPower => militaryPower;
     public int KingdomLife => kingdomLife;
     
+
+    public string Name { get => name; set => name = value; }
 
     public void removeGold(int toRemove)
     {
