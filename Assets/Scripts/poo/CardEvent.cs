@@ -42,5 +42,10 @@ public class CardEvent
     public virtual void drawEvent()
     {
         //draw :) 
+
+        GameObject ui = GameObject.FindGameObjectWithTag("Canvas");
+        GameObject card = Object.Instantiate(Resources.Load<GameObject>("CardDisplay"), ui.transform);
+        ui.GetComponent<RectTransform>().position = Vector3.zero;
+
     }
 }
