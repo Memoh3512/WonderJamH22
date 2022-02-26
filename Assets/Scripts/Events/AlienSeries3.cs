@@ -20,7 +20,7 @@ public class AlienSeries3 : CardEvent
             return false;
         }));
 
-        getChoices.Add(new Choice(0, 10, -300, "We really shouldn't get involved, call back the soldiers", new List<CardEvent>(), () => {
+        getChoices.Add(new Choice(0, 10, -300, "We really shouldn't get involved, call back the soldiers", () => {
             return false;
         }));
     }

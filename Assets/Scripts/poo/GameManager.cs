@@ -69,7 +69,7 @@ public class GameManager
         // Random nombre d'events 
         for (int i = Random.Range(0, 3); i < 3; i++)
         {
-            todaysEventsToPlay.Add(currentDeck.getEvent());
+            //todaysEventsToPlay.Add(currentDeck.getEvent());
         }
         playNextEvent();
     }
