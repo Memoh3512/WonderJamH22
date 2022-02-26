@@ -34,5 +34,15 @@ public class EventDeck
         return cEvent;
 
     }
+
+    public void addEvent(CardEvent ce)
+    {
+        eventList.Add(ce);
+    }
+
+    public void removeEvent(CardEvent ce)
+    {
+        eventList.Remove(ce);
+    }
   
 }
