@@ -7,7 +7,7 @@ public class Fighter : MonoBehaviour
 {
     private int life = 10;
     private int damage = 3;
-    private float baseCoolDown = 1;
+    private float baseCoolDown = 0.1f;
     private float attackCoolDown;
     private Unit representedUnit;
     private int team = -1; // 0 player, 1 ai
@@ -61,29 +61,32 @@ public class Fighter : MonoBehaviour
             getClosestTarget();
         }
     }
-    void getDamaged(int damage)
+    void getDamaged(int hitDamage)
     {
-        life -= damage;
-        if (life <= 0)
+        life -= hitDamage;
+        if (life <= 0 && GetComponent<Collider>().enabled)
         {
+            GetComponent<Collider>().enabled = false;
+            myAllies.Remove(gameObject);
             die();
         }
     }
     void die()
     {
-        myAllies.Remove(gameObject);
-        //TODO anim death
-        Destroy(this);
-        Destroy(gameObject);
-    }
-    private void OnCollisionEnter(Collision other)
-    {
-        //Peut attaquer, un fighterm pis dans lautre equipe
-        if (attackCoolDown <= 0 && other.gameObject.GetComponent<Fighter>()!=null && team != other.gameObject.GetComponent<Fighter>().team)
+        
+        
+        //TODO FLO son perso meurt
+        switch (team)
         {
-            attack(other.gameObject);
-            getClosestTarget();
+            
+            case 0: FightManager.soldiersDead++;
+                break;
+            case 1: FightManager.enemiesDead++;
+                break;
+            
         }
+        //TODO anim death
+        Destroy(gameObject);
     }
     private void OnCollisionStay(Collision other)
     {
@@ -95,9 +98,10 @@ public class Fighter : MonoBehaviour
     }
     private void attack(GameObject toAttack)
     {
-        Debug.Log("Attacked");
+        //Debug.Log("Attacked");
         toAttack.GetComponent<Fighter>().getDamaged(damage);
         attackCoolDown = baseCoolDown;
+        getClosestTarget();
     }
     public void getClosestTarget()
     {

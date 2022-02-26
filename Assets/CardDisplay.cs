@@ -15,6 +15,7 @@ public class CardDisplay : MonoBehaviour
     public TextMeshProUGUI title, desc;
 
     public float btnPadding = 10f;
+    public float xOffset = 50f;
     
     // Start is called before the first frame update
     void Start()
@@ -27,7 +28,6 @@ public class CardDisplay : MonoBehaviour
     {
 
         currentCard = card;
-        UpdateUI();
 
     }
 
@@ -50,7 +50,7 @@ public class CardDisplay : MonoBehaviour
         }
 
         int nb = currentCard.getNbChoices;
-        float width = GetComponent<RectTransform>().sizeDelta.x;
+        float width = GetComponent<RectTransform>().sizeDelta.x * 0.65f;
 
         if (nb <= 0) return;
 
@@ -58,13 +58,14 @@ public class CardDisplay : MonoBehaviour
         btnWidth /= (float)nb;
 
         float startPos = -(width / 2f) + btnWidth / 2f;
+        startPos += xOffset;
         
         foreach (Choice c in currentCard.getChoices)
         {
 
             GameObject choice = Instantiate(choicePrefab, transform);
             choice.GetComponent<RectTransform>().sizeDelta = new Vector2(btnWidth, choice.GetComponent<RectTransform>().sizeDelta.y);
-            choice.GetComponent<RectTransform>().localPosition = new Vector3(startPos, -369);
+            choice.GetComponent<RectTransform>().localPosition = new Vector3(startPos, -400);
             choice.GetComponentInChildren<TextMeshProUGUI>().text = c.Description;
             
             choice.GetComponent<Button>().onClick.AddListener((() => c.process()));
