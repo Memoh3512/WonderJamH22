@@ -17,9 +17,13 @@ public class GameUI : MonoBehaviour
 
     public void UpdateUIValues()
     {
-        
-        //GameManager.playerKingdom.
-        
+
+        //GameManager.playerKingdom = new Kingdom();
+        gold.text = GameManager.playerKingdom.Gold.ToString();
+        atk.text = GameManager.playerKingdom.MilitaryPower.ToString();
+        health.text = GameManager.playerKingdom.KingdomLife.ToString();
+        days.text = "Day " + GameManager.day;
+
     }
     
 }
