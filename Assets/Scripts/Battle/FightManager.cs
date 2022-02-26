@@ -39,7 +39,7 @@ public class FightManager : MonoBehaviour
     }
     private void Start()
     {
-        
+        StartFight();
     }
     void spawnFighters(Kingdom kingdom, GameObject spawner,List<GameObject> allSpawned,int team,bool flipSprite = false)
     {
