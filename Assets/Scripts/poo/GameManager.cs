@@ -13,6 +13,7 @@ public class GameManager : MonoBehaviour
     public static void nextDay()
     {
         day++;
+        day--;
     }
     public static void startGame()
     {
