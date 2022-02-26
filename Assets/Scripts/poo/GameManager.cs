@@ -8,7 +8,7 @@ public class GameManager
     public static List<Kingdom> aiKingdoms;
     public static Kingdom fightOpponent;
     public static int day = 1;
-    private static EventDeck currentDeck = new EventDeck(new List<CardEvent>());
+    private static EventDeck currentDeck = new EventDeck();
     private static List<CardEvent> queudEvents = new List<CardEvent>();
 
     private static List<CardEvent> todaysEventsToPlay = new List<CardEvent>();
@@ -51,6 +51,11 @@ public class GameManager
     {
         
     }
+
+    public static void addPlannedEvent(CardEvent cardEvent)
+    {
+        queudEvents.Add(cardEvent);
+    }
     public static void addEvent(CardEvent cardEvent)
     {
         currentDeck.addEvent(cardEvent);
@@ -69,7 +74,11 @@ public class GameManager
         // Random nombre d'events 
         for (int i = Random.Range(0, 3); i < 3; i++)
         {
-            todaysEventsToPlay.Add(currentDeck.getEvent());
+            if(currentDeck.Count() > 0)
+            {
+                todaysEventsToPlay.Add(currentDeck.getEvent());
+            }
+           
         }
         playNextEvent();
     }
