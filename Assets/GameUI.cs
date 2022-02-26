@@ -13,6 +13,7 @@ public class GameUI : MonoBehaviour
     void Start()
     {
         UpdateUIValues();
+
     }
 
     public void UpdateUIValues()

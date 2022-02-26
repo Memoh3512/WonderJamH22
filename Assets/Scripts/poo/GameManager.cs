@@ -8,10 +8,10 @@ public class GameManager
     public static List<Kingdom> aiKingdoms;
     public static Kingdom fightOpponent;
     public static int day = 1;
-    private static EventDeck currentDeck;
-    private static List<CardEvent> queudEvents;
+    private static EventDeck currentDeck = new EventDeck(new List<CardEvent>());
+    private static List<CardEvent> queudEvents = new List<CardEvent>();
 
-    private static List<CardEvent> todaysEventsToPlay;
+    private static List<CardEvent> todaysEventsToPlay = new List<CardEvent>();
 
     public static bool firstPlay = true;
 
@@ -42,7 +42,10 @@ public class GameManager
         day = 1;
         
         //TODO reset decks/queud
-        queudEvents = null;
+        queudEvents.Clear();
+        
+        GameManager.AddEventForToday(new WarCounselor(1, 0));
+        
     }
     public static void endGame()
     {
@@ -81,6 +84,15 @@ public class GameManager
         {
             drawNextDay();
         }
+        
+    }
+
+    public static void AddEventForToday(CardEvent e)
+    {
+        
+        todaysEventsToPlay.Add(e);
+        //test
+        playTodaysEvents();
         
     }
     public static void drawNextDay()

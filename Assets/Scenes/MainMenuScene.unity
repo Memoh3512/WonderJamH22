@@ -270,7 +270,7 @@ GameObject:
   - component: {fileID: 298273992}
   - component: {fileID: 298273991}
   - component: {fileID: 298273990}
-  m_Layer: 0
+  m_Layer: 5
   m_Name: Fight
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -378,7 +378,7 @@ Canvas:
   m_SortingBucketNormalizedSize: 0
   m_AdditionalShaderChannelsFlag: 0
   m_SortingLayerID: 0
-  m_SortingOrder: 0
+  m_SortingOrder: 20
   m_TargetDisplay: 0
 --- !u!1 &519420028
 GameObject:
@@ -508,7 +508,7 @@ GameObject:
   - component: {fileID: 715807598}
   - component: {fileID: 715807600}
   - component: {fileID: 715807599}
-  m_Layer: 0
+  m_Layer: 5
   m_Name: rSword
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1163,7 +1163,7 @@ GameObject:
   - component: {fileID: 1531578759}
   - component: {fileID: 1531578761}
   - component: {fileID: 1531578760}
-  m_Layer: 0
+  m_Layer: 5
   m_Name: lSword
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1238,7 +1238,7 @@ GameObject:
   - component: {fileID: 1673565101}
   - component: {fileID: 1673565103}
   - component: {fileID: 1673565102}
-  m_Layer: 0
+  m_Layer: 5
   m_Name: Right
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1341,7 +1341,7 @@ GameObject:
   - component: {fileID: 1890499610}
   - component: {fileID: 1890499613}
   - component: {fileID: 1890499612}
-  m_Layer: 0
+  m_Layer: 5
   m_Name: left
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1713,7 +1713,7 @@ GameObject:
   - component: {fileID: 2600255643245300676}
   - component: {fileID: 2600255643245300674}
   - component: {fileID: 2600255643245300677}
-  m_Layer: 0
+  m_Layer: 5
   m_Name: moon
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1802,7 +1802,7 @@ GameObject:
   - component: {fileID: 2600255643267315755}
   - component: {fileID: 2600255643267315754}
   - component: {fileID: 2600255643267315757}
-  m_Layer: 0
+  m_Layer: 5
   m_Name: blackCrossFade
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1836,7 +1836,7 @@ GameObject:
   - component: {fileID: 2600255643904599956}
   - component: {fileID: 1715998543}
   - component: {fileID: 1715998542}
-  m_Layer: 0
+  m_Layer: 5
   m_Name: LevelLoader
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1885,7 +1885,7 @@ Canvas:
   m_SortingBucketNormalizedSize: 0
   m_AdditionalShaderChannelsFlag: 0
   m_SortingLayerID: 0
-  m_SortingOrder: 0
+  m_SortingOrder: 20
   m_TargetDisplay: 0
 --- !u!224 &2600255645032156378
 RectTransform:
@@ -1937,7 +1937,7 @@ GameObject:
   - component: {fileID: 2600255645032156376}
   - component: {fileID: 2600255645032156379}
   - component: {fileID: 2600255645032156390}
-  m_Layer: 0
+  m_Layer: 5
   m_Name: CrossFade
   m_TagString: Untagged
   m_Icon: {fileID: 0}

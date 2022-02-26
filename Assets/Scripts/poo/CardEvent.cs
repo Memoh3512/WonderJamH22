@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class CardEvent 
 {
-    private List<Choice> choices;
+    private List<Choice> choices = new List<Choice>();
     private int daysToPlay;
     private int weight;
     private string name = "Card Event";
@@ -39,8 +39,14 @@ public class CardEvent
         daysToPlay -= days;
     }
     
-    public void drawEvent()
+    public virtual void drawEvent()
     {
         //draw :) 
+
+        GameObject ui = GameObject.FindGameObjectWithTag("Canvas");
+        GameObject card = Object.Instantiate(Resources.Load<GameObject>("CardDisplay"), ui.transform);
+        card.GetComponent<CardDisplay>().SetCardEvent(this);
+        ui.GetComponent<RectTransform>().position = Vector3.zero;
+
     }
 }
