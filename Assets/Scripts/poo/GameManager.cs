@@ -43,6 +43,9 @@ public class GameManager
         
         //TODO reset decks/queud
         queudEvents.Clear();
+        
+        GameManager.AddEventForToday(new WarCounselor(1, 0));
+        
     }
     public static void endGame()
     {
