@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class GameManager : MonoBehaviour
+public class GameManager
 {
     public static Kingdom playerKingdom;
     public static List<Kingdom> aiKingdoms;
@@ -13,7 +13,7 @@ public class GameManager : MonoBehaviour
     public static void nextDay()
     {
         day++;
-        day++;
+        day--;
     }
     public static void startGame()
     {
