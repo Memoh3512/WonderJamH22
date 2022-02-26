@@ -19,6 +19,7 @@ public class NotificationManager : MonoBehaviour
     void Start()
     {
         toDisplay = new List<Notification>(){};
+        startNotification(0,200);
         state = 0;
     }
 
@@ -38,9 +39,9 @@ public class NotificationManager : MonoBehaviour
         }else if (state == 1)
         {
             RectTransform trans = GetComponent<RectTransform>();
-            if (trans.anchoredPosition.y <= -370f)
+            if (trans.anchoredPosition.y <= -472)
             {
-                trans.anchoredPosition += Vector2.up * (100f * Time.deltaTime);
+                trans.anchoredPosition += Vector2.up * (150f * Time.deltaTime);
             }
             else
             {
@@ -61,9 +62,9 @@ public class NotificationManager : MonoBehaviour
         }else if (state == 3)
         {
             RectTransform trans = GetComponent<RectTransform>();
-            if (trans.anchoredPosition.y >= -460f)
+            if (trans.anchoredPosition.y >= -605)
             {
-                trans.anchoredPosition += -Vector2.up * (100f * Time.deltaTime);
+                trans.anchoredPosition += -Vector2.up * (150f * Time.deltaTime);
             }
             else
             {
