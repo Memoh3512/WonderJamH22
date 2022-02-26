@@ -33,7 +33,7 @@ public class GameManager
             new KingdomFurry(),
             new KingdomPirate()
         };
-        playerKingdom = new Kingdom();
+        playerKingdom = new Kingdom(true);
         
         playerKingdom.Name = name;
         
