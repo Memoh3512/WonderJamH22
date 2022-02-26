@@ -12,6 +12,10 @@ public class Kingdom
     private int gold = 0;
     private int militaryPower = 100;
     private int kingdomLife = 100;
+
+    private int greediness;
+    private int growth; //50 = moyen
+    private float variance; //TODO
     
     public int Gold => gold;
     public int MilitaryPower => militaryPower;
@@ -50,9 +54,23 @@ public class Kingdom
         else
             return false;
     }
-    
+
     public void next()
     {
+        int toAdd = greediness;
+        float random = Random.Range(1, Mathf.Pow(10, variance));
+
+        int checkSign = (int)Mathf.Sign(Random.Range(-100 + growth, growth + 1));
+
+        if (checkSign > 0) {
+            toAdd = (int)((variance - Mathf.Log10(random)) / variance * greediness)* growth/100;
+        }else
+        {
+            toAdd = (int)((variance - Mathf.Log10(random)) / variance * - greediness)* 1 - (growth/100);
+        }
+
+        militaryPower = militaryPower + toAdd;
+        
 
     }
 }
