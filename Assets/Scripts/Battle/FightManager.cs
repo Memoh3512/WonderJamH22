@@ -1,7 +1,9 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using JetBrains.Annotations;
 using UnityEngine;
+using Random = UnityEngine.Random;
 
 public class FightManager : MonoBehaviour
 {
@@ -20,16 +22,39 @@ public class FightManager : MonoBehaviour
         //DEBUG this
         //TODO remove icitte quand on a les kingdoms
         GameManager.playerKingdom = new Kingdom();
-        //GameManager.fightOpponent = new KingdomAlien();
-        GameManager.playerKingdom.Units = new List<Unit>(){new Unit(baseFighterPrefab.GetComponent<SpriteRenderer>().sprite,10,3,1)};
-        GameManager.fightOpponent.Units = new List<Unit>(){new Unit(baseFighterPrefab.GetComponent<SpriteRenderer>().sprite,10,3,1),new Unit(baseFighterPrefab.GetComponent<SpriteRenderer>().sprite,10,3,1),new Unit(baseFighterPrefab.GetComponent<SpriteRenderer>().sprite,10,3,1)};
+        GameManager.fightOpponent = new KingdomAlien();
+        
+        
+        GameManager.playerKingdom.Units = new List<Unit>(){};
+        GameManager.fightOpponent.Units = new List<Unit>(){};
+        for (int i = 0; i < 100; i++)
+        {
+            GameManager.playerKingdom.Units.Add(new Unit(baseFighterPrefab.GetComponent<SpriteRenderer>().sprite,10,3,1));
+            GameManager.fightOpponent.Units.Add(new Unit(baseFighterPrefab.GetComponent<SpriteRenderer>().sprite,10,3,1));
+        }
+        
         //Enemy
-        spawnFighters(GameManager.fightOpponent,enSpawner,allEnemies,true);
+        spawnFighters(GameManager.fightOpponent,enSpawner,allEnemies,1,true);
 
         //Allies
-        spawnFighters(GameManager.playerKingdom,allySpawner,allAllies);
+        spawnFighters(GameManager.playerKingdom,allySpawner,allAllies,0);
     }
-    void spawnFighters(Kingdom kingdom, GameObject spawner,List<GameObject> allSpawned,bool flipSprite = false)
+    private void Start()
+    {
+        foreach (var fighter in allEnemies)
+        {
+            fighter.GetComponent<Fighter>().myAllies = allEnemies;
+            fighter.GetComponent<Fighter>().myEnemies = allAllies;
+            fighter.GetComponent<Fighter>().getClosestTarget();
+        }
+        foreach (var fighter in allAllies)
+        {
+            fighter.GetComponent<Fighter>().myAllies = allAllies;
+            fighter.GetComponent<Fighter>().myEnemies = allEnemies;
+            fighter.GetComponent<Fighter>().getClosestTarget();
+        }
+    }
+    void spawnFighters(Kingdom kingdom, GameObject spawner,List<GameObject> allSpawned,int team,bool flipSprite = false)
     {
         Vector3 spawnerPos=spawner.GetComponent<Transform>().position;
 
@@ -47,6 +72,7 @@ public class FightManager : MonoBehaviour
             GameObject currFighter = Instantiate(baseFighterPrefab);
             currFighter.GetComponent<Fighter>().Damage = toInstantiate.Damage;
             currFighter.GetComponent<Fighter>().Life = toInstantiate.Hp;
+            currFighter.GetComponent<Fighter>().Team = team;
             currFighter.GetComponent<Transform>().localScale = Vector3.one * toInstantiate.Scale;
             currFighter.GetComponent<SpriteRenderer>().sprite = toInstantiate.Sprite;
             
@@ -62,6 +88,23 @@ public class FightManager : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        string whoWon = "No one";
+        bool done = false;
+        if (allAllies.Count <= 0)
+        {
+            done = true;
+            whoWon = "Enemies";
+            //TODO win lose
+        }
+        else if(allEnemies.Count <= 0)
+        {
+            whoWon = "Allies ";
+            done = true;
+        }
+        if (done)
+        {
+            Debug.Log("Fight is done : "+whoWon + " Won");
+        }
         
     }
 }
