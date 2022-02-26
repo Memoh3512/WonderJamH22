@@ -65,7 +65,8 @@ public class CardDisplay : MonoBehaviour
             GameObject choice = Instantiate(choicePrefab, transform);
             choice.GetComponent<RectTransform>().sizeDelta = new Vector2(btnWidth, choice.GetComponent<RectTransform>().sizeDelta.y);
             choice.GetComponent<RectTransform>().localPosition = new Vector3(startPos, -369);
-
+            choice.GetComponentInChildren<TextMeshProUGUI>().text = c.Description;
+            
             choice.GetComponent<Button>().onClick.AddListener((() => c.process()));
             
             startPos += btnPadding + (btnWidth);
