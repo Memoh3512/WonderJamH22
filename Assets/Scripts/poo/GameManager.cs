@@ -78,7 +78,6 @@ public class GameManager
         if (todaysEventsToPlay.Count > 0)
         {
             todaysEventsToPlay[0].drawEvent();
-            todaysEventsToPlay.RemoveAt(0);
         }
         else
         {
@@ -99,6 +98,14 @@ public class GameManager
     {
         //TODO draw le bouton dans le bas
     }
+
+    public static void RemoveTodaysEvent(CardEvent e)
+    {
+
+        todaysEventsToPlay.Remove(e);
+
+    }
+    
     public static void getDeck()
     {
         
