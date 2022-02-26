@@ -95,7 +95,7 @@ public class Fighter : MonoBehaviour
     }
     private void attack(GameObject toAttack)
     {
-        Debug.Log("Attacked");
+        //Debug.Log("Attacked");
         toAttack.GetComponent<Fighter>().getDamaged(damage);
         attackCoolDown = baseCoolDown;
     }

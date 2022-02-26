@@ -27,7 +27,6 @@ public class CardDisplay : MonoBehaviour
     {
 
         currentCard = card;
-        UpdateUI();
 
     }
 

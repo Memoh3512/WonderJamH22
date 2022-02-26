@@ -44,14 +44,19 @@ public class WarCounselor : CardEvent
             "\"Your excellency, " + kingdomToFight.Name + " as shown signs of weakness. I believe we should take this opportunity to attack them while they're at a low point!\"\n" +
             "(While the commander's intel is usually right, mistakes always happen.)";
 
-        Choice choice1 = new Choice(0, 0, 0, "ALATAK!", new List<CardEvent>(), () => {
+        Choice choice1 = new Choice(0, 0, 0, "ALATAK!", () => {
             GameManager.fightOpponent = kingdomToFight;
             
             //STARTO FIGHTO
             return true;
         });
         getChoices.Add(choice1);
-        getChoices.Add(new Choice(0, 0, 0, "Abstain from attacking", new List<CardEvent>(), () => { return false;}));
+        getChoices.Add(new Choice(0, 0, 0, "Abstain from attacking", () =>
+        {
+            
+            GameManager.AddEventForToday(new Message("Test", "WOWOW", "OKAY!! :)"));
+            return false;
+        }));
         base.drawEvent();
     }
 }

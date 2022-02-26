@@ -7,8 +7,8 @@ using UnityEngine;
 public enum Songs
 {
     
-    ADRENALINE,
-    GameplaySong
+    Village,
+    Fight
     
 }
 
@@ -69,18 +69,18 @@ public class SoundPlayer : MonoBehaviour
 
     }
     
-    IEnumerator testMusicCor()
-    {
-        yield return new WaitForSeconds(5f);
-        SetMusic(Songs.GameplaySong,2.5f, TransitionBehavior.Continue); //start wdib
-        yield return new WaitForSeconds(5f);
-        SetMusic(Songs.ADRENALINE, 2.5f, TransitionBehavior.Pause); // come back to continued adrenaline
-        yield return new WaitForSeconds(5f);
-        SetMusic(Songs.GameplaySong, 2.5f, TransitionBehavior.Stop); //start from last place in wdib
-        yield return new WaitForSeconds(5f);
-        SetMusic(Songs.ADRENALINE, 2.5f, TransitionBehavior.Stop);//new start of adrenaline
-
-    }
+    // IEnumerator testMusicCor()
+    // {
+    //     yield return new WaitForSeconds(5f);
+    //     SetMusic(Songs.GameplaySong,2.5f, TransitionBehavior.Continue); //start wdib
+    //     yield return new WaitForSeconds(5f);
+    //     SetMusic(Songs.ADRENALINE, 2.5f, TransitionBehavior.Pause); // come back to continued adrenaline
+    //     yield return new WaitForSeconds(5f);
+    //     SetMusic(Songs.GameplaySong, 2.5f, TransitionBehavior.Stop); //start from last place in wdib
+    //     yield return new WaitForSeconds(5f);
+    //     SetMusic(Songs.ADRENALINE, 2.5f, TransitionBehavior.Stop);//new start of adrenaline
+    //
+    // }
 
     /// <summary>
     /// Starts song with no transition
@@ -181,8 +181,8 @@ public class SoundPlayer : MonoBehaviour
         //put songs in this list
         songs = new Dictionary<Songs, AudioClip>()
         {
-            {Songs.ADRENALINE, Resources.Load<AudioClip>("Sound/Music/ADRENALINE")},
-            {Songs.GameplaySong, Resources.Load<AudioClip>("Sound/Music/Where Do I Belong")},
+            {Songs.Village, Resources.Load<AudioClip>("Music/Village")},
+            //{Songs.Fight, Resources.Load<AudioClip>("Sound/Music/Where Do I Belong")},
             //...
         };
 
