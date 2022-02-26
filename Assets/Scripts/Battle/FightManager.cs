@@ -21,10 +21,8 @@ public class FightManager : MonoBehaviour
         allAllies = new List<GameObject>();
         //DEBUG this
         //TODO remove icitte quand on a les kingdoms
-        GameManager.playerKingdom = new Kingdom();
         GameManager.fightOpponent = new KingdomAlien();
-        
-        
+        GameManager.playerKingdom = new Kingdom();
         GameManager.playerKingdom.Units = new List<Unit>(){};
         GameManager.fightOpponent.Units = new List<Unit>(){};
         for (int i = 0; i < 100; i++)
@@ -41,18 +39,7 @@ public class FightManager : MonoBehaviour
     }
     private void Start()
     {
-        foreach (var fighter in allEnemies)
-        {
-            fighter.GetComponent<Fighter>().myAllies = allEnemies;
-            fighter.GetComponent<Fighter>().myEnemies = allAllies;
-            fighter.GetComponent<Fighter>().getClosestTarget();
-        }
-        foreach (var fighter in allAllies)
-        {
-            fighter.GetComponent<Fighter>().myAllies = allAllies;
-            fighter.GetComponent<Fighter>().myEnemies = allEnemies;
-            fighter.GetComponent<Fighter>().getClosestTarget();
-        }
+        
     }
     void spawnFighters(Kingdom kingdom, GameObject spawner,List<GameObject> allSpawned,int team,bool flipSprite = false)
     {
@@ -66,8 +53,8 @@ public class FightManager : MonoBehaviour
         {
             Unit toInstantiate = units[i];
             
-            float xPos = spawnerPos.x + Random.Range(-rectHeight, rectHeight);
-            float yPos = spawnerPos.z + Random.Range(-rectWidth, rectWidth);
+            float xPos = spawnerPos.x + Random.Range(-rectWidth, rectWidth);
+            float yPos = spawnerPos.z + Random.Range(-rectHeight, rectHeight);
             
             GameObject currFighter = Instantiate(baseFighterPrefab);
             currFighter.GetComponent<Fighter>().Damage = toInstantiate.Damage;
@@ -106,5 +93,20 @@ public class FightManager : MonoBehaviour
             Debug.Log("Fight is done : "+whoWon + " Won");
         }
         
+    }
+    void StartFight()
+    {
+        foreach (var fighter in allEnemies)
+        {
+            fighter.GetComponent<Fighter>().myAllies = allEnemies;
+            fighter.GetComponent<Fighter>().myEnemies = allAllies;
+            fighter.GetComponent<Fighter>().getClosestTarget();
+        }
+        foreach (var fighter in allAllies)
+        {
+            fighter.GetComponent<Fighter>().myAllies = allAllies;
+            fighter.GetComponent<Fighter>().myEnemies = allEnemies;
+            fighter.GetComponent<Fighter>().getClosestTarget();
+        }
     }
 }
