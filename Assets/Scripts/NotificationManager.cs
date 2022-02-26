@@ -19,7 +19,7 @@ public class NotificationManager : MonoBehaviour
     void Start()
     {
         toDisplay = new List<Notification>(){};
-        startNotification(0,200);
+        //startNotification(0,200);
         state = 0;
     }
 
