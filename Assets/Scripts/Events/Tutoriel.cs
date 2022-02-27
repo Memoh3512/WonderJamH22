@@ -10,8 +10,9 @@ public class Tutoriel : CardEvent
         Name = "How to play";
         Description = " Here you will find various events that you will have to choose on, and make difficult decisions to rule your land. Are you up for it?";
 
-        getChoices.Add(new Choice(0,0,0,"Hell yea!",()=> {
-            GameManager.AddEventForToday(new Message("Contract accepted","Prepare yourself, you have a kingdom to manage.","I'm ready!"));
+        getChoices.Add(new Choice(0,0,0,"Hell yea!",()=>
+        {
+            GameManager.AddEventForToday(new Tutoriel2());
             return false;
         }));
 
