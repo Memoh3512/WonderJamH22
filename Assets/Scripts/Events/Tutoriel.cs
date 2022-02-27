@@ -11,7 +11,7 @@ public class Tutoriel : CardEvent
         Description = " Here you will find various events that you will have to choose on, and make difficult decisions to rule your land. Are you up for it?";
 
         getChoices.Add(new Choice(0,0,0,"Hell yea!",()=> {
-            GameManager.AddEventForToday(new Message("Contact accepted","Prepare yourself, you have a kingdom to manage.","I'm ready!"));
+            GameManager.AddEventForToday(new Message("Contract accepted","Prepare yourself, you have a kingdom to manage.","I'm ready!"));
             return false;
         }));
 
