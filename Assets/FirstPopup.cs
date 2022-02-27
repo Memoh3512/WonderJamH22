@@ -26,8 +26,8 @@ public class FirstPopup : MonoBehaviour
         string name = kingName.text.ToLower();
         name = name[0].ToString().ToUpper() + name.Substring(1);
         GameManager.startGame(name);
-        tut1.SetActive(true);
-        tut2.SetActive(true);
+        //tut1.SetActive(true);
+        //tut2.SetActive(true);
         Destroy(gameObject);
         
     }
