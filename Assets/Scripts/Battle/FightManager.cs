@@ -158,11 +158,13 @@ public class FightManager : MonoBehaviour
             if (whoWon != "Allies")
             {
                 GameManager.playerKingdom.removeKingdomLife(15);
+                GameManager.fightOpponent.DecrementRelation();
+                
             }
             else
             {
                 goldGained = woundedEnemies.Count;
-                GameManager.playerKingdom.removeGold(goldGained);
+                GameManager.playerKingdom.removeGold(-goldGained);
             }
             
             //Affichage
