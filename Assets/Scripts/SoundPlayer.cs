@@ -9,7 +9,8 @@ public enum Songs
     
     Village,
     MainMenu,
-    War
+    War,
+    Night
     
 }
 
@@ -112,7 +113,7 @@ public class SoundPlayer : MonoBehaviour
 
         if (songs.ContainsKey(song))
         {
-
+            
             StartCoroutine(ChangeMusicTransition(song, transitionTime, behavior));
 
         }
@@ -198,6 +199,7 @@ public class SoundPlayer : MonoBehaviour
             {Songs.Village, Resources.Load<AudioClip>("Music/Village")},
             {Songs.War, Resources.Load<AudioClip>("Music/War")},
             {Songs.MainMenu, Resources.Load<AudioClip>("Music/MainMenu")},
+            {Songs.Night, Resources.Load<AudioClip>("Music/Night")},
             //...
         };
 

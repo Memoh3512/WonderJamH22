@@ -40,6 +40,8 @@ public class GameManager
 
         });
 
+        SoundPlayer.instance.SetMusic(Songs.Village, 1f, TransitionBehavior.Continue);
+        
         await Task.Delay(1500);
         
         CanvasGroup endDay = GameObject.FindGameObjectWithTag("EndDay").GetComponent<CanvasGroup>();
@@ -199,6 +201,8 @@ public class GameManager
             Resources.Load<Sprite>("Parallax/Night3")
 
         });
+
+        SoundPlayer.instance.SetMusic(Songs.Night, 1f, TransitionBehavior.Continue);
 
     }
 

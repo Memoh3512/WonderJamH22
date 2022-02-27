@@ -58,8 +58,9 @@ public class IncomingAttack : CardEvent
             else
             {
                 
-                GameManager.AddEventForToday(new Message("Failure", "The " + attacker.Name + " Kingdom is really mad at you for even suggesting that option, and they start to advance their troops. Get your weapons ready!", "ALATAK!!!"));
-                return true;
+                GameManager.AddEventForToday(new Message("Failure", "The " + attacker.Name + " Kingdom is really mad at you for even suggesting that option, and they start to advance their troops. Get your weapons ready!", "ALATAK!!!",
+                    () => { return true;}));
+                return false;
             }
         }));
         base.drawEvent();
