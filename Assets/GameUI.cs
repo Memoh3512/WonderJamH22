@@ -23,71 +23,73 @@ public class GameUI : MonoBehaviour
 
     public IEnumerator UpdateUIValues()
     {
-
-        //GameManager.playerKingdom = new Kingdom();
-        yield return new WaitForSeconds(0.05f);
-        int sign = 1;
-        if(goldUI < GameManager.playerKingdom?.Gold)
+        while (true)
         {
-            gold.color = Color.green;
-            sign = 1;
-        }else if (goldUI > GameManager.playerKingdom?.Gold)
-        {
-            gold.color = Color.red;
-            sign = -1;
-        }
-        else
-        {
-            gold.color = Color.white;
-        }
-        goldUI += sign;
-        gold.text = goldUI.ToString();
-        //
-        if (mpUI < GameManager.playerKingdom?.MilitaryPower)
-        {
-            atk.color = Color.green;
-            sign = 1;
-        }
-        else if (mpUI > GameManager.playerKingdom?.MilitaryPower)
-        {
-            atk.color = Color.red;
-            sign = -1;
-        }
-        else
-        {
-            atk.color = Color.white;
-        }
-        mpUI += sign;
-        atk.text = mpUI.ToString();
-        //
-        if (hpUI < GameManager.playerKingdom?.KingdomLife)
-        {
-            health.color = Color.green;
-            sign = 1;
-        }
-        else if (hpUI > GameManager.playerKingdom?.KingdomLife)
-        {
-            health.color = Color.red;
-            sign = -1;
-        }
-        else
-        {
-            health.color = Color.white;
-        }
-        hpUI += sign;
-        health.text = hpUI.ToString();
-        
+            //GameManager.playerKingdom = new Kingdom();
+           
+            if (goldUI < GameManager.playerKingdom?.Gold)
+            {
+                gold.color = Color.green;
+                goldUI ++;
+            }
+            else if (goldUI > GameManager.playerKingdom?.Gold)
+            {
+                gold.color = Color.red;
+                goldUI--;
+            }
+            else
+            {
+                gold.color = Color.white;
+            }
+            gold.text = goldUI.ToString();
+            //
+            if (mpUI < GameManager.playerKingdom?.MilitaryPower)
+            {
+                atk.color = Color.green;
+                mpUI++;
+            }
+            else if (mpUI > GameManager.playerKingdom?.MilitaryPower)
+            {
+                atk.color = Color.red;
+                mpUI--;
+            }
+            else
+            {
+                atk.color = Color.white;
+            }
+            atk.text = mpUI.ToString();
+            //
+            if (hpUI < GameManager.playerKingdom?.KingdomLife)
+            {
+                health.color = Color.green;
+                hpUI++;
+            }
+            else if (hpUI > GameManager.playerKingdom?.KingdomLife)
+            {
+                health.color = Color.red;
+                hpUI--;
+            }
+            else
+            {
+                health.color = Color.white;
+            }
+            health.text = hpUI.ToString();
 
 
-        days.text = "Day " + GameManager.day;
-        kingdomUIs.RefreshKingdomsUI();
+
+            string k = GameManager.playerKingdom == null ? "" : GameManager.playerKingdom.Name;
+            if (!k.Contains("Kingdom")) k += " Kingdom";
+            days.text =  k + "\nDay " + GameManager.day;
+            kingdomUIs.RefreshKingdomsUI();
+            yield return new WaitForSeconds(0.025f);
+        }
 
     }
 
     public void PlayBtnSnd()
     {
         
-        //TODO FLO play son bouton
+        SoundPlayer.instance.PlaySFX(Resources.Load<AudioClip>("SFX/SFX_Menu button"));
         
     }
     

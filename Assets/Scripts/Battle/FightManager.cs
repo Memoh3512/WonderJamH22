@@ -1,6 +1,7 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using System.Linq;
 using JetBrains.Annotations;
 using UnityEngine;
 using Random = UnityEngine.Random;
@@ -13,8 +14,9 @@ public class FightManager : MonoBehaviour
     public GameObject baseFighterPrefab;
     private List<GameObject> allEnemies;
     private List<GameObject> allAllies;
-    public static int soldiersDead;
-    public static int enemiesDead;
+    public static List<Unit> woundedAllies;
+    public static List<Unit> woundedEnemies;
+    public static List<Unit> fullDeadAllies;
     
     
     // Start is called before the first frame update
@@ -23,23 +25,20 @@ public class FightManager : MonoBehaviour
         allEnemies = new List<GameObject>();
         allAllies = new List<GameObject>();
 
-        soldiersDead = 0;
-        enemiesDead = 0;
+        woundedAllies = new List<Unit>(){};
+        woundedEnemies = new List<Unit>(){};
+        fullDeadAllies = new List<Unit>(){};
         
         //DEBUG this
         //TODO remove icitte quand on a les kingdoms
-        GameManager.fightOpponent = new KingdomAlien();
+        GameManager.fightOpponent = new KingdomCowboy();
         GameManager.playerKingdom = new Kingdom();
+        GameManager.playerKingdom.BaseUnit = new Unit(baseFighterPrefab.GetComponent<SpriteRenderer>().sprite, 10, 5, 1);
         GameManager.playerKingdom.Units = new List<Unit>(){};
         GameManager.fightOpponent.Units = new List<Unit>(){};
-        for (int i = 0; i < 100; i++)
-        {
-            GameManager.playerKingdom.Units.Add(new Unit(baseFighterPrefab.GetComponent<SpriteRenderer>().sprite,10,3,1));
-            GameManager.fightOpponent.Units.Add(new Unit(baseFighterPrefab.GetComponent<SpriteRenderer>().sprite,10,3,1));
-        }
-        
-        
-        
+
+
+
         //Enemy
         spawnFighters(GameManager.fightOpponent,enSpawner,allEnemies,1,true);
 
@@ -52,31 +51,44 @@ public class FightManager : MonoBehaviour
     }
     void spawnFighters(Kingdom kingdom, GameObject spawner,List<GameObject> allSpawned,int team,bool flipSprite = false)
     {
+        //Random pos
         Vector3 spawnerPos=spawner.GetComponent<Transform>().position;
-
         float rectWidth = spawner.GetComponent<SpriteRenderer>().sprite.bounds.extents.x*spawner.GetComponent<Transform>().localScale.x;
         float rectHeight = spawner.GetComponent<SpriteRenderer>().sprite.bounds.extents.y*spawner.GetComponent<Transform>().localScale.y;
         
-        List<Unit> units = kingdom.Units;
-        for (int i = 0; i < units.Count; i++)
+        
+        
+        int currSpecialUnit = 0;
+        for (int i = 0; i < kingdom.MilitaryPower; i++)
         {
-            Unit toInstantiate = units[i];
+            Unit toInstantiate=kingdom.BaseUnit;//Base unit
+            //Si on peut prendre une grosse unit on prend
+            if (kingdom.Units.Count>currSpecialUnit&&kingdom.Units[currSpecialUnit].MpValue <= kingdom.MilitaryPower - i)
+            {
+                i += GameManager.playerKingdom.Units[currSpecialUnit].MpValue;
+                toInstantiate = GameManager.playerKingdom.Units[currSpecialUnit];
+                currSpecialUnit++;
+            }
             
-            float xPos = spawnerPos.x + Random.Range(-rectWidth, rectWidth);
-            float yPos = spawnerPos.z + Random.Range(-rectHeight, rectHeight);
-            
+            //Set les values du fighter dapres unit
             GameObject currFighter = Instantiate(baseFighterPrefab);
             currFighter.GetComponent<Fighter>().Damage = toInstantiate.Damage;
             currFighter.GetComponent<Fighter>().Life = toInstantiate.Hp;
             currFighter.GetComponent<Fighter>().Team = team;
             currFighter.GetComponent<Transform>().localScale = Vector3.one * toInstantiate.Scale;
-            currFighter.GetComponent<SpriteRenderer>().sprite = toInstantiate.Sprite;
+            currFighter.transform.GetChild(0).GetComponent<SpriteRenderer>().sprite = toInstantiate.Sprite;
             
+            //Set randPos
+            float xPos = spawnerPos.x + Random.Range(-rectWidth, rectWidth);
+            float yPos = spawnerPos.z + Random.Range(-rectHeight, rectHeight);
             currFighter.transform.position = new Vector3(xPos, spawnerPos.y+2.25f, yPos);
+            
+            //Flip le sprite si besoin
             if (flipSprite)
             {
-                currFighter.GetComponent<SpriteRenderer>().flipX = !currFighter.GetComponent<SpriteRenderer>().flipX;
+                currFighter.transform.GetChild(0).GetComponent<SpriteRenderer>().flipX = !currFighter.GetComponent<SpriteRenderer>().flipX;
             }
+            //Add a liste de spawned
             allSpawned.Add(currFighter);
         }
     }
@@ -100,6 +112,31 @@ public class FightManager : MonoBehaviour
         if (done)
         {
             Debug.Log("Fight is done : "+whoWon + " Won");
+            
+            int powerBefore = GameManager.playerKingdom.MilitaryPower;
+            int losePower = 0;
+            foreach (var deadUnit in woundedAllies.ToList())
+            {
+                if(Random.Range(0, 4)==1)
+                {
+                    fullDeadAllies.Add(deadUnit);
+                    woundedAllies.Remove(deadUnit);
+                    losePower += deadUnit.MpValue;
+                }
+            }
+            Debug.Log("Allies Lose "+losePower+" military power from fight");
+            losePower = 0;
+            foreach (var deadUnit in woundedEnemies.ToList())
+            {
+                if(Random.Range(0, 4)==1)
+                {
+                    GameManager.fightOpponent.removeMilitaryPower(deadUnit.MpValue);
+                    losePower += deadUnit.MpValue;
+                }
+            }
+            Debug.Log("Ennemies Lose "+losePower+" military power from fight");
+            GameManager.playerKingdom.removeMilitaryPower(losePower);
+            
             FindObjectOfType<FightRecapUI>().OpenMenu(whoWon);
             Destroy(gameObject);
             

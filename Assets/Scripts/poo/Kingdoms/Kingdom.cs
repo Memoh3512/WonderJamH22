@@ -9,7 +9,7 @@ public class Kingdom
     private string name;
     private bool isPlayer = false;
     
-    private List<Unit> units; //toutes les units
+    private List<Unit> units = new List<Unit>(); //toutes les units
 
     private int gold = 50;
     private int militaryPower = 100;
@@ -29,7 +29,7 @@ public class Kingdom
     public Kingdom(bool isPlayer = false)
     {
 
-        icon = Resources.Load<Sprite>("Icon/Icon-Cowboy");
+        icon = Resources.Load<Sprite>("Icon/Icon-Human");
 
     }
     public Kingdom(Sprite icon, bool isPlayer = false)
