@@ -19,6 +19,7 @@ public class EventDeck
         eventList.Add(new Communist1());
         eventList.Add(new Pigeon());
         eventList.Add(new Deserters());
+        eventList.Add(new Drug());
     }
 
     public CardEvent getEvent()
@@ -37,6 +38,7 @@ public class EventDeck
             if(totalWeight > eventChosen)
             {
                 cEvent = c;
+                break;
             }
         }
         eventList.Remove(cEvent);
