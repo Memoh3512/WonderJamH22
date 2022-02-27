@@ -221,12 +221,12 @@ public class Kingdom
         if (militaryPower > 0)
         {
             // Fighting card chance
-            float fightOdd = 0.05f;
+            float fightOdd = 0.15f;
             switch (relation)
             {
-                case 1: fightOdd = 0.01f;
+                case 1: fightOdd = 0.05f;
                     break;
-                case -1 : fightOdd = 0.2f;
+                case -1 : fightOdd = 0.35f;
                     break;
             }
 
