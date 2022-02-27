@@ -36,7 +36,7 @@ public class FightRecapUI : MonoBehaviour
         else seal.color = new Color(0, 0, 0, 0);
         
         string player = FightManager.woundedAllies.Count == 0 ? "no" : (FightManager.woundedAllies.Count+FightManager.fullDeadAllies.Count).ToString();
-        kingdomStats.text = $"We lost {loseAll} military power";
+        kingdomStats.text = $"We lost {loseAll} military power and life";
 
         c.enabled = true;
     }

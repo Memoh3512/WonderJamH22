@@ -96,7 +96,7 @@ public class Fighter : MonoBehaviour
         Vector2 angle = Vector2.zero;
         angle.x = Input.GetAxis("Horizontal");
         angle.y = Input.GetAxis("Vertical");
-        angle = angle.normalized *5f * (800f * Time.deltaTime);
+        angle = angle.normalized * (1.6f * (800f * Time.deltaTime));
         GetComponent<Rigidbody>().velocity = new Vector3(angle.x, 0, angle.y);
 
     }

@@ -154,6 +154,11 @@ public class FightManager : MonoBehaviour
             GameManager.playerKingdom.removeMilitaryPower(losePowerEn);
             
             GameManager.playerKingdom.DecrementRelation();
+
+            if (whoWon != "Allies")
+            {
+                GameManager.playerKingdom.removeKingdomLife(losePower);
+            }
             
             //Affichage
             FindObjectOfType<FightRecapUI>().OpenMenu(whoWon,losePower,losePowerEn);
