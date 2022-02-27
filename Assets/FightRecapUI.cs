@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using TMPro;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class FightRecapUI : MonoBehaviour
 {
@@ -9,6 +10,7 @@ public class FightRecapUI : MonoBehaviour
 
     public TextMeshProUGUI kingdomStats;
     public TextMeshProUGUI title;
+    public Image seal;
 
     // Start is called before the first frame update
     void Start()
@@ -29,6 +31,9 @@ public class FightRecapUI : MonoBehaviour
         var won = whowon == "Allies" ? "Victory!" : "Defeat...";
 
         title.text = won;
+
+        if (won == "Victory!") seal.sprite = Resources.Load<Sprite>("seal");
+        else seal.color = new Color(0, 0, 0, 0);
         
         string player = FightManager.woundedAllies.Count == 0 ? "no" : (FightManager.woundedAllies.Count+FightManager.fullDeadAllies.Count).ToString();
         kingdomStats.text = $"We lost {loseAll} military power";
