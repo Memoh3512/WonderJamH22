@@ -29,7 +29,7 @@ public class Kingdom
     public Kingdom(bool isPlayer = false)
     {
 
-        icon = Resources.Load<Sprite>("Icon/Icon-Cowboy");
+        icon = Resources.Load<Sprite>("Icon/Icon-Human");
 
     }
     public Kingdom(Sprite icon, bool isPlayer = false)
@@ -60,7 +60,7 @@ public class Kingdom
             if (kingdomLife <= 0)
             {
                 GameManager.deathNote = "The people have taken you by assault!";
-                LevelLoader.instance.LoadScene("MainMenuScene", TransitionTypes.CrossFade);
+                LevelLoader.instance.LoadScene("LoseScene", TransitionTypes.CrossFade);
             }
         }
     }
@@ -70,6 +70,11 @@ public class Kingdom
         if (isPlayer && toRemove != 0)
         {
             NotificationManager.startNotification(2,-toRemove);
+            if (militaryPower <= 0)
+            {
+                GameManager.deathNote = "Your army was ran dry.";
+                LevelLoader.instance.LoadScene("LoseScene", TransitionTypes.CrossFade);
+            }
         }
     }
 

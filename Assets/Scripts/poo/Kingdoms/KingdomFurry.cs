@@ -12,15 +12,5 @@ public class KingdomFurry : Kingdom
         growth = 75; //50 = moyen + meilleur rendement
         variance = 2.3f; //1.7-2.5
     }
-    // Start is called before the first frame update
-    void Start()
-    {
-        
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
-        
-    }
+    
 }
