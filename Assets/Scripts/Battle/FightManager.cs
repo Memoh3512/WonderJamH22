@@ -125,19 +125,19 @@ public class FightManager : MonoBehaviour
                 }
             }
             Debug.Log("Allies Lose "+losePower+" military power from fight");
-            losePower = 0;
+            int losePowerEn = 0;
             foreach (var deadUnit in woundedEnemies.ToList())
             {
                 if(Random.Range(0, 4)==1)
                 {
                     GameManager.fightOpponent.removeMilitaryPower(deadUnit.MpValue);
-                    losePower += deadUnit.MpValue;
+                    losePowerEn += deadUnit.MpValue;
                 }
             }
-            Debug.Log("Ennemies Lose "+losePower+" military power from fight");
-            GameManager.playerKingdom.removeMilitaryPower(losePower);
+            Debug.Log("Ennemies Lose "+losePowerEn+" military power from fight");
+            GameManager.playerKingdom.removeMilitaryPower(losePowerEn);
             
-            FindObjectOfType<FightRecapUI>().OpenMenu(whoWon);
+            FindObjectOfType<FightRecapUI>().OpenMenu(whoWon,losePower,losePowerEn);
             Destroy(gameObject);
             
         }
