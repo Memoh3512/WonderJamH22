@@ -88,10 +88,32 @@ public class GameManager
     {
         
     }
+    public static bool addCardIfRandom(float pourcentageDeChance,CardEvent happenned = null,CardEvent didntHappen = null)
+    {
+        bool playedRandom = Random.Range(0f, 100f) < pourcentageDeChance;
+
+        if (playedRandom && happenned != null)
+        {
+            addPlannedEvent(happenned);
+        }else if (!playedRandom && didntHappen != null)
+        {
+            addPlannedEvent(didntHappen);
+        }
+
+        return playedRandom;
+    }
 
     public static void addPlannedEvent(CardEvent cardEvent)
     {
-        queudEvents.Add(cardEvent);
+        if (cardEvent.DaysToPlay>0)
+        {
+            queudEvents.Add(cardEvent);
+        }
+        else
+        {
+            AddEventForToday(cardEvent);
+        }
+        
     }
     public static void addEvent(CardEvent cardEvent)
     {
