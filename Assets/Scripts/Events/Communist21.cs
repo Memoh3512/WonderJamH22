@@ -14,6 +14,8 @@ public class Communist21 : CardEvent
         {
             return false;
         }));
+        
+        addChoice(new Choice(0, 20, 0, "I need to try this!", () => { return false;}));
 
     }
     

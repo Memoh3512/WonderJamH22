@@ -30,6 +30,10 @@ public class Kingdom
     {
 
         icon = Resources.Load<Sprite>("Icon/Icon-Human");
+        if (isPlayer)
+        {
+            BaseUnit = new Unit(Resources.Load<Sprite>("Units/chevalier"),10,5,1);
+        }
 
     }
     public Kingdom(Sprite icon, bool isPlayer = false)
