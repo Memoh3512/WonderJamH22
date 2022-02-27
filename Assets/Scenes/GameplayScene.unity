@@ -1159,6 +1159,7 @@ MonoBehaviour:
   health: {fileID: 1829713996}
   days: {fileID: 1611941455}
   kingdomUIs: {fileID: 1349585373}
+  statsUI: {fileID: 650467695}
 --- !u!1 &650277797
 GameObject:
   m_ObjectHideFlags: 0
@@ -1391,6 +1392,8 @@ MonoBehaviour:
   kingName: {fileID: 1091455363}
   tut1: {fileID: 114539991}
   tut2: {fileID: 1438147884}
+  statsUI: {fileID: 650467695}
+  relationsUI: {fileID: 1349585371}
 --- !u!1 &841326979
 GameObject:
   m_ObjectHideFlags: 0

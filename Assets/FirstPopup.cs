@@ -9,6 +9,8 @@ public class FirstPopup : MonoBehaviour
     public TMP_InputField kingName;
     public GameObject tut1;
     public GameObject tut2;
+    public GameObject statsUI;
+    public GameObject relationsUI;
 
     private void Start()
     {
@@ -18,11 +20,18 @@ public class FirstPopup : MonoBehaviour
             GameManager.playNextEvent();
             Destroy(gameObject);
         }
-        
+        else
+        {
+            GameObject.Find("Stats").gameObject.SetActive(false);
+            GameObject.Find("KingdomsUI").gameObject.SetActive(false);
+        }
+
     }
 
     public void StartGame()
     {
+        statsUI.gameObject.SetActive(true);
+        relationsUI.gameObject.SetActive(true);
         string name = kingName.text.ToLower();
         name = name[0].ToString().ToUpper() + name.Substring(1);
         GameManager.startGame(name);
