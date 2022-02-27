@@ -242,18 +242,6 @@ public class Kingdom
             Object.FindObjectOfType<GameUI>().UpdateUIValues();
             GameManager.AddEventForToday(new Message("Fallen kingdom","The kingdom "+this.name+" has fallen, bad decisions were made.","Good for me"));
         }
-        //SPAWN LES EVENTS DU JOUEUR QUI ARRIVENT QUAND X RESSOURCEs
-        if (isPlayer)
-        {
-            if (gold >= costFlood)
-            {
-                GameManager.AddEventForToday(new Flood());
-                costFlood += 100;
-            }
-            
-            
-        }
-        
 
     }
 }
