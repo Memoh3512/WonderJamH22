@@ -21,7 +21,7 @@ public class GameManager
     public static async void nextDay()
     {
         day++;
-        foreach (var kingdom in aiKingdoms)
+        foreach (var kingdom in aiKingdoms.ToList())
         {
             kingdom.next();
             Debug.Log(kingdom.Name + " | MP : " + kingdom.MilitaryPower);
