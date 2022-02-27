@@ -45,4 +45,11 @@ public class FightRecapUI : MonoBehaviour
         c.enabled = true;
 
     }
+
+    public void PlayBtnSFX()
+    {
+        
+        //TODO FLO bouton sfx
+        
+    }
 }

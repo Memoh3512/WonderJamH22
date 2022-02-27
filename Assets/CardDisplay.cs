@@ -99,6 +99,7 @@ public class CardDisplay : MonoBehaviour
             choice.GetComponentInChildren<TextMeshProUGUI>().text = c.Description;
             
             choice.GetComponent<Button>().onClick.AddListener((() => c.process()));
+            choice.GetComponent<Button>().onClick.AddListener((() => FindObjectOfType<GameUI>().PlayBtnSnd()));
             
             startPos += btnPadding + (btnWidth);
 
