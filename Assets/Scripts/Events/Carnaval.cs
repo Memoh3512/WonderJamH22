@@ -40,6 +40,24 @@ public class Carnaval : CardEvent
             return false;
         }));
 
+        getChoices.Add(new Choice(0, 0, 0, "A musical ball of fur", () =>
+        {
+            GameManager.addPlannedEvent(new Message("Carnaval's result", "Furries looooooved it. They offered you a lot of money to buy it after the carnival and expose it in the center of their city.", "...", () =>
+            {
+                foreach (Kingdom k in GameManager.aiKingdoms)
+                {
+                    if (k.Name == "Furry")
+                    {
+                        k.IncrementRelation();
+                        break;
+                    }
+                }
+                GameManager.playerKingdom.removeGold(-250);
+                return false;
+            }, 3));
+            return false;
+        }));
+
 
 
     }
