@@ -82,6 +82,8 @@ public class Fighter : MonoBehaviour
     void getDamaged(int hitDamage)
     {
         life -= hitDamage;
+        StopAllCoroutines();
+        StartCoroutine(FlashRed());
         if (life <= 0 && GetComponent<Collider>().enabled)
         {
             GetComponent<Collider>().enabled = false;
@@ -115,9 +117,21 @@ public class Fighter : MonoBehaviour
                 break;
             
         }
-        //TODO anim death
+        
+        
+        
         Destroy(gameObject);
     }
+
+    IEnumerator FlashRed()
+    {
+
+        transform.GetChild(0).GetComponent<SpriteRenderer>().color = Color.red;
+        yield return new WaitForSeconds(0.2f);
+        transform.GetChild(0).GetComponent<SpriteRenderer>().color = Color.white;
+
+    }
+    
     private void OnCollisionStay(Collision other)
     {
         //Peut attaquer, un fighterm pis dans lautre equipe
