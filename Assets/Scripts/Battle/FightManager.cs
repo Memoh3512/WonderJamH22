@@ -31,7 +31,7 @@ public class FightManager : MonoBehaviour
 
         //DEBUG this
         //TODO remove icitte quand on a les kingdoms
-        if (!GameManager.firstPlay)
+        if (GameManager.firstPlay)
         {
             GameManager.fightOpponent = new KingdomCowboy();
             GameManager.playerKingdom = new Kingdom(true);
