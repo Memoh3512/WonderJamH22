@@ -148,7 +148,7 @@ public class GameManager
     }
     public static void drawNextDay()
     {
-        //TODO draw le bouton dans le bas et bybye scroll
+        
         CardDisplay c = Object.FindObjectOfType<CardDisplay>();
         if (c != null)
         {
