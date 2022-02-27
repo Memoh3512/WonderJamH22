@@ -26,6 +26,8 @@ public class Kingdom
     public int MilitaryPower => militaryPower;
     public int KingdomLife => kingdomLife;
 
+    public static int costFlood = 100;
+    
     public Kingdom(bool isPlayer = false)
     {
 
@@ -55,6 +57,26 @@ public class Kingdom
         {
             NotificationManager.startNotification(0,-toRemove);
         }
+        else
+        {
+
+            if (!isPlayer)
+            {
+
+                KingdomsUISpawner s = Object.FindObjectOfType<KingdomsUISpawner>();
+                int i = 0;
+                foreach (Kingdom k in GameManager.aiKingdoms)
+                {
+
+                    if (k.name == name) break;
+                    i++;
+
+                }
+                s?.StatChange(i, Stat.Gold, toRemove < 0);
+
+            }
+            
+        }
     }
     public void removeKingdomLife(int toRemove)
     {
@@ -68,6 +90,26 @@ public class Kingdom
                 LevelLoader.instance.LoadScene("LoseScene", TransitionTypes.CrossFade);
             }
         }
+        else
+        {
+
+            if (!isPlayer)
+            {
+
+                KingdomsUISpawner s = Object.FindObjectOfType<KingdomsUISpawner>();
+                int i = 0;
+                foreach (Kingdom k in GameManager.aiKingdoms)
+                {
+
+                    if (k.name == name) break;
+                    i++;
+
+                }
+                s?.StatChange(i, Stat.KingHealth, toRemove < 0);
+
+            }
+            
+        }
     }
     public void removeMilitaryPower(int toRemove)
     {
@@ -80,6 +122,31 @@ public class Kingdom
                 GameManager.deathNote = "Your army was ran dry.";
                 LevelLoader.instance.LoadScene("LoseScene", TransitionTypes.CrossFade);
             }
+        }       
+        else
+        {
+
+            if (!isPlayer)
+            {
+
+                KingdomsUISpawner s = Object.FindObjectOfType<KingdomsUISpawner>();
+                int i = 0;
+                if (GameManager.aiKingdoms != null)
+                {
+                    
+                    foreach (Kingdom k in GameManager.aiKingdoms)
+                    {
+
+                        if (k.name == name) break;
+                        i++;
+
+                    }   
+                    
+                }
+                s?.StatChange(i, Stat.MilitaryPower, toRemove < 0);
+
+            }
+            
         }
     }
 
@@ -124,6 +191,7 @@ public class Kingdom
 
     public void next()
     {
+        //Growth des villages
         int toAdd = greediness;
         float random = Random.Range(1, Mathf.Pow(10, variance));
 
@@ -137,23 +205,55 @@ public class Kingdom
         }
         militaryPower = militaryPower + toAdd;
 
-        float fightOdd = 0.05f;
-        switch (relation)
+        //display
+        KingdomsUISpawner s = Object.FindObjectOfType<KingdomsUISpawner>();
+        int i = 0;
+        foreach (Kingdom k in GameManager.aiKingdoms)
         {
-            
-            case 1: fightOdd = 0.01f;
-                break;
-            case -1 : fightOdd = 0.2f;
-                break;
-            
-        }
 
-        if (Random.Range(0f, 1f) <= fightOdd)
+            if (k.name == name) break;
+            i++;
+
+        }
+        s?.StatChange(i, Stat.MilitaryPower, toAdd >= 0);
+
+        //Pars en fight is on peut
+        if (militaryPower > 0)
         {
+            // Fighting card chance
+            float fightOdd = 0.05f;
+            switch (relation)
+            {
+                case 1: fightOdd = 0.01f;
+                    break;
+                case -1 : fightOdd = 0.2f;
+                    break;
+            }
+
+            if (Random.Range(0f, 1f) <= fightOdd)
+            {
+                GameManager.AddEventForToday(new IncomingAttack(this));
+            }
+        }
+        else
+        {
+            //Remove le kingdom
+            GameManager.aiKingdoms.Remove(this);
+            Object.FindObjectOfType<GameUI>().UpdateUIValues();
+            GameManager.AddEventForToday(new Message("Fallen kingdom","The kingdom "+this.name+" has fallen, bad decisions were made.","Good for me"));
+        }
+        //SPAWN LES EVENTS DU JOUEUR QUI ARRIVENT QUAND X RESSOURCEs
+        if (isPlayer)
+        {
+            if (gold >= costFlood)
+            {
+                GameManager.AddEventForToday(new Flood());
+                costFlood += 100;
+            }
             
-            GameManager.AddEventForToday(new IncomingAttack(this));
             
         }
         
+
     }
 }

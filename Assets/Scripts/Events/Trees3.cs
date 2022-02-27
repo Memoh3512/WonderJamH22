@@ -10,14 +10,12 @@ public class Trees3 : CardEvent
         DaysToPlay = 3;
         Name = "Peaceful tree";
         Description = "The green seed grew as a beautiful tree with sumptuous pink flowers. " +
-                      "People now come at it to meditate and contemplate its beauty." +;
+                      "People now come at it to meditate and contemplate its beauty.";
         
         //Choix + cout
-        getChoices.Add(new Choice(0, -30, 0, "Peace and love.", () => {
+        getChoices.Add(new Choice(0, -5, 0, "Peace and love.", () => {
             return false;
         }));
 
-       
-       
     }
 }

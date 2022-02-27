@@ -29,6 +29,11 @@ public class Flood : CardEvent
             GameManager.addPlannedEvent( new Flood2() );
             // Dans ton autre objet
             // DaysToPlay = 2;
+            
+            GameManager.addCardIfRandom(75, new Trees1(), new Trees0());
+            //% de chance que le premier arrive, pis le deuxieme est optionnel et arrive dans lautre cas
+           
+            
             return false;
         }));
        

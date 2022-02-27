@@ -58,9 +58,9 @@ public class FightManager : MonoBehaviour
         Vector3 spawnerPos=spawner.GetComponent<Transform>().position;
         float rectWidth = spawner.GetComponent<SpriteRenderer>().sprite.bounds.extents.x*spawner.GetComponent<Transform>().localScale.x;
         float rectHeight = spawner.GetComponent<SpriteRenderer>().sprite.bounds.extents.y*spawner.GetComponent<Transform>().localScale.y;
-        
-        
-        
+
+
+        bool playerSpawned = false;
         int currSpecialUnit = 0;
         for (int i = 0; i < kingdom.MilitaryPower; i++)
         {
@@ -72,6 +72,8 @@ public class FightManager : MonoBehaviour
                 toInstantiate = GameManager.playerKingdom.Units[currSpecialUnit];
                 currSpecialUnit++;
             }
+
+
             
             //Set les values du fighter dapres unit
             GameObject currFighter = Instantiate(baseFighterPrefab);
@@ -80,6 +82,15 @@ public class FightManager : MonoBehaviour
             currFighter.GetComponent<Fighter>().Team = team;
             currFighter.GetComponent<Transform>().localScale = Vector3.one * toInstantiate.Scale;
             currFighter.transform.GetChild(0).GetComponent<SpriteRenderer>().sprite = toInstantiate.Sprite;
+            
+            if (!playerSpawned && team == 0)
+            {
+
+                currFighter.GetComponent<Fighter>().player = true;
+                currFighter.transform.Find("Player").GetComponent<SpriteRenderer>().enabled = true;
+                playerSpawned = true;
+
+            }
             
             //Set randPos
             float xPos = spawnerPos.x + Random.Range(-rectWidth, rectWidth);
@@ -125,24 +136,28 @@ public class FightManager : MonoBehaviour
                     fullDeadAllies.Add(deadUnit);
                     woundedAllies.Remove(deadUnit);
                     losePower += deadUnit.MpValue;
+                    GameManager.playerKingdom.Units.Remove(deadUnit);
                 }
             }
             Debug.Log("Allies Lose "+losePower+" military power from fight");
-            losePower = 0;
+            
+            int losePowerEn = 0;
             foreach (var deadUnit in woundedEnemies.ToList())
             {
                 if(Random.Range(0, 4)==1)
                 {
                     GameManager.fightOpponent.removeMilitaryPower(deadUnit.MpValue);
-                    losePower += deadUnit.MpValue;
+                    losePowerEn += deadUnit.MpValue;
                 }
             }
-            Debug.Log("Ennemies Lose "+losePower+" military power from fight");
-            GameManager.playerKingdom.removeMilitaryPower(losePower);
+            Debug.Log("Ennemies Lose "+losePowerEn+" military power from fight");
+            GameManager.playerKingdom.removeMilitaryPower(losePowerEn);
             
-            FindObjectOfType<FightRecapUI>().OpenMenu(whoWon);
+            GameManager.playerKingdom.DecrementRelation();
+            
+            //Affichage
+            FindObjectOfType<FightRecapUI>().OpenMenu(whoWon,losePower,losePowerEn);
             Destroy(gameObject);
-            
         }
         
     }

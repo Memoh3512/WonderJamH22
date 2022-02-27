@@ -17,16 +17,20 @@ public class GameManager
     private static List<CardEvent> todaysEventsToPlay = new List<CardEvent>();
 
     public static bool firstPlay = true;
-
+    
     public static async void nextDay()
     {
         day++;
-        foreach (var kingdom in aiKingdoms)
+        foreach (var kingdom in aiKingdoms.ToList())
         {
             kingdom.next();
             Debug.Log(kingdom.Name + " | MP : " + kingdom.MilitaryPower);
+            
+            if (kingdom.Relation == 1)
+            {
+                playerKingdom.removeGold(-10);
+            }
         }
-        
         Object.FindObjectOfType<Parallax>().TransitionTo(new List<Sprite>()
         {
 
@@ -74,6 +78,7 @@ public class GameManager
         //TODO reset decks/queud
         queudEvents.Clear();
         
+        todaysEventsToPlay.Add(new Tutoriel());
         playTodaysEvents();
         
         //GameManager.AddEventForToday(new WarCounselor(1, 0));
@@ -83,10 +88,32 @@ public class GameManager
     {
         
     }
+    public static bool addCardIfRandom(float pourcentageDeChance,CardEvent happenned = null,CardEvent didntHappen = null)
+    {
+        bool playedRandom = Random.Range(0f, 100f) < pourcentageDeChance;
+
+        if (playedRandom && happenned != null)
+        {
+            addPlannedEvent(happenned);
+        }else if (!playedRandom && didntHappen != null)
+        {
+            addPlannedEvent(didntHappen);
+        }
+
+        return playedRandom;
+    }
 
     public static void addPlannedEvent(CardEvent cardEvent)
     {
-        queudEvents.Add(cardEvent);
+        if (cardEvent.DaysToPlay>0)
+        {
+            queudEvents.Add(cardEvent);
+        }
+        else
+        {
+            AddEventForToday(cardEvent);
+        }
+        
     }
     public static void addEvent(CardEvent cardEvent)
     {
@@ -112,10 +139,11 @@ public class GameManager
             }
             else
             {
-                
-                Debug.Log("DECK EMPTY!!!!");
-                todaysEventsToPlay.Add(new Message("An uneventful day", "Today, nothing happened. The weather was good, the people were happy. All was well!", "That's all fine and dandy!"));
-
+                if (todaysEventsToPlay.Count == 0)
+                {
+                    Debug.Log("DECK EMPTY!!!! AND TODAYS EVENTS");
+                    todaysEventsToPlay.Add(new Message("An uneventful day", "Today, nothing happened. The weather was good, the people were happy. All was well!", "That's all fine and dandy!"));
+                }
             }
            
         }
@@ -147,7 +175,7 @@ public class GameManager
     }
     public static void drawNextDay()
     {
-        //TODO draw le bouton dans le bas et bybye scroll
+        
         CardDisplay c = Object.FindObjectOfType<CardDisplay>();
         if (c != null)
         {
@@ -181,8 +209,8 @@ public class GameManager
 
     }
     
-    public static void getDeck()
+    public static EventDeck getDeck()
     {
-        
+        return currentDeck;
     }
 }

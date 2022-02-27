@@ -15,7 +15,11 @@ public class Author2 : CardEvent
         
 
         //Choix + cout
-        getChoices.Add(new Choice(-100, 0, 0, "Try to invest!", () => {
+        getChoices.Add(new Choice(25, 0, 0, "Try to invest!", () => {
+            GameManager.addPlannedEvent(new Author3());
+            return false;
+        }));
+        getChoices.Add(new Choice(0, 0, 0, "I know better", () => {
             return false;
         }));
 

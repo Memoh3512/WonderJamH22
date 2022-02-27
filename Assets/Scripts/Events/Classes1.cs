@@ -25,7 +25,10 @@ public class Classes1 : CardEvent
         }));
         getChoices.Add(new Choice(10,-10,-10,"Musicians",()=> {
             GameManager.AddEventForToday(new Message("Musicians","Musicians have brightened up the mood in the village! They've even brought some men from other villages!","Love me some music"));
-            return false;//TODO donne des bonnes relations avec les autres
+            
+            Kingdom kd = GameManager.aiKingdoms[Random.Range(0, GameManager.aiKingdoms.Count)];
+            kd.IncrementRelation();
+            return false;
         }));
     }
 }

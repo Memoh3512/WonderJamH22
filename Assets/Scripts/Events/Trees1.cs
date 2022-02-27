@@ -9,7 +9,7 @@ public class Trees1 : CardEvent
 
         DaysToPlay = 3;
         Name = "Money tree!";
-        Description = "The yellow seed grew as a shining tree with golden leaves!" +
+        Description = "The yellow seed grew as a shining tree with golden leaves! " +
                       " We are rich!";
         
         //Choix + cout

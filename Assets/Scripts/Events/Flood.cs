@@ -7,11 +7,11 @@ public class Flood : CardEvent
     public Flood()
     {
         Name = "Water everywhere!";
-        Description = "A huge flood came and destroyed almost all of the houses and buildings." +
-                      " We need to reconstruct the village, otherwise we'll die. How do you want to deal with this?";
+        Description = "A huge flood came and destroyed almost all of the houses and buildings. " +
+                      "We need to reconstruct the village, otherwise we'll die. How do you want to deal with this?";
 
         //Choix + cout + apparait une autre carte
-        getChoices.Add(new Choice(100, 20, -0, "Host everyone in the castle", () => {
+        getChoices.Add(new Choice(Kingdom.costFlood, 30, -0, "Host everyone in the castle", () => {
             GameManager.AddEventForToday(new Message("Host everybody", "You invited everybody to live ine the castle meanwhile they try to rebuild everything." +
                                                                        "But there is not enough rooms in the castle, so everyone are tighten everywhere.", "I did the best I could..."));
             return false;
