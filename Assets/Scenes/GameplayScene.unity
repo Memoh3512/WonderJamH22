@@ -692,7 +692,7 @@ MonoBehaviour:
   m_text: A New Kingdom Arises
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: e1b9af218a3aa5449b994afd4688b0eb, type: 2}
-  m_sharedMaterial: {fileID: 7655571216745254636, guid: e1b9af218a3aa5449b994afd4688b0eb, type: 2}
+  m_sharedMaterial: {fileID: -5025850481866284862, guid: e1b9af218a3aa5449b994afd4688b0eb, type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
   m_fontMaterials: []
@@ -1500,7 +1500,7 @@ MonoBehaviour:
   m_text: "\u200B"
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: e1b9af218a3aa5449b994afd4688b0eb, type: 2}
-  m_sharedMaterial: {fileID: 7655571216745254636, guid: e1b9af218a3aa5449b994afd4688b0eb, type: 2}
+  m_sharedMaterial: {fileID: -5025850481866284862, guid: e1b9af218a3aa5449b994afd4688b0eb, type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
   m_fontMaterials: []
@@ -1787,6 +1787,18 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
+      - m_Target: {fileID: 641265104}
+        m_TargetAssemblyTypeName: GameUI, Assembly-CSharp
+        m_MethodName: PlayBtnSnd
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &1413945191
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1910,7 +1922,7 @@ MonoBehaviour:
     kingdom! Put on your crown and let's get ruling!
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: e1b9af218a3aa5449b994afd4688b0eb, type: 2}
-  m_sharedMaterial: {fileID: 7655571216745254636, guid: e1b9af218a3aa5449b994afd4688b0eb, type: 2}
+  m_sharedMaterial: {fileID: -5025850481866284862, guid: e1b9af218a3aa5449b994afd4688b0eb, type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
   m_fontMaterials: []
@@ -2079,6 +2091,18 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
+      - m_Target: {fileID: 641265104}
+        m_TargetAssemblyTypeName: GameUI, Assembly-CSharp
+        m_MethodName: PlayBtnSnd
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &1464976083
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2177,7 +2201,7 @@ MonoBehaviour:
   m_text: Start your reign
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: e1b9af218a3aa5449b994afd4688b0eb, type: 2}
-  m_sharedMaterial: {fileID: 7655571216745254636, guid: e1b9af218a3aa5449b994afd4688b0eb, type: 2}
+  m_sharedMaterial: {fileID: -5025850481866284862, guid: e1b9af218a3aa5449b994afd4688b0eb, type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
   m_fontMaterials: []
@@ -2311,7 +2335,7 @@ MonoBehaviour:
   m_text: Day 12
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: e1b9af218a3aa5449b994afd4688b0eb, type: 2}
-  m_sharedMaterial: {fileID: 7655571216745254636, guid: e1b9af218a3aa5449b994afd4688b0eb, type: 2}
+  m_sharedMaterial: {fileID: -5025850481866284862, guid: e1b9af218a3aa5449b994afd4688b0eb, type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
   m_fontMaterials: []
@@ -2660,7 +2684,7 @@ MonoBehaviour:
   m_text: What's your name, your majesty?
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: e1b9af218a3aa5449b994afd4688b0eb, type: 2}
-  m_sharedMaterial: {fileID: 7655571216745254636, guid: e1b9af218a3aa5449b994afd4688b0eb, type: 2}
+  m_sharedMaterial: {fileID: -5025850481866284862, guid: e1b9af218a3aa5449b994afd4688b0eb, type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
   m_fontMaterials: []
@@ -2794,7 +2818,7 @@ MonoBehaviour:
   m_text: 100
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: e1b9af218a3aa5449b994afd4688b0eb, type: 2}
-  m_sharedMaterial: {fileID: 7655571216745254636, guid: e1b9af218a3aa5449b994afd4688b0eb, type: 2}
+  m_sharedMaterial: {fileID: -5025850481866284862, guid: e1b9af218a3aa5449b994afd4688b0eb, type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
   m_fontMaterials: []
@@ -2982,7 +3006,7 @@ MonoBehaviour:
 '
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: e1b9af218a3aa5449b994afd4688b0eb, type: 2}
-  m_sharedMaterial: {fileID: 7655571216745254636, guid: e1b9af218a3aa5449b994afd4688b0eb, type: 2}
+  m_sharedMaterial: {fileID: -5025850481866284862, guid: e1b9af218a3aa5449b994afd4688b0eb, type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
   m_fontMaterials: []
@@ -3116,7 +3140,7 @@ MonoBehaviour:
   m_text: +1000
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: e1b9af218a3aa5449b994afd4688b0eb, type: 2}
-  m_sharedMaterial: {fileID: 7655571216745254636, guid: e1b9af218a3aa5449b994afd4688b0eb, type: 2}
+  m_sharedMaterial: {fileID: -5025850481866284862, guid: e1b9af218a3aa5449b994afd4688b0eb, type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
   m_fontMaterials: []
@@ -3408,7 +3432,7 @@ MonoBehaviour:
   m_text: 18
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: e1b9af218a3aa5449b994afd4688b0eb, type: 2}
-  m_sharedMaterial: {fileID: 7655571216745254636, guid: e1b9af218a3aa5449b994afd4688b0eb, type: 2}
+  m_sharedMaterial: {fileID: -5025850481866284862, guid: e1b9af218a3aa5449b994afd4688b0eb, type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
   m_fontMaterials: []
@@ -3542,7 +3566,7 @@ MonoBehaviour:
   m_text: End Day
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: e1b9af218a3aa5449b994afd4688b0eb, type: 2}
-  m_sharedMaterial: {fileID: 7655571216745254636, guid: e1b9af218a3aa5449b994afd4688b0eb, type: 2}
+  m_sharedMaterial: {fileID: -5025850481866284862, guid: e1b9af218a3aa5449b994afd4688b0eb, type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
   m_fontMaterials: []

@@ -28,6 +28,12 @@ public class GameManager
         }
 
         await Task.Delay(1500);
+        
+        CanvasGroup endDay = GameObject.FindGameObjectWithTag("EndDay").GetComponent<CanvasGroup>();
+        endDay.alpha = 0;
+        endDay.interactable = false;
+        endDay.blocksRaycasts = false;
+        
         Debug.Log("TODAYEVENT DAY2");
         Object.FindObjectOfType<GameUI>().UpdateUIValues();
         CardDisplay c = Object.FindObjectOfType<CardDisplay>();
@@ -45,7 +51,7 @@ public class GameManager
             new KingdomFurry(),
             new KingdomPirate()
         };
-        playerKingdom = new Kingdom(true);
+        playerKingdom = new Kingdom(Resources.Load<Sprite>("Icon/Human"),true);
         
         playerKingdom.Name = name;
         
