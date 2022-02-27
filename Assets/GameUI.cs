@@ -78,7 +78,8 @@ public class GameUI : MonoBehaviour
 
 
             string k = GameManager.playerKingdom == null ? "" : GameManager.playerKingdom.Name;
-            days.text =  k + "Kingdom" + "\nDay " + GameManager.day;
+            if (!k.Contains("Kingdom")) k += " Kingdom";
+            days.text =  k + "\nDay " + GameManager.day;
             kingdomUIs.RefreshKingdomsUI();
             yield return new WaitForSeconds(0.025f);
         }
