@@ -129,12 +129,17 @@ public class Kingdom
 
                 KingdomsUISpawner s = Object.FindObjectOfType<KingdomsUISpawner>();
                 int i = 0;
-                foreach (Kingdom k in GameManager.aiKingdoms)
+                if (GameManager.aiKingdoms != null)
                 {
+                    
+                    foreach (Kingdom k in GameManager.aiKingdoms)
+                    {
 
-                    if (k.name == name) break;
-                    i++;
+                        if (k.name == name) break;
+                        i++;
 
+                    }   
+                    
                 }
                 s?.StatChange(i, Stat.MilitaryPower, toRemove < 0);
 
@@ -184,6 +189,7 @@ public class Kingdom
 
     public void next()
     {
+        //Growth des villages
         int toAdd = greediness;
         float random = Random.Range(1, Mathf.Pow(10, variance));
 
@@ -197,17 +203,6 @@ public class Kingdom
         }
         militaryPower = militaryPower + toAdd;
 
-        float fightOdd = 0.05f;
-        switch (relation)
-        {
-            
-            case 1: fightOdd = 0.01f;
-                break;
-            case -1 : fightOdd = 0.2f;
-                break;
-            
-        }
-        
         //display
         KingdomsUISpawner s = Object.FindObjectOfType<KingdomsUISpawner>();
         int i = 0;
@@ -220,12 +215,32 @@ public class Kingdom
         }
         s?.StatChange(i, Stat.MilitaryPower, toAdd >= 0);
 
-        if (Random.Range(0f, 1f) <= fightOdd)
+        //Pars en fight is on peut
+        if (militaryPower > 0)
         {
-            
-            GameManager.AddEventForToday(new IncomingAttack(this));
-            
+            // Fighting card chance
+            float fightOdd = 0.05f;
+            switch (relation)
+            {
+                case 1: fightOdd = 0.01f;
+                    break;
+                case -1 : fightOdd = 0.2f;
+                    break;
+            }
+
+            if (Random.Range(0f, 1f) <= fightOdd)
+            {
+                GameManager.AddEventForToday(new IncomingAttack(this));
+            }
+        }
+        else
+        {
+            //Remove le kingdom
+            GameManager.aiKingdoms.Remove(this);
+            Object.FindObjectOfType<GameUI>().UpdateUIValues();
+            GameManager.AddEventForToday(new Message("Fallen kingdom","The kingdom "+this.name+" has fallen, bad decisions were made.","Good for me"));
         }
         
+
     }
 }

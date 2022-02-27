@@ -11,7 +11,7 @@ public class AlienSeries2 : CardEvent
         Description = "The soldiers investigating the mysterious disparition of cows have sent back report " +
             "stating that while our cattle has stopped vanishing," +
             " odd sightings of flashing lights and metalic discs in the sky have been scaring the population. ";
-        getChoices.Add(new Choice(0, 0, 40, "Send more soldier, we'll get to the bottom of this!", () =>
+        getChoices.Add(new Choice(0, 0, 40, "Send more soldiers, we'll get to the bottom of this!", () =>
         {
             GameManager.addPlannedEvent(new AlienSeries3());
             return false;
