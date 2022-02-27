@@ -51,8 +51,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3b228a4d56cab004bb14b34868e3b20a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  time: 0.5
-  yOffset: 0.75
+  time: 1.5
+  yOffset: 0.2
 --- !u!225 &2345503008752462580
 CanvasGroup:
   m_ObjectHideFlags: 0
