@@ -154,14 +154,19 @@ public class FightManager : MonoBehaviour
             GameManager.playerKingdom.removeMilitaryPower(losePowerEn);
             
             GameManager.playerKingdom.DecrementRelation();
-
+            int goldGained = 0;
             if (whoWon != "Allies")
             {
-                GameManager.playerKingdom.removeKingdomLife(losePower);
+                GameManager.playerKingdom.removeKingdomLife(15);
+            }
+            else
+            {
+                goldGained = woundedEnemies.Count;
+                GameManager.playerKingdom.removeGold(goldGained);
             }
             
             //Affichage
-            FindObjectOfType<FightRecapUI>().OpenMenu(whoWon,losePower,losePowerEn);
+            FindObjectOfType<FightRecapUI>().OpenMenu(whoWon,losePower,losePowerEn,goldGained);
             Destroy(gameObject);
         }
         
