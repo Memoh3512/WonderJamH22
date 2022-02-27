@@ -40,7 +40,7 @@ public class FightManager : MonoBehaviour
             GameManager.fightOpponent.Units = new List<Unit>() { };
         }
 
-
+        GameUI.valuesBeforeFight=new int[]{GameManager.playerKingdom.Gold,GameManager.playerKingdom.MilitaryPower,GameManager.playerKingdom.KingdomLife};
 
         //Enemy
         spawnFighters(GameManager.fightOpponent,enSpawner,allEnemies,1,true);
@@ -154,9 +154,19 @@ public class FightManager : MonoBehaviour
             GameManager.playerKingdom.removeMilitaryPower(losePowerEn);
             
             GameManager.playerKingdom.DecrementRelation();
+            int goldGained = 0;
+            if (whoWon != "Allies")
+            {
+                GameManager.playerKingdom.removeKingdomLife(15);
+            }
+            else
+            {
+                goldGained = woundedEnemies.Count;
+                GameManager.playerKingdom.removeGold(goldGained);
+            }
             
             //Affichage
-            FindObjectOfType<FightRecapUI>().OpenMenu(whoWon,losePower,losePowerEn);
+            FindObjectOfType<FightRecapUI>().OpenMenu(whoWon,losePower,losePowerEn,goldGained);
             Destroy(gameObject);
         }
         

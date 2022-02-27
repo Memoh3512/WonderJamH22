@@ -920,7 +920,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: A New Kingdom Arises
+  m_text: A new Kingdom arises
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: e1b9af218a3aa5449b994afd4688b0eb, type: 2}
   m_sharedMaterial: {fileID: -5025850481866284862, guid: e1b9af218a3aa5449b994afd4688b0eb, type: 2}
@@ -1047,6 +1047,7 @@ GameObject:
   - component: {fileID: 641265101}
   - component: {fileID: 641265100}
   - component: {fileID: 641265104}
+  - component: {fileID: 641265105}
   m_Layer: 5
   m_Name: UICanvas
   m_TagString: Canvas
@@ -1101,10 +1102,10 @@ Canvas:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 641265099}
-  m_Enabled: 1
+  m_Enabled: 0
   serializedVersion: 3
   m_RenderMode: 0
-  m_Camera: {fileID: 0}
+  m_Camera: {fileID: 464353388}
   m_PlaneDistance: 100
   m_PixelPerfect: 0
   m_ReceivesEvents: 1
@@ -1112,7 +1113,7 @@ Canvas:
   m_OverridePixelPerfect: 0
   m_SortingBucketNormalizedSize: 0
   m_AdditionalShaderChannelsFlag: 25
-  m_SortingLayerID: 0
+  m_SortingLayerID: 1843252303
   m_SortingOrder: 0
   m_TargetDisplay: 0
 --- !u!224 &641265103
@@ -1159,6 +1160,19 @@ MonoBehaviour:
   health: {fileID: 1829713996}
   days: {fileID: 1611941455}
   kingdomUIs: {fileID: 1349585373}
+  statsUI: {fileID: 650467695}
+--- !u!114 &641265105
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 641265099}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 244e98584a0c5094186ae3abb6fa9684, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &650277797
 GameObject:
   m_ObjectHideFlags: 0
@@ -1349,7 +1363,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!224 &771398487
 RectTransform:
   m_ObjectHideFlags: 0
@@ -1391,6 +1405,8 @@ MonoBehaviour:
   kingName: {fileID: 1091455363}
   tut1: {fileID: 114539991}
   tut2: {fileID: 1438147884}
+  statsUI: {fileID: 650467695}
+  relationsUI: {fileID: 1349585371}
 --- !u!1 &841326979
 GameObject:
   m_ObjectHideFlags: 0

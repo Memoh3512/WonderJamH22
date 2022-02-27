@@ -46,7 +46,7 @@ public class Drug : CardEvent
 
 
 
-                GameManager.AddEventForToday(new Message("Experimental Drug - Follow up", "After giving the drugs to the soldiers," + text, button, () =>
+                GameManager.AddEventForToday(new Message("Drugs - Follow up", "After giving the drugs to the soldiers," + text, button, () =>
                 {
                     if (success > 0)
                     {

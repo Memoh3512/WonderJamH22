@@ -26,7 +26,7 @@ public class FightRecapUI : MonoBehaviour
         
     }
 
-    public void OpenMenu(string whowon,int loseAll,int loseEn)
+    public void OpenMenu(string whowon,int loseAll,int loseEn,int goldGained)
     {
         var won = whowon == "Allies" ? "Victory!" : "Defeat...";
 
@@ -36,7 +36,17 @@ public class FightRecapUI : MonoBehaviour
         else seal.color = new Color(0, 0, 0, 0);
         
         string player = FightManager.woundedAllies.Count == 0 ? "no" : (FightManager.woundedAllies.Count+FightManager.fullDeadAllies.Count).ToString();
-        kingdomStats.text = $"We lost {loseAll} military power";
+        string life = "";
+        string gold = "";
+        if (whowon != "Allies")
+        {
+            life = " and life..";
+        }
+        else
+        {
+            gold = "\nYou have gained " + goldGained + " gold";
+        }
+        kingdomStats.text = $"We lost {loseAll} military power "+life+gold;
 
         c.enabled = true;
     }

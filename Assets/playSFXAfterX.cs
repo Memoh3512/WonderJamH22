@@ -17,6 +17,9 @@ public class playSFXAfterX : MonoBehaviour
 
         yield return new WaitForSeconds(time);
         
-        SoundPlayer.instance.PlaySFX(Resources.Load<AudioClip>("SFX/SFX_Fight trumpet"));
+        SoundPlayer.instance.PlaySFX(Resources.Load<AudioClip>("SFX/SFX_Fight trumpet"), 5f);
+        //yield return new WaitForSeconds(0.75f);
+        //SoundPlayer.instance.PlaySFX(Resources.Load<AudioClip>("SFX/SFX_Fight trumpet"), 5f);
+        
     }
 }

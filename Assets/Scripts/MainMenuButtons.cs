@@ -9,7 +9,9 @@ public class MainMenuButtons : MonoBehaviour
     public void StartGame()
     {
         LevelLoader.instance.LoadScene("GameplayScene", TransitionTypes.Leaves);
-        SoundPlayer.instance.SetMusic(Songs.Village,1.5f, TransitionBehavior.Stop);
+        SoundPlayer.instance.SetMusic(Songs.Village,1.5f, TransitionBehavior.Continue);
+        SoundPlayer.instance.SetMusic(Songs.Night,1f, TransitionBehavior.Continue);
+        SoundPlayer.instance.SetMusic(Songs.Village,1f, TransitionBehavior.Continue);
     }
 
     public void QuitGame()
