@@ -106,6 +106,7 @@ public class Fighter : MonoBehaviour
     {
         //Debug.Log("Attacked");
         toAttack.GetComponent<Fighter>().getDamaged(damage);
+        SoundPlayer.instance.PlaySFX(Resources.Load<AudioClip>("SFX/SFX_Sword hit short"), 0.3f);
         attackCoolDown = baseCoolDown;
         getClosestTarget();
     }
