@@ -22,6 +22,7 @@ public class EventDeck
         eventList.Add(new Drug());
         eventList.Add(new Carnaval());
         eventList.Add(new HorseRace());
+        eventList.Add(new Fishing());
     }
 
     public CardEvent getEvent()
