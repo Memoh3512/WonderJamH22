@@ -16,6 +16,9 @@ public class AlienSeries3 : CardEvent
         {
             GameManager.AddEventForToday(new Message("Alien Invasion", "After killing the poor organism and stealing it's weapons, a message was sent " +
                 "from the flying saucer to a distant civilization. Within a few short hours the an entire alien population landed on earth to wage the " + GameManager.playerKingdom.Name + " Kingdom war", "Uh oh..."));
+            for (int i = 0; i < 40; i++) {
+                GameManager.playerKingdom.Units.Add(new Unit(Resources.Load<Sprite>("Units/chevalier_alienne"), 50, 25, 1.2f, 5));
+                }
             GameManager.aiKingdoms.Add(new KingdomAlien());
             GameObject.FindObjectOfType<KingdomsUISpawner>().RefreshKingdomsUI();
             return false;
