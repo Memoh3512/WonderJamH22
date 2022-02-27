@@ -36,14 +36,9 @@ public class FightManager : MonoBehaviour
         GameManager.playerKingdom.BaseUnit = new Unit(baseFighterPrefab.GetComponent<SpriteRenderer>().sprite, 10, 5, 1);
         GameManager.playerKingdom.Units = new List<Unit>(){};
         GameManager.fightOpponent.Units = new List<Unit>(){};
-        for (int i = 0; i < 100; i++)
-        {
-            GameManager.playerKingdom.Units.Add(GameManager.playerKingdom.BaseUnit);
-            GameManager.fightOpponent.Units.Add(GameManager.fightOpponent.BaseUnit);
-        }
-        
-        
-        
+
+
+
         //Enemy
         spawnFighters(GameManager.fightOpponent,enSpawner,allEnemies,1,true);
 
@@ -56,34 +51,44 @@ public class FightManager : MonoBehaviour
     }
     void spawnFighters(Kingdom kingdom, GameObject spawner,List<GameObject> allSpawned,int team,bool flipSprite = false)
     {
+        //Random pos
         Vector3 spawnerPos=spawner.GetComponent<Transform>().position;
-
         float rectWidth = spawner.GetComponent<SpriteRenderer>().sprite.bounds.extents.x*spawner.GetComponent<Transform>().localScale.x;
         float rectHeight = spawner.GetComponent<SpriteRenderer>().sprite.bounds.extents.y*spawner.GetComponent<Transform>().localScale.y;
         
-        List<Unit> units = kingdom.Units;
-        for (int i = 0; i < units.Count; i++)
+        
+        
+        int currSpecialUnit = 0;
+        for (int i = 0; i < kingdom.MilitaryPower; i++)
         {
-            Unit toInstantiate = units[i];
+            Unit toInstantiate=kingdom.BaseUnit;//Base unit
+            //Si on peut prendre une grosse unit on prend
+            if (kingdom.Units.Count>currSpecialUnit&&kingdom.Units[currSpecialUnit].MpValue <= kingdom.MilitaryPower - i)
+            {
+                i += GameManager.playerKingdom.Units[currSpecialUnit].MpValue;
+                toInstantiate = GameManager.playerKingdom.Units[currSpecialUnit];
+                currSpecialUnit++;
+            }
             
-            float xPos = spawnerPos.x + Random.Range(-rectWidth, rectWidth);
-            float yPos = spawnerPos.z + Random.Range(-rectHeight, rectHeight);
-            
+            //Set les values du fighter dapres unit
             GameObject currFighter = Instantiate(baseFighterPrefab);
             currFighter.GetComponent<Fighter>().Damage = toInstantiate.Damage;
             currFighter.GetComponent<Fighter>().Life = toInstantiate.Hp;
             currFighter.GetComponent<Fighter>().Team = team;
-
-            currFighter.GetComponent<Fighter>().ResetToBaseValues();
-            
             currFighter.GetComponent<Transform>().localScale = Vector3.one * toInstantiate.Scale;
             currFighter.GetComponent<SpriteRenderer>().sprite = toInstantiate.Sprite;
             
+            //Set randPos
+            float xPos = spawnerPos.x + Random.Range(-rectWidth, rectWidth);
+            float yPos = spawnerPos.z + Random.Range(-rectHeight, rectHeight);
             currFighter.transform.position = new Vector3(xPos, spawnerPos.y+2.25f, yPos);
+            
+            //Flip le sprite si besoin
             if (flipSprite)
             {
                 currFighter.GetComponent<SpriteRenderer>().flipX = !currFighter.GetComponent<SpriteRenderer>().flipX;
             }
+            //Add a liste de spawned
             allSpawned.Add(currFighter);
         }
     }
@@ -119,6 +124,8 @@ public class FightManager : MonoBehaviour
                     losePower += deadUnit.MpValue;
                 }
             }
+            Debug.Log("Allies Lose "+losePower+" military power from fight");
+            losePower = 0;
             foreach (var deadUnit in woundedEnemies.ToList())
             {
                 if(Random.Range(0, 4)==1)
@@ -127,7 +134,7 @@ public class FightManager : MonoBehaviour
                     losePower += deadUnit.MpValue;
                 }
             }
-            Debug.Log("Lose "+losePower+" military power from fight");
+            Debug.Log("Ennemies Lose "+losePower+" military power from fight");
             GameManager.playerKingdom.removeMilitaryPower(losePower);
             
             FindObjectOfType<FightRecapUI>().OpenMenu(whoWon);

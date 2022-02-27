@@ -44,10 +44,6 @@ public class Fighter : MonoBehaviour
     {
         attackCoolDown = baseCoolDown;
     }
-    public void ResetToBaseValues()
-    {
-        
-    }
     private Fighter(int maxLife,int attackDamage,float cd=0.5f)
     {
         life = maxLife;
