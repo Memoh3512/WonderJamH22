@@ -1,5 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
+using System.Linq;
+using System.Threading.Tasks;
 using UnityEngine;
 
 public class GameManager
@@ -15,7 +17,7 @@ public class GameManager
 
     public static bool firstPlay = true;
 
-    public static void nextDay()
+    public static async void nextDay()
     {
         day++;
         foreach (var kingdom in aiKingdoms)
@@ -23,6 +25,15 @@ public class GameManager
             kingdom.next();
             Debug.Log(kingdom.Name + " | MP : " + kingdom.MilitaryPower);
         }
+
+        await Task.Delay(1500);
+        Debug.Log("TODAYEVENT DAY2");
+        Object.FindObjectOfType<GameUI>().UpdateUIValues();
+        CardDisplay c = Object.FindObjectOfType<CardDisplay>();
+        if (c != null) MonoBehaviour.Destroy(c.gameObject);
+        await Task.Delay(100);
+        playTodaysEvents();
+        
     }
     public static void startGame(string name)
     {
@@ -33,7 +44,7 @@ public class GameManager
             new KingdomFurry(),
             new KingdomPirate()
         };
-        playerKingdom = new Kingdom();
+        playerKingdom = new Kingdom(true);
         
         playerKingdom.Name = name;
         
@@ -41,10 +52,15 @@ public class GameManager
         
         day = 1;
         
+        Object.FindObjectOfType<GameUI>().UpdateUIValues();
+        
+        
         //TODO reset decks/queud
         queudEvents.Clear();
         
-        GameManager.AddEventForToday(new WarCounselor(1, 0));
+        playTodaysEvents();
+        
+        //GameManager.AddEventForToday(new WarCounselor(1, 0));
         
     }
     public static void endGame()
@@ -62,7 +78,7 @@ public class GameManager
     }
     public static void playTodaysEvents()
     {
-        foreach (var cardEvent in queudEvents)
+        foreach (var cardEvent in queudEvents.ToList())
         {
             cardEvent.removeDays(1);
             if (cardEvent.DaysToPlay <= 0)
@@ -72,14 +88,23 @@ public class GameManager
             }
         }
         // Random nombre d'events 
-        for (int i = Random.Range(0, 3); i < 3; i++)
+        for (int i = Random.Range(1, 3); i < 3; i++)
         {
             if(currentDeck.Count() > 0)
             {
                 todaysEventsToPlay.Add(currentDeck.getEvent());
             }
+            else
+            {
+                
+                Debug.Log("DECK EMPYT!!!!");
+                
+            }
            
         }
+        
+        
+        
         playNextEvent();
     }
     public static void playNextEvent()
@@ -98,14 +123,28 @@ public class GameManager
     public static void AddEventForToday(CardEvent e)
     {
         
-        todaysEventsToPlay.Add(e);
+        todaysEventsToPlay.Insert(0,e);
         //test
-        playTodaysEvents();
+        //playTodaysEvents();
         
     }
     public static void drawNextDay()
     {
-        //TODO draw le bouton dans le bas
+        //TODO draw le bouton dans le bas et bybye scroll
+        CardDisplay c = Object.FindObjectOfType<CardDisplay>();
+        if (c != null)
+        {
+            
+            c.DeleteButtons();
+            c.SetCardEvent(null);
+            c.GetComponent<Animator>().SetTrigger("Bebye");   
+            
+        }
+        CanvasGroup endDay = GameObject.FindGameObjectWithTag("EndDay").GetComponent<CanvasGroup>();
+        endDay.alpha = 1;
+        endDay.interactable = true;
+        endDay.blocksRaycasts = true;
+
     }
 
     public static void RemoveTodaysEvent(CardEvent e)

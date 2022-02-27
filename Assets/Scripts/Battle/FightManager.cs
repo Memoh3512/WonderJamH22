@@ -13,12 +13,19 @@ public class FightManager : MonoBehaviour
     public GameObject baseFighterPrefab;
     private List<GameObject> allEnemies;
     private List<GameObject> allAllies;
+    public static int soldiersDead;
+    public static int enemiesDead;
+    
     
     // Start is called before the first frame update
     void Awake()
     {
         allEnemies = new List<GameObject>();
         allAllies = new List<GameObject>();
+
+        soldiersDead = 0;
+        enemiesDead = 0;
+        
         //DEBUG this
         //TODO remove icitte quand on a les kingdoms
         GameManager.fightOpponent = new KingdomAlien();
@@ -30,6 +37,8 @@ public class FightManager : MonoBehaviour
             GameManager.playerKingdom.Units.Add(new Unit(baseFighterPrefab.GetComponent<SpriteRenderer>().sprite,10,3,1));
             GameManager.fightOpponent.Units.Add(new Unit(baseFighterPrefab.GetComponent<SpriteRenderer>().sprite,10,3,1));
         }
+        
+        
         
         //Enemy
         spawnFighters(GameManager.fightOpponent,enSpawner,allEnemies,1,true);
@@ -85,12 +94,15 @@ public class FightManager : MonoBehaviour
         }
         else if(allEnemies.Count <= 0)
         {
-            whoWon = "Allies ";
+            whoWon = "Allies";
             done = true;
         }
         if (done)
         {
             Debug.Log("Fight is done : "+whoWon + " Won");
+            FindObjectOfType<FightRecapUI>().OpenMenu(whoWon);
+            Destroy(gameObject);
+            
         }
         
     }

@@ -51,7 +51,12 @@ public class WarCounselor : CardEvent
             return true;
         });
         getChoices.Add(choice1);
-        getChoices.Add(new Choice(0, 0, 0, "Abstain from attacking", () => { return false;}));
+        getChoices.Add(new Choice(0, 0, 0, "Abstain from attacking", () =>
+        {
+            
+            GameManager.AddEventForToday(new Message("Test", "WOWOW", "OKAY!! :)"));
+            return false;
+        }));
         base.drawEvent();
     }
 }

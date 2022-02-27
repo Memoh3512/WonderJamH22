@@ -22,7 +22,7 @@ public class HugeEgg : CardEvent
                     GameManager.addPlannedEvent(new Beluga());
             return false;
         });
-       
+            ce.DaysToPlay = 5;
             GameManager.addPlannedEvent(ce);
             return false;
         }));

@@ -13,7 +13,7 @@ GameObject:
   - component: {fileID: 4043359845662351211}
   m_Layer: 5
   m_Name: CardDisplay
-  m_TagString: Untagged
+  m_TagString: CardDisplay
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -56,6 +56,7 @@ MonoBehaviour:
   title: {fileID: 6601495194227965997}
   desc: {fileID: 6601495195127470439}
   btnPadding: 10
+  xOffset: 35
 --- !u!95 &4043359845662351211
 Animator:
   serializedVersion: 3
@@ -168,8 +169,8 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 130
-  m_fontSizeBase: 130
+  m_fontSize: 120
+  m_fontSizeBase: 120
   m_fontWeight: 400
   m_enableAutoSizing: 0
   m_fontSizeMin: 18

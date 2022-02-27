@@ -18,7 +18,10 @@ public class CardEvent
     
     public int getNbChoices => choices?.Count ?? 0;
     public List<Choice> getChoices => choices;
-
+    public void addChoice(Choice choice)
+    {
+        choices.Add(choice);
+    }
     public CardEvent()
     {
         daysToPlay = -10;
@@ -43,11 +46,23 @@ public class CardEvent
     {
         //draw :) 
 
-        GameObject ui = GameObject.FindGameObjectWithTag("Canvas");
-        GameObject card = Object.Instantiate(Resources.Load<GameObject>("CardDisplay"), ui.transform);
-        card.GetComponent<CardDisplay>().SetCardEvent(this);
-        ui.GetComponent<RectTransform>().position = Vector3.zero;
+        GameObject c = GameObject.FindGameObjectWithTag("CardDisplay");
+        if (c is null)
+        {
+            
+            GameObject ui = GameObject.FindGameObjectWithTag("Canvas");
+            c = Object.Instantiate(Resources.Load<GameObject>("CardDisplay"), ui.transform);
+            ui.GetComponent<RectTransform>().position = Vector3.zero;   
+            
+        }
+        else
+        {
+            
+            Debug.Log("RESET ANIM");
+            c.GetComponent<Animator>().SetTrigger("Update");
 
+        }
+        c.GetComponent<CardDisplay>().SetCardEvent(this);
         GameManager.RemoveTodaysEvent(this);
 
     }

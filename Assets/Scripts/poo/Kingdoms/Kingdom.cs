@@ -4,8 +4,10 @@ using UnityEngine;
 
 public class Kingdom
 {
+
     public List<Unit> Units { get => units; set => units = value; }
-    private string name;   
+    private string name;
+    private bool isPlayer = false;
     
     private List<Unit> units; //toutes les units
 
@@ -20,21 +22,35 @@ public class Kingdom
     public int Gold => gold;
     public int MilitaryPower => militaryPower;
     public int KingdomLife => kingdomLife;
-    
-
+    public Kingdom(bool isPlayer = false)
+    {
+        this.isPlayer = isPlayer;
+    }
     public string Name { get => name; set => name = value; }
 
     public void removeGold(int toRemove)
     {
         gold -= toRemove;
+        if (isPlayer && toRemove != 0)
+        {
+            NotificationManager.startNotification(0,-toRemove);
+        }
     }
     public void removeKingdomLife(int toRemove)
     {
         kingdomLife -= toRemove;
+        if (isPlayer && toRemove != 0)
+        {
+            NotificationManager.startNotification(1,-toRemove);
+        }
     }
     public void removeMilitaryPower(int toRemove)
     {
         militaryPower -= toRemove;
+        if (isPlayer && toRemove != 0)
+        {
+            NotificationManager.startNotification(2,-toRemove);
+        }
     }
     public bool canBuy(int wantToBuyPrice)
     {
