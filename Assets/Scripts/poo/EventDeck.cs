@@ -23,6 +23,7 @@ public class EventDeck
         eventList.Add(new Carnaval());
         eventList.Add(new HorseRace());
         eventList.Add(new Tutoriel());
+        eventList.Add(new Gardener());
     }
 
     public CardEvent getEvent()
