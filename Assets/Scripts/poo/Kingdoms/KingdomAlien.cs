@@ -10,6 +10,7 @@ public class KingdomAlien : Kingdom
         greediness = 100; // Largeur de la bande
         growth = 65; //50 = moyen + meilleur rendement
         variance = 2; //1.7-2.5
+        icon = Resources.Load<Sprite>("Icon/Icon-Alien");
     }
     // Start is called before the first frame update
     void Start()

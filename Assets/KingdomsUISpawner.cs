@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class KingdomsUISpawner : MonoBehaviour
 {
@@ -38,8 +39,19 @@ public class KingdomsUISpawner : MonoBehaviour
 
             GameObject ui = Instantiate(uiPrefab, transform);
             ui.GetComponent<RectTransform>().localPosition = new Vector3(0, -d);
+            ui.transform.Find("kingdomIcon").GetComponent<Image>().sprite = k.icon;
             d += kingdomSpacing;
 
+            switch (k.Relation)
+            {
+                
+                case 1: ui.transform.Find("kingdomRelation").GetComponent<Image>().sprite = Resources.Load<Sprite>("happy"); break;
+                case 0: ui.transform.Find("kingdomRelation").GetComponent<Image>().sprite = Resources.Load<Sprite>("neutral"); break;
+                case -1: ui.transform.Find("kingdomRelation").GetComponent<Image>().sprite = Resources.Load<Sprite>("angry"); break;
+                default: ui.transform.Find("kingdomRelation").GetComponent<Image>().sprite = Resources.Load<Sprite>("neutral"); break;
+                
+            }
+            
 
         }
         

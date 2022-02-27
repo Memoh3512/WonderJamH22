@@ -18,11 +18,21 @@ public class Kingdom
     protected int greediness; // Largeur de la bande
     protected int growth; //50 = moyen + meilleur rendement
     protected float variance; //1.7-2.5
+
+    public Sprite icon;
+    private int relation = 0;
     
     public int Gold => gold;
     public int MilitaryPower => militaryPower;
     public int KingdomLife => kingdomLife;
+
     public Kingdom(bool isPlayer = false)
+    {
+
+        icon = Resources.Load<Sprite>("Icon/Icon-Cowboy");
+
+    }
+    public Kingdom(Sprite icon, bool isPlayer = false)
     {
         this.isPlayer = isPlayer;
     }
@@ -52,6 +62,23 @@ public class Kingdom
             NotificationManager.startNotification(2,-toRemove);
         }
     }
+
+    public void IncrementRelation()
+    {
+
+        relation++;
+
+    }
+
+    public void DecrementRelation()
+    {
+
+        relation--;
+
+    }
+
+    public int Relation => relation;
+    
     public bool canBuy(int wantToBuyPrice)
     {
         if (gold >= wantToBuyPrice)
