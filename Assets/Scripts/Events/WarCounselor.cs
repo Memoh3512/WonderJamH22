@@ -9,8 +9,8 @@ public class WarCounselor : CardEvent
     {
         Name = "War Counselor";
         //kingdomToFight = GameManager.aiKingdoms[0];
-        kingdomToFight = new Kingdom();
-        kingdomToFight.Name = "CUNGFU";
+        //kingdomToFight = new Kingdom();
+        //kingdomToFight.Name = "CUNGFU";
         this.Weight = weight;
         
     }
@@ -21,6 +21,7 @@ public class WarCounselor : CardEvent
         int random = Random.Range(0, 101);
         if(random >= 70)
         {
+            kingdomToFight = GameManager.aiKingdoms[0];
             foreach(Kingdom k in GameManager.aiKingdoms)
             {
                 if(k.MilitaryPower < kingdomToFight.MilitaryPower)
