@@ -73,7 +73,7 @@ public class StatChange : MonoBehaviour
         {
 
             GetComponent<CanvasGroup>().alpha = a;
-            a -= 1f / 20f;
+            a -= Time.deltaTime;
             yield return null;
 
         }
