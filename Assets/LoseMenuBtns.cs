@@ -8,6 +8,7 @@ public class LoseMenuBtns : MonoBehaviour
     public void ToMainMenu()
     {
 
+        GameManager.firstPlay = true;
         LevelLoader.instance.LoadScene("MainMenuScene", TransitionTypes.CrossFade);
 
     }

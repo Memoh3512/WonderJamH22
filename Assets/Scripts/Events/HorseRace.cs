@@ -26,7 +26,7 @@ public class HorseRace : CardEvent
             return false;
         }));
         getChoices.Add(new Choice(0,-0,-0,"Epona",()=> {
-            GameManager.AddEventForToday(new Message("Horse race","This horse, also called The Legend in the Cowboy village, made the link between the beginning and the end so fast!"
+            GameManager.AddEventForToday(new Message("Horse race","This horse, also called The Legend in the Cowboy village, made the link between the beginning and the end so fast! "
                 + "Not fast enough tho, it ended 2nd place.","Yeeha"));
             return false;//TODO donne des bonnes relations avec les cowboys
         }));

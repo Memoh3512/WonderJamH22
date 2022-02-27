@@ -24,7 +24,7 @@ public class FightRecapUI : MonoBehaviour
 
     public void EndFight()
     {
-        
+        SoundPlayer.instance.SetMusic(Songs.Village, 1f, TransitionBehavior.Stop);
         LevelLoader.instance.LoadScene("GameplayScene", TransitionTypes.CrossFade);
         
     }
