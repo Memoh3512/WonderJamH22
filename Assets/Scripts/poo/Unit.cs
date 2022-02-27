@@ -24,6 +24,15 @@ public class Unit
         this.mpValue = mpValue;
     }
 
+    public Unit(Unit unit)
+    {
+        this.sprite = unit.sprite;
+        this.hp = unit.hp;
+        this.damage = unit.damage;
+        this.scale = unit.scale;
+        this.mpValue = unit.mpValue;
+    }
+
     public Sprite Sprite { get => sprite; set => sprite = value; }
     public int Hp { get => hp; set => hp = value; }
     public int Damage { get => damage; set => damage = value; }

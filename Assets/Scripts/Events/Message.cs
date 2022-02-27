@@ -18,4 +18,9 @@ public class Message : CardEvent
         getChoices.Add(new Choice(0, 0, 0, buttonDescription, onChoose));
     }
 
+    public Message(string title, string description, string buttonDescription, Choice.ChooseEventHandler onChoose,int daysToPlay) : this( title,  description, buttonDescription,onChoose)
+    {
+        this.DaysToPlay = daysToPlay;
+    }
+
 }
