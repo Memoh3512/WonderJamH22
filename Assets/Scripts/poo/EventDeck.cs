@@ -31,6 +31,7 @@ public class EventDeck
         eventList.Add(new Monkey());
         eventList.Add(new Hair());
         eventList.Add(new Dragon());
+        eventList.Add(new Joute());
         eventList.Add(new Fishing());
         eventList.Add(new Trees());
         eventList.Add(new MilitaryOffers());
