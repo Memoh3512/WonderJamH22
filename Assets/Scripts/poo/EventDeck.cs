@@ -7,6 +7,11 @@ public class EventDeck
     CardEvent cEvent;
     private List<CardEvent> eventList;
 
+    public List<CardEvent> EventList()
+    {
+        return eventList;
+    }
+    
     public EventDeck()
     {
         eventList = new List<CardEvent>();
@@ -22,12 +27,16 @@ public class EventDeck
         eventList.Add(new Drug());
         eventList.Add(new Carnaval());
         eventList.Add(new HorseRace());
-        eventList.Add(new Tutoriel());
         eventList.Add(new Gardener());
         eventList.Add(new Monkey());
         eventList.Add(new Hair());
         eventList.Add(new Dragon());
+        eventList.Add(new Joute());
         eventList.Add(new Fishing());
+        eventList.Add(new Trees());
+        eventList.Add(new MilitaryOffers());
+        eventList.Add(new Author());
+        eventList.Add(new Fossils());
     }
 
     public CardEvent getEvent()
