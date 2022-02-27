@@ -71,12 +71,13 @@ public class KingdomsUISpawner : MonoBehaviour
 
     public void StatChange(int k, Stat stat, bool plus)
     {
-
-        GameObject display = Instantiate(statChangePrefab, kingdoms[k].GetComponent<RectTransform>().position, Quaternion.identity, transform.parent);
-        display.GetComponent<RectTransform>().position = 
-                                                         kingdoms[k].GetComponent<RectTransform>().position;
-        display.GetComponent<StatChange>().SetStat(stat, plus ? 1 : -1);
-
+        if (k < kingdoms.Count)
+        {
+            GameObject display = Instantiate(statChangePrefab, kingdoms[k].GetComponent<RectTransform>().position, Quaternion.identity, transform.parent);
+            display.GetComponent<RectTransform>().position = kingdoms[k].GetComponent<RectTransform>().position;
+            display.GetComponent<StatChange>().SetStat(stat, plus ? 1 : -1);
+        }
+        
     }
     
 }
