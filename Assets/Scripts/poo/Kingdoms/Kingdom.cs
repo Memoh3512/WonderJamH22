@@ -129,12 +129,17 @@ public class Kingdom
 
                 KingdomsUISpawner s = Object.FindObjectOfType<KingdomsUISpawner>();
                 int i = 0;
-                foreach (Kingdom k in GameManager.aiKingdoms)
+                if (GameManager.aiKingdoms != null)
                 {
+                    
+                    foreach (Kingdom k in GameManager.aiKingdoms)
+                    {
 
-                    if (k.name == name) break;
-                    i++;
+                        if (k.name == name) break;
+                        i++;
 
+                    }   
+                    
                 }
                 s?.StatChange(i, Stat.MilitaryPower, toRemove < 0);
 
