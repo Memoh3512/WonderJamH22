@@ -1219,8 +1219,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -209.36, y: -83}
-  m_SizeDelta: {x: 569.8562, y: 66.9795}
+  m_AnchoredPosition: {x: -209.36, y: -78.52852}
+  m_SizeDelta: {x: 569.8562, y: 75.9224}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1091455363
 MonoBehaviour:
@@ -1333,7 +1333,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
-  m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_Color: {r: 1, g: 0.89260596, b: 0.5518868, a: 1}
   m_RaycastTarget: 1
   m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
   m_Maskable: 1
@@ -2032,8 +2032,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -209.36, y: -194}
-  m_SizeDelta: {x: 569.86, y: 80.5313}
+  m_AnchoredPosition: {x: -209.36, y: -204.51259}
+  m_SizeDelta: {x: 569.86, y: 145.3589}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1464976082
 MonoBehaviour:
@@ -2123,9 +2123,9 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 10905, guid: 0000000000000000f000000000000000, type: 0}
-  m_Type: 1
-  m_PreserveAspect: 0
+  m_Sprite: {fileID: 21300000, guid: b4041f9f179519146aebffe851ded940, type: 3}
+  m_Type: 0
+  m_PreserveAspect: 1
   m_FillCenter: 1
   m_FillMethod: 4
   m_FillAmount: 1
@@ -2332,7 +2332,9 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: Day 12
+  m_text: 'Kingdom name
+
+    Day 12'
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: e1b9af218a3aa5449b994afd4688b0eb, type: 2}
   m_sharedMaterial: {fileID: -5025850481866284862, guid: e1b9af218a3aa5449b994afd4688b0eb, type: 2}
@@ -2359,8 +2361,8 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 119
-  m_fontSizeBase: 119
+  m_fontSize: 77.22
+  m_fontSizeBase: 77.22
   m_fontWeight: 400
   m_enableAutoSizing: 0
   m_fontSizeMin: 18
@@ -2371,7 +2373,7 @@ MonoBehaviour:
   m_textAlignment: 65535
   m_characterSpacing: 0
   m_wordSpacing: 0
-  m_lineSpacing: 0
+  m_lineSpacing: -38.4
   m_lineSpacingMax: 0
   m_paragraphSpacing: 0
   m_charWidthMaxAdj: 0
