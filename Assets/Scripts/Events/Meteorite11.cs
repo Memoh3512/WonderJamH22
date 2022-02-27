@@ -10,7 +10,7 @@ public class Meteorite11 : CardEvent
         Name = "Meteorite failure!";
         Description = "The magician of the village was paid a hefty price to move the caste! On the other hand, it doesn't seem that the meteorite actually existed in the first place.";
 
-        getChoices.Add(new Choice(0,0,0,"Good investment",()=> {
+        getChoices.Add(new Choice(0,0,-10,"Good investment",()=> {
             return false;
         }));
     }
