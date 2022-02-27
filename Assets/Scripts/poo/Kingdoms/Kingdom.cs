@@ -11,7 +11,7 @@ public class Kingdom
     
     private List<Unit> units; //toutes les units
 
-    private int gold = 0;
+    private int gold = 50;
     private int militaryPower = 100;
     private int kingdomLife = 100;
 
@@ -47,6 +47,11 @@ public class Kingdom
         if (isPlayer && toRemove != 0)
         {
             NotificationManager.startNotification(1,-toRemove);
+            if (kingdomLife <= 0)
+            {
+                GameManager.deathNote = "The people have taken you by assault!";
+                LevelLoader.instance.LoadScene("MainMenuScene", TransitionTypes.CrossFade);
+            }
         }
     }
     public void removeMilitaryPower(int toRemove)
