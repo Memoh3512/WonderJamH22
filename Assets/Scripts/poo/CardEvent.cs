@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using System.Linq;
 using UnityEngine;
 
 public class CardEvent 
@@ -28,6 +29,16 @@ public class CardEvent
         Weight = 1;
     }
 
+    public void checkIfChoiceBuyable()
+    {
+        foreach (var choice in choices.ToList())
+        {
+            if (choice.MMoney > GameManager.playerKingdom.Gold || choice.MMilitaryPower > GameManager.playerKingdom.MilitaryPower)
+            {
+                choices.Remove(choice);
+            }
+        }
+    }
 
     public void choose(int choix)
     {

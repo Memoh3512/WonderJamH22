@@ -4,14 +4,14 @@ using UnityEngine;
 
 public class Kingdom
 {
-
+    private Unit baseUnit;
     public List<Unit> Units { get => units; set => units = value; }
     private string name;
     private bool isPlayer = false;
     
     private List<Unit> units; //toutes les units
 
-    private int gold = 0;
+    private int gold = 50;
     private int militaryPower = 100;
     private int kingdomLife = 100;
 
@@ -35,8 +35,13 @@ public class Kingdom
     public Kingdom(Sprite icon, bool isPlayer = false)
     {
         this.isPlayer = isPlayer;
+        if (isPlayer)
+        {
+            BaseUnit = new Unit(Resources.Load<Sprite>("Units/cowboy"),10,5,1);
+        }
     }
     public string Name { get => name; set => name = value; }
+    public Unit BaseUnit { get => baseUnit; set => baseUnit = value; }
 
     public void removeGold(int toRemove)
     {
@@ -52,6 +57,11 @@ public class Kingdom
         if (isPlayer && toRemove != 0)
         {
             NotificationManager.startNotification(1,-toRemove);
+            if (kingdomLife <= 0)
+            {
+                GameManager.deathNote = "The people have taken you by assault!";
+                LevelLoader.instance.LoadScene("MainMenuScene", TransitionTypes.CrossFade);
+            }
         }
     }
     public void removeMilitaryPower(int toRemove)

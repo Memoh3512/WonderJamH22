@@ -10,6 +10,7 @@ public class GameManager
     public static List<Kingdom> aiKingdoms;
     public static Kingdom fightOpponent;
     public static int day = 1;
+    public static string deathNote = "None";
     private static EventDeck currentDeck = new EventDeck();
     private static List<CardEvent> queudEvents = new List<CardEvent>();
 

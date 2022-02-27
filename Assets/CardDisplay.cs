@@ -79,6 +79,8 @@ public class CardDisplay : MonoBehaviour
         
         if (choicePrefab == null || currentCard == null) return;
         
+        currentCard.checkIfChoiceBuyable();
+        
         title.text = currentCard.Name;
         desc.text = currentCard.Description;
 
