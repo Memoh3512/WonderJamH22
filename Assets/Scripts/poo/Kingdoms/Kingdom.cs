@@ -42,6 +42,11 @@ public class Kingdom
         if (isPlayer)
         {
             NotificationManager.startNotification(1,-toRemove);
+            if (kingdomLife <= 0)
+            {
+                GameManager.deathNote = "The people have taken you by assault!";
+                LevelLoader.instance.LoadScene("MainMenuScene", TransitionTypes.CrossFade);
+            }
         }
     }
     public void removeMilitaryPower(int toRemove)
