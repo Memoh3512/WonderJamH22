@@ -56,7 +56,7 @@ public class WarCounselor : CardEvent
         getChoices.Add(new Choice(0, 0, 0, "Abstain from attacking", () =>
         {
             
-            GameManager.AddEventForToday(new Message("Test", "WOWOW", "OKAY!! :)"));
+            //GameManager.AddEventForToday(new Message("Test", "WOWOW", "OKAY!! :)"));
             return false;
         }));
         base.drawEvent();
