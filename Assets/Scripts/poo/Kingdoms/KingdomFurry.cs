@@ -11,6 +11,7 @@ public class KingdomFurry : Kingdom
         greediness = 100; // Largeur de la bande
         growth = 75; //50 = moyen + meilleur rendement
         variance = 2.3f; //1.7-2.5
+        icon = Resources.Load<Sprite>("Icon/Icon-Furry");
     }
     
 }
