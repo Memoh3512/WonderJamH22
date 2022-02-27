@@ -86,7 +86,7 @@ public class FightManager : MonoBehaviour
             //Flip le sprite si besoin
             if (flipSprite)
             {
-                currFighter.transform.GetChild(0).GetComponent<SpriteRenderer>().flipX = !currFighter.GetComponent<SpriteRenderer>().flipX;
+                currFighter.transform.GetChild(0).GetComponent<SpriteRenderer>().flipX = !currFighter.transform.GetChild(0).GetComponent<SpriteRenderer>().flipX;
             }
             //Add a liste de spawned
             allSpawned.Add(currFighter);
