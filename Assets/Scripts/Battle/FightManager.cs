@@ -84,13 +84,13 @@ public class FightManager : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        // CHECKS LOSE/WIN
         string whoWon = "No one";
         bool done = false;
         if (allAllies.Count <= 0)
         {
             done = true;
             whoWon = "Enemies";
-            //TODO win lose
         }
         else if(allEnemies.Count <= 0)
         {
