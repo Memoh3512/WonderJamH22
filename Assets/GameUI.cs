@@ -8,21 +8,26 @@ public class GameUI : MonoBehaviour
 
     public TextMeshProUGUI gold, atk, health, days;
     public KingdomsUISpawner kingdomUIs;
+    public GameObject statsUI;
 
     private int goldUI = 0;
     private int mpUI = 0;
     private int hpUI = 0;
+    public static int[] valuesBeforeFight ={0,0,0};
     
     // Start is called before the first frame update
     void Start()
     {
-
+        
         StartCoroutine(UpdateUIValues());
 
     }
 
     public IEnumerator UpdateUIValues()
     {
+        goldUI = valuesBeforeFight[0];
+        mpUI = valuesBeforeFight[1];
+        hpUI = valuesBeforeFight[2];
         while (true)
         {
             //GameManager.playerKingdom = new Kingdom();
@@ -80,6 +85,7 @@ public class GameUI : MonoBehaviour
             string k = GameManager.playerKingdom == null ? "" : GameManager.playerKingdom.Name;
             if (!k.Contains("Kingdom")) k += " Kingdom";
             days.text =  k + "\nDay " + GameManager.day;
+            
             kingdomUIs.RefreshKingdomsUI();
             yield return new WaitForSeconds(0.025f);
         }
