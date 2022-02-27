@@ -35,7 +35,7 @@ public class FightRecapUI : MonoBehaviour
         won = whowon == "Allies" ? "Won!" : "Lost!";
         
         string player = FightManager.woundedAllies.Count == 0 ? "no" : (FightManager.woundedAllies.Count+FightManager.fullDeadAllies.Count).ToString();
-        kingdomStats.text = $"OUR KINGDOM \n\n Lost {player} soldiers. \n\n {won} \n\n Lost {loseAll} military power";
+        kingdomStats.text = $"OUR KINGDOM \n\n Lost {player} soldiers. \n\n {won} \n\n - {loseAll} military power";
 
         c.enabled = true;
     }
