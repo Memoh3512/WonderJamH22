@@ -12,7 +12,7 @@ public class AlienSeries1 : CardEvent
         Description = "Multiple occurences of cows mysteriously disapearing have been reported " +
             "all around the kingdom . Farmers are complaining and asking for support from our military.";
 
-        getChoices.Add(new Choice(0,100,0,"Investigate the matter",()=> {
+        getChoices.Add(new Choice(0,0,20,"Investigate the matter",()=> {
             GameManager.addPlannedEvent(new AlienSeries2());
             return false;
         }));
