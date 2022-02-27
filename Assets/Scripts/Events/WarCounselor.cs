@@ -21,6 +21,7 @@ public class WarCounselor : CardEvent
         int random = Random.Range(0, 101);
         if(random >= 70)
         {
+            kingdomToFight = GameManager.aiKingdoms[0];
             foreach(Kingdom k in GameManager.aiKingdoms)
             {
                 if(k.MilitaryPower < kingdomToFight.MilitaryPower)
