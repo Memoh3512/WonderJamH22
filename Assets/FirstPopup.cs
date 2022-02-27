@@ -30,6 +30,9 @@ public class FirstPopup : MonoBehaviour
 
     public void StartGame()
     {
+
+        if (kingName.text.Length <= 0) return;
+        
         statsUI.gameObject.SetActive(true);
         relationsUI.gameObject.SetActive(true);
         string name = kingName.text.ToLower();
