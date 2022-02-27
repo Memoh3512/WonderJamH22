@@ -162,7 +162,7 @@ public class FightManager : MonoBehaviour
             else
             {
                 goldGained = woundedEnemies.Count;
-                GameManager.playerKingdom.removeGold(goldGained);
+                GameManager.playerKingdom.removeGold(-goldGained);
             }
             
             //Affichage
