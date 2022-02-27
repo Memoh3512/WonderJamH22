@@ -19,9 +19,9 @@ public class WarCounselor : CardEvent
     public override void drawEvent()
     {
         int random = Random.Range(0, 101);
+        kingdomToFight = GameManager.aiKingdoms[0];
         if(random >= 70)
         {
-            kingdomToFight = GameManager.aiKingdoms[0];
             foreach(Kingdom k in GameManager.aiKingdoms)
             {
                 if(k.MilitaryPower < kingdomToFight.MilitaryPower)
@@ -32,6 +32,7 @@ public class WarCounselor : CardEvent
         }
         else
         {
+            
             foreach (Kingdom k in GameManager.aiKingdoms)
             {
                 if (k.MilitaryPower > kingdomToFight.MilitaryPower)

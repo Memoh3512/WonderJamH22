@@ -21,7 +21,7 @@ public class GameManager
     public static async void nextDay()
     {
         day++;
-        foreach (var kingdom in aiKingdoms)
+        foreach (var kingdom in aiKingdoms.ToList())
         {
             kingdom.next();
             Debug.Log(kingdom.Name + " | MP : " + kingdom.MilitaryPower);
@@ -79,6 +79,7 @@ public class GameManager
         //TODO reset decks/queud
         queudEvents.Clear();
         
+        todaysEventsToPlay.Add(new Tutoriel());
         playTodaysEvents();
         
         //GameManager.AddEventForToday(new WarCounselor(1, 0));
@@ -175,7 +176,7 @@ public class GameManager
     }
     public static void drawNextDay()
     {
-        //TODO draw le bouton dans le bas et bybye scroll
+        
         CardDisplay c = Object.FindObjectOfType<CardDisplay>();
         if (c != null)
         {
