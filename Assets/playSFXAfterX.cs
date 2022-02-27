@@ -16,7 +16,7 @@ public class playSFXAfterX : MonoBehaviour
     {
 
         yield return new WaitForSeconds(time);
-        //TODO FLO sfx trompet
-
+        
+        SoundPlayer.instance.PlaySFX(Resources.Load<AudioClip>("SFX/SFX_Fight trumpet"));
     }
 }

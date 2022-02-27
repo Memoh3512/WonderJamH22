@@ -51,7 +51,7 @@ public class FightRecapUI : MonoBehaviour
     public void PlayBtnSFX()
     {
         
-        //TODO FLO bouton sfx
+        SoundPlayer.instance.PlaySFX(Resources.Load<AudioClip>("SFX/SFX_Menu button"));
         
     }
 }

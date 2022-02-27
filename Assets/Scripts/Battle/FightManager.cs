@@ -76,7 +76,7 @@ public class FightManager : MonoBehaviour
             currFighter.GetComponent<Fighter>().Life = toInstantiate.Hp;
             currFighter.GetComponent<Fighter>().Team = team;
             currFighter.GetComponent<Transform>().localScale = Vector3.one * toInstantiate.Scale;
-            currFighter.GetComponent<SpriteRenderer>().sprite = toInstantiate.Sprite;
+            currFighter.transform.GetChild(0).GetComponent<SpriteRenderer>().sprite = toInstantiate.Sprite;
             
             //Set randPos
             float xPos = spawnerPos.x + Random.Range(-rectWidth, rectWidth);
@@ -86,7 +86,7 @@ public class FightManager : MonoBehaviour
             //Flip le sprite si besoin
             if (flipSprite)
             {
-                currFighter.GetComponent<SpriteRenderer>().flipX = !currFighter.GetComponent<SpriteRenderer>().flipX;
+                currFighter.transform.GetChild(0).GetComponent<SpriteRenderer>().flipX = !currFighter.GetComponent<SpriteRenderer>().flipX;
             }
             //Add a liste de spawned
             allSpawned.Add(currFighter);
