@@ -124,6 +124,7 @@ public class Kingdom
 
     public void next()
     {
+        //Growth des villages
         int toAdd = greediness;
         float random = Random.Range(1, Mathf.Pow(10, variance));
 
@@ -137,23 +138,32 @@ public class Kingdom
         }
         militaryPower = militaryPower + toAdd;
 
-        float fightOdd = 0.05f;
-        switch (relation)
+        //Pars en fight is on peut
+        if (militaryPower > 0)
         {
-            
-            case 1: fightOdd = 0.01f;
-                break;
-            case -1 : fightOdd = 0.2f;
-                break;
-            
-        }
+            // Fighting card chance
+            float fightOdd = 0.05f;
+            switch (relation)
+            {
+                case 1: fightOdd = 0.01f;
+                    break;
+                case -1 : fightOdd = 0.2f;
+                    break;
+            }
 
-        if (Random.Range(0f, 1f) <= fightOdd)
+            if (Random.Range(0f, 1f) <= fightOdd)
+            {
+                GameManager.AddEventForToday(new IncomingAttack(this));
+            }
+        }
+        else
         {
-            
-            GameManager.AddEventForToday(new IncomingAttack(this));
-            
+            //Remove le kingdom
+            GameManager.aiKingdoms.Remove(this);
+            Object.FindObjectOfType<GameUI>().UpdateUIValues();
+            GameManager.AddEventForToday(new Message("Fallen kingdom","The kingdom "+this.name+" has fallen, bad decisions were made.","Good for me"));
         }
         
+
     }
 }
