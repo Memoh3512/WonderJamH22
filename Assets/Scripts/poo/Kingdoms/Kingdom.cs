@@ -55,6 +55,26 @@ public class Kingdom
         {
             NotificationManager.startNotification(0,-toRemove);
         }
+        else
+        {
+
+            if (!isPlayer)
+            {
+
+                KingdomsUISpawner s = Object.FindObjectOfType<KingdomsUISpawner>();
+                int i = 0;
+                foreach (Kingdom k in GameManager.aiKingdoms)
+                {
+
+                    if (k.name == name) break;
+                    i++;
+
+                }
+                s?.StatChange(i, Stat.Gold, toRemove < 0);
+
+            }
+            
+        }
     }
     public void removeKingdomLife(int toRemove)
     {
@@ -68,6 +88,26 @@ public class Kingdom
                 LevelLoader.instance.LoadScene("LoseScene", TransitionTypes.CrossFade);
             }
         }
+        else
+        {
+
+            if (!isPlayer)
+            {
+
+                KingdomsUISpawner s = Object.FindObjectOfType<KingdomsUISpawner>();
+                int i = 0;
+                foreach (Kingdom k in GameManager.aiKingdoms)
+                {
+
+                    if (k.name == name) break;
+                    i++;
+
+                }
+                s?.StatChange(i, Stat.KingHealth, toRemove < 0);
+
+            }
+            
+        }
     }
     public void removeMilitaryPower(int toRemove)
     {
@@ -80,6 +120,26 @@ public class Kingdom
                 GameManager.deathNote = "Your army was ran dry.";
                 LevelLoader.instance.LoadScene("LoseScene", TransitionTypes.CrossFade);
             }
+        }       
+        else
+        {
+
+            if (!isPlayer)
+            {
+
+                KingdomsUISpawner s = Object.FindObjectOfType<KingdomsUISpawner>();
+                int i = 0;
+                foreach (Kingdom k in GameManager.aiKingdoms)
+                {
+
+                    if (k.name == name) break;
+                    i++;
+
+                }
+                s?.StatChange(i, Stat.MilitaryPower, toRemove < 0);
+
+            }
+            
         }
     }
 
@@ -147,6 +207,18 @@ public class Kingdom
                 break;
             
         }
+        
+        //display
+        KingdomsUISpawner s = Object.FindObjectOfType<KingdomsUISpawner>();
+        int i = 0;
+        foreach (Kingdom k in GameManager.aiKingdoms)
+        {
+
+            if (k.name == name) break;
+            i++;
+
+        }
+        s?.StatChange(i, Stat.MilitaryPower, toAdd >= 0);
 
         if (Random.Range(0f, 1f) <= fightOdd)
         {

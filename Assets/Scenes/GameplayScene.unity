@@ -2024,6 +2024,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   uiPrefab: {fileID: 7227125342370601176, guid: 3577d5703e2a2d44bb3cd0c66afdf8e5, type: 3}
+  statChangePrefab: {fileID: 3121354967951729395, guid: 587ba0fa8f271674a8100cccb7eeca8a, type: 3}
   kingdomSpacing: 120
 --- !u!1 &1370436968
 GameObject:
