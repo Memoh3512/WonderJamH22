@@ -14,22 +14,23 @@ public class Trees : CardEvent
         
 
         //Choix + cout + carte plus tard ( la carte est un autre object )
-        getChoices.Add(new Choice(-50, 0, 0, "The yellow seed", () => {
-            GameManager.addPlannedEvent( new Trees1() );
+        getChoices.Add(new Choice(0, 0, 0, "The yellow seed", () =>
+        {
+            GameManager.addCardIfRandom(75, new Trees1(), new Trees0());
             return false;
         }));
        
         //Choix + cout + carte plus tard ( la carte est un autre object )
-        getChoices.Add(new Choice(-50, 0, 0, "The blue seed", () => {
-            GameManager.addPlannedEvent( new Trees2() );
+        getChoices.Add(new Choice(0, 0, 0, "The blue seed", () =>
+        {
+            GameManager.addCardIfRandom(75,new Trees2(),new Trees0());
             return false;
         }));
         
         //Choix + cout + carte plus tard ( la carte est un autre object )
-        getChoices.Add(new Choice(-50, 0, 0, "The green seed", () => {
-            GameManager.addPlannedEvent( new Trees3() );
+        getChoices.Add(new Choice(0, 0, 0, "The green seed", () => {
+            GameManager.addCardIfRandom(75,new Trees3(),new Trees0());
             return false;
         }));
-        //TODO % de chance que l'arbre pousse pas
     }
 }

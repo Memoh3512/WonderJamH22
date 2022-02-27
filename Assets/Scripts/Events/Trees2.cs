@@ -9,8 +9,8 @@ public class Trees2 : CardEvent
 
         DaysToPlay = 3;
         Name = "War tree!";
-        Description = "The blue seed grew as wide bush tree with bullets as fruits." +
-                      " Full ammo!";
+        Description = "The blue seed grew to a wide bush with fruits that can be used as stimulants. " +
+                      " Full of strength!";
         
         //Choix + cout
         getChoices.Add(new Choice(0, 0, -15, "Go harvest it!", () => {

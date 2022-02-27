@@ -17,7 +17,7 @@ public class GameManager
     private static List<CardEvent> todaysEventsToPlay = new List<CardEvent>();
 
     public static bool firstPlay = true;
-
+    
     public static async void nextDay()
     {
         day++;
@@ -31,7 +31,6 @@ public class GameManager
                 playerKingdom.removeGold(-10);
             }
         }
-        
         Object.FindObjectOfType<Parallax>().TransitionTo(new List<Sprite>()
         {
 
@@ -210,8 +209,8 @@ public class GameManager
 
     }
     
-    public static void getDeck()
+    public static EventDeck getDeck()
     {
-        
+        return currentDeck;
     }
 }

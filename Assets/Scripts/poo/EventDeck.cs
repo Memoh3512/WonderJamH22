@@ -7,6 +7,11 @@ public class EventDeck
     CardEvent cEvent;
     private List<CardEvent> eventList;
 
+    public List<CardEvent> EventList()
+    {
+        return eventList;
+    }
+    
     public EventDeck()
     {
         eventList = new List<CardEvent>();
