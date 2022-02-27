@@ -14,6 +14,7 @@ public class Fighter : MonoBehaviour
     private GameObject target;
     public List<GameObject> myEnemies;
     public List<GameObject> myAllies;
+    public bool player = false;
     public int Team
     {
         get => team;
@@ -59,7 +60,19 @@ public class Fighter : MonoBehaviour
         }
         if (target != null)
         {
-            GetComponent<Rigidbody>().AddForce(Vector3.Normalize(target.transform.position-transform.position)*(800f * Time.deltaTime));
+
+            if (player)
+            {
+
+                PlayerControls();
+
+            }
+            else
+            {
+                
+                GetComponent<Rigidbody>().AddForce(Vector3.Normalize(target.transform.position-transform.position)*(800f * Time.deltaTime));   
+                
+            }
         }
         else
         {
@@ -75,6 +88,17 @@ public class Fighter : MonoBehaviour
             myAllies.Remove(gameObject);
             die();
         }
+    }
+
+    private void PlayerControls()
+    {
+
+        Vector2 angle = Vector2.zero;
+        angle.x = Input.GetAxis("Horizontal");
+        angle.y = Input.GetAxis("Vertical");
+        angle = angle.normalized *5f * (800f * Time.deltaTime);
+        GetComponent<Rigidbody>().velocity = new Vector3(angle.x, 0, angle.y);
+
     }
     void die()
     {
