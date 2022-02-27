@@ -97,8 +97,9 @@ public class GameManager
             else
             {
                 
-                Debug.Log("DECK EMPYT!!!!");
-                
+                Debug.Log("DECK EMPTY!!!!");
+                todaysEventsToPlay.Add(new Message("An uneventful day", "Today, nothing happened. The weather was good, the people were happy. All was well!", "That's all fine and dandy!"));
+
             }
            
         }
