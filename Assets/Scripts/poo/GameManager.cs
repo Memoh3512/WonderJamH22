@@ -17,6 +17,7 @@ public class GameManager
     private static List<CardEvent> todaysEventsToPlay = new List<CardEvent>();
 
     public static bool firstPlay = true;
+    private static bool successorDid = false;
     
     public static async void nextDay()
     {
@@ -31,10 +32,16 @@ public class GameManager
                 playerKingdom.removeGold(-10);
             }
         }
+        // Player 
         if (playerKingdom.Gold >= Kingdom.costFlood)
         {
             AddEventForToday(new Flood());
             Kingdom.costFlood += 100;
+        }
+        if (playerKingdom.KingdomLife >= 100 && !successorDid)
+        {
+            AddEventForToday(new Succesor());
+            successorDid = true;
         }
         
         Object.FindObjectOfType<Parallax>().TransitionTo(new List<Sprite>()
