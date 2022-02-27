@@ -26,6 +26,15 @@ public class GameManager
             kingdom.next();
             Debug.Log(kingdom.Name + " | MP : " + kingdom.MilitaryPower);
         }
+        
+        Object.FindObjectOfType<Parallax>().TransitionTo(new List<Sprite>()
+        {
+
+            Resources.Load<Sprite>("Parallax/Day1"),
+            Resources.Load<Sprite>("Parallax/Day2"),
+            Resources.Load<Sprite>("Parallax/Day3")
+
+        });
 
         await Task.Delay(1500);
         
@@ -152,6 +161,16 @@ public class GameManager
         endDay.alpha = 1;
         endDay.interactable = true;
         endDay.blocksRaycasts = true;
+        
+        //start transition to moon
+        Object.FindObjectOfType<Parallax>().TransitionTo(new List<Sprite>()
+        {
+
+            Resources.Load<Sprite>("Parallax/Night1"),
+            Resources.Load<Sprite>("Parallax/Night2"),
+            Resources.Load<Sprite>("Parallax/Night3")
+
+        });
 
     }
 
