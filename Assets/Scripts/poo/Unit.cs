@@ -8,13 +8,20 @@ public class Unit
     private int hp;
     private int damage;
     private float scale;
+    private int mpValue;
 
-    public Unit(Sprite sprite, int hp, int damage, int scale)
+    public Unit(Sprite sprite, int hp, int damage, int scale) 
     {
         this.Sprite = sprite;
         this.Hp = hp;
         this.Damage = damage;
         this.Scale = scale;
+        this.mpValue = 1;
+    }
+
+    public Unit(Sprite sprite, int hp, int damage, int scale,int mpValue) : this(sprite,hp,damage,scale)
+    {
+        this.mpValue = mpValue;
     }
 
     public Sprite Sprite { get => sprite; set => sprite = value; }

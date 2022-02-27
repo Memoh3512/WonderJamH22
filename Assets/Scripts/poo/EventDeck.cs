@@ -17,6 +17,7 @@ public class EventDeck
         eventList.Add(new Meteorite1());
         eventList.Add(new Classes1());
         eventList.Add(new Communist1());
+        eventList.Add(new Pigeon());
     }
 
     public CardEvent getEvent()

@@ -43,6 +43,25 @@ public class FightRecapUI : MonoBehaviour
         kingdomStats.text = $"OUR KINGDOM \n\n Lost {player} soldiers. \n\n {won}";
 
         c.enabled = true;
+        if (whowon == "Enemies")
+        {
+            int power = GameManager.playerKingdom.MilitaryPower;
+            if (power / 5 > 20)
+            {
+                GameManager.playerKingdom.removeMilitaryPower(power / 5);
+            }
+            else
+            {
+                GameManager.playerKingdom.removeMilitaryPower(20);
+            }
+            
+        }
+    }
 
+    public void PlayBtnSFX()
+    {
+        
+        //TODO FLO bouton sfx
+        
     }
 }
