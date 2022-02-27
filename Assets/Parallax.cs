@@ -41,7 +41,6 @@ public class Parallax : MonoBehaviour
             layers[i].transform.position = startPos[i] - strength*displacement * ((i + 1) * multiplier);
 
         }
-        //allo pénis 8=====D
 
     }
 }
