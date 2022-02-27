@@ -98,7 +98,7 @@ public class CardDisplay : MonoBehaviour
             choice.GetComponent<RectTransform>().sizeDelta = new Vector2(btnWidth, choice.GetComponent<RectTransform>().sizeDelta.y);
             choice.GetComponent<RectTransform>().localPosition = new Vector3(startPos, -400);
             choice.GetComponentInChildren<TextMeshProUGUI>().text = c.Description;
-            
+            choice.GetComponentInChildren<TextMeshProUGUI>().color = new Color(235,191,142);
             choice.GetComponent<Button>().onClick.AddListener((() => c.process()));
             choice.GetComponent<Button>().onClick.AddListener((() => FindObjectOfType<GameUI>().PlayBtnSnd()));
             
