@@ -40,7 +40,7 @@ public class Drug : CardEvent
                 }
                 else
                 {
-                    text = "" + success + " of them survived, giving birth to " + success + " super soldiers!";
+                    text = "" + success + " of them survived, giving birth to " + success + " super soldier(s)!";
                     button = ">:)";
                 }
 
