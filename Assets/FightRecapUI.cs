@@ -2,13 +2,15 @@ using System.Collections;
 using System.Collections.Generic;
 using TMPro;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class FightRecapUI : MonoBehaviour
 {
     private Canvas c;
 
-    public TextMeshProUGUI enemyStats;
     public TextMeshProUGUI kingdomStats;
+    public TextMeshProUGUI title;
+    public Image seal;
 
     // Start is called before the first frame update
     void Start()
@@ -26,16 +28,15 @@ public class FightRecapUI : MonoBehaviour
 
     public void OpenMenu(string whowon,int loseAll,int loseEn)
     {
+        var won = whowon == "Allies" ? "Victory!" : "Defeat...";
 
-        string won = whowon == "Enemies" ? "Won!" : "Lost!";
+        title.text = won;
 
-        string enemies = FightManager.woundedEnemies.Count == 0 ? "no" : FightManager.woundedEnemies.Count.ToString();
-        enemyStats.text = $"ENEMY \n\n Lost {enemies} soldiers. \n\n {won} ";
-         
-        won = whowon == "Allies" ? "Won!" : "Lost!";
+        if (won == "Victory!") seal.sprite = Resources.Load<Sprite>("seal");
+        else seal.color = new Color(0, 0, 0, 0);
         
         string player = FightManager.woundedAllies.Count == 0 ? "no" : (FightManager.woundedAllies.Count+FightManager.fullDeadAllies.Count).ToString();
-        kingdomStats.text = $"OUR KINGDOM \n\n Lost {player} soldiers. \n\n {won} \n\n - {loseAll} military power";
+        kingdomStats.text = $"We lost {loseAll} military power";
 
         c.enabled = true;
     }
