@@ -77,14 +77,15 @@ public class Kingdom
     {
 
         relation++;
+        Mathf.Min(1, relation);
 
     }
 
     public void DecrementRelation()
     {
-
+        
         relation--;
-
+        relation = Mathf.Max(-1, relation);
     }
 
     public int Relation => relation;
