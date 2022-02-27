@@ -29,7 +29,7 @@ public class Kingdom
     public Kingdom(bool isPlayer = false)
     {
 
-        icon = Resources.Load<Sprite>("Icon/Icon-Cowboy");
+        icon = Resources.Load<Sprite>("Icon/Icon-Human");
 
     }
     public Kingdom(Sprite icon, bool isPlayer = false)
