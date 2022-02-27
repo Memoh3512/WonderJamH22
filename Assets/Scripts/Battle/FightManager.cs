@@ -32,8 +32,8 @@ public class FightManager : MonoBehaviour
         GameManager.playerKingdom = new Kingdom();
         for (int i = 0; i < 100; i++)
         {
-            GameManager.playerKingdom.Units.Add(new Unit(baseFighterPrefab.GetComponent<SpriteRenderer>().sprite,10,3,1));
-            GameManager.fightOpponent.Units.Add(new Unit(baseFighterPrefab.GetComponent<SpriteRenderer>().sprite,10,3,1));
+            GameManager.playerKingdom.Units.Add(new Unit(baseFighterPrefab.transform.GetChild(0).GetComponent<SpriteRenderer>().sprite,10,3,1));
+            GameManager.fightOpponent.Units.Add(new Unit(baseFighterPrefab.transform.GetChild(0).GetComponent<SpriteRenderer>().sprite,10,3,1));
         }
         
         
@@ -68,12 +68,12 @@ public class FightManager : MonoBehaviour
             currFighter.GetComponent<Fighter>().Life = toInstantiate.Hp;
             currFighter.GetComponent<Fighter>().Team = team;
             currFighter.GetComponent<Transform>().localScale = Vector3.one * toInstantiate.Scale;
-            currFighter.GetComponent<SpriteRenderer>().sprite = toInstantiate.Sprite;
+            currFighter.transform.GetChild(0).GetComponent<SpriteRenderer>().sprite = toInstantiate.Sprite;
             
             currFighter.transform.position = new Vector3(xPos, spawnerPos.y+2.25f, yPos);
             if (flipSprite)
             {
-                currFighter.GetComponent<SpriteRenderer>().flipX = !currFighter.GetComponent<SpriteRenderer>().flipX;
+                currFighter.transform.GetChild(0).GetComponent<SpriteRenderer>().flipX = !currFighter.GetComponent<SpriteRenderer>().flipX;
             }
             allSpawned.Add(currFighter);
         }

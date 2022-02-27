@@ -21,7 +21,7 @@ public class Pigeon : CardEvent
 
         getChoices.Add(new Choice(0,-25,0,"Teach them to dance",()=> {
             GameManager.AddEventForToday(new Message("Teach them","Helped by the druids of the forest, they managed to make a beautiful show with all the pigeons."
-                + " People said it was out of the ordinary and wonderful. ","Poor beast..."));
+                + " People said it was out of the ordinary and wonderful. ","What a show!"));
             return false;
         }));
         
