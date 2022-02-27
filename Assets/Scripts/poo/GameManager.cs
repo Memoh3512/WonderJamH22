@@ -17,6 +17,7 @@ public class GameManager
     private static List<CardEvent> todaysEventsToPlay = new List<CardEvent>();
 
     public static bool firstPlay = true;
+    private static bool successorDid = false;
     
     public static async void nextDay()
     {
@@ -31,6 +32,18 @@ public class GameManager
                 playerKingdom.removeGold(-10);
             }
         }
+        // Player 
+        if (playerKingdom.Gold >= Kingdom.costFlood)
+        {
+            AddEventForToday(new Flood());
+            Kingdom.costFlood += 100;
+        }
+        if (playerKingdom.KingdomLife >= 100 && !successorDid)
+        {
+            AddEventForToday(new Succesor());
+            successorDid = true;
+        }
+        
         Object.FindObjectOfType<Parallax>().TransitionTo(new List<Sprite>()
         {
 
@@ -40,6 +53,8 @@ public class GameManager
 
         });
 
+        SoundPlayer.instance.SetMusic(Songs.Village, 1f, TransitionBehavior.Continue);
+        
         await Task.Delay(1500);
         
         CanvasGroup endDay = GameObject.FindGameObjectWithTag("EndDay").GetComponent<CanvasGroup>();
@@ -199,6 +214,8 @@ public class GameManager
             Resources.Load<Sprite>("Parallax/Night3")
 
         });
+
+        SoundPlayer.instance.SetMusic(Songs.Night, 1f, TransitionBehavior.Continue);
 
     }
 

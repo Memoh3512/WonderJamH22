@@ -12,7 +12,7 @@ public class Dragon : CardEvent
 
         getChoices.Add(new Choice(20,0,0,"Yes",()=> {
             GameManager.AddEventForToday(new Message("YES","You now have a dragon in your army! Now we need to figure out how to feed it.","OK"));
-            Unit dragon = new Unit(GameManager.playerKingdom.BaseUnit.Sprite,40,10,0.5f,5);
+            Unit dragon = new Unit(Resources.Load<Sprite>("Units/dragon"),40,10,0.5f,5);
             GameManager.playerKingdom.Units.Add(dragon);
             GameManager.addPlannedEvent(new DragonRepeat(dragon));
             return false;
