@@ -74,6 +74,7 @@ public class GameManager
         //TODO reset decks/queud
         queudEvents.Clear();
         
+        todaysEventsToPlay.Add(new Tutoriel());
         playTodaysEvents();
         
         //GameManager.AddEventForToday(new WarCounselor(1, 0));
