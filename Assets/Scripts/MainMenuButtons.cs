@@ -20,7 +20,6 @@ public class MainMenuButtons : MonoBehaviour
     public void PlayBtnSnd()
     {
         
-       
         SoundPlayer.instance.PlaySFX(Resources.Load<AudioClip>("SFX/SFX_Menu button"));
         
     }
