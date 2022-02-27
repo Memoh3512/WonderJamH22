@@ -29,7 +29,7 @@ public class HugeEgg : CardEvent
 
         getChoices.Add(new Choice(0, 0, 0, "Try to sell it", () =>
         {
-            CardEvent ce = new Message("Failure", "After trying to sell the giant egg for several days and finally finding a buyer, the egg," +
+            CardEvent ce = new Message("Egg Waste", "After trying to sell the giant egg for several days and finally finding a buyer, the egg," +
                 "too big to fit inside the buyer's house, exploded into a river of yolk and shells.","What a waste.");
             ce.DaysToPlay = 3;
             GameManager.addPlannedEvent(ce);
