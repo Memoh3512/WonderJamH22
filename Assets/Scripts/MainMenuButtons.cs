@@ -17,4 +17,11 @@ public class MainMenuButtons : MonoBehaviour
         Application.Quit();
     }
 
+    public void PlayBtnSnd()
+    {
+        
+        //TODO FLO play sfx bouton
+        
+    }
+
 }

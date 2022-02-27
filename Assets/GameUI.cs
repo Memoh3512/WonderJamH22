@@ -27,5 +27,12 @@ public class GameUI : MonoBehaviour
         kingdomUIs.RefreshKingdomsUI();
 
     }
+
+    public void PlayBtnSnd()
+    {
+        
+        //TODO FLO play son bouton
+        
+    }
     
 }
