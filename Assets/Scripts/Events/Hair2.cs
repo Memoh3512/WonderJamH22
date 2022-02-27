@@ -25,6 +25,16 @@ public class Hair2 : CardEvent
             return false;
         }));
         getChoices.Add(new Choice(-200,0,0,"Use the hairs to make an industry and exploit them. ",()=> {
+            
+            Object.FindObjectOfType<Parallax>().TransitionTo(new List<Sprite>()
+            {
+
+                Resources.Load<Sprite>("Parallax/fire1"),
+                Resources.Load<Sprite>("Parallax/fire2"),
+                Resources.Load<Sprite>("Parallax/fire3")
+
+            });
+            
             GameManager.AddEventForToday(new Message("Hair Kingdom. ","The hairs became all sorts of things: paint brushes, carpets, and even blankets. But one morning, the long-haired man has disappeared... we suspect the Furries have stolen him for his \"fur\"....","ALATAK!",() => {
 
                 foreach (Kingdom k in GameManager.aiKingdoms)
