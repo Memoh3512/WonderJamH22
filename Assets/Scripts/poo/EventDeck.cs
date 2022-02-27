@@ -27,6 +27,11 @@ public class EventDeck
         eventList.Add(new Drug());
         eventList.Add(new Carnaval());
         eventList.Add(new HorseRace());
+        eventList.Add(new Tutoriel());
+        eventList.Add(new Gardener());
+        eventList.Add(new Monkey());
+        eventList.Add(new Hair());
+        eventList.Add(new Fishing());
         eventList.Add(new Trees());
         eventList.Add(new MilitaryOffers());
         eventList.Add(new Author());
