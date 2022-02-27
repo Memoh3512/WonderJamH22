@@ -26,6 +26,7 @@ public class EventDeck
         eventList.Add(new Gardener());
         eventList.Add(new Monkey());
         eventList.Add(new Hair());
+        eventList.Add(new Dragon());
     }
 
     public CardEvent getEvent()
