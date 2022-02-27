@@ -35,10 +35,13 @@ public class GameManager
         // Player 
         if (playerKingdom.Gold >= Kingdom.costFlood)
         {
-            AddEventForToday(new Flood());
-            Kingdom.costFlood += 100;
+            if (Random.Range(0f, 1f) <= 0.1f)
+            {
+                AddEventForToday(new Flood());
+                Kingdom.costFlood += 25;
+            }
         }
-        if (playerKingdom.KingdomLife >= 150 && !successorDid)
+        if (playerKingdom.KingdomLife >= 120 && !successorDid)
         {
             AddEventForToday(new Succesor());
             successorDid = true;
