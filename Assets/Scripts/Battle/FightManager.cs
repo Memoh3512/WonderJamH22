@@ -28,14 +28,16 @@ public class FightManager : MonoBehaviour
         woundedAllies = new List<Unit>(){};
         woundedEnemies = new List<Unit>(){};
         fullDeadAllies = new List<Unit>(){};
-        
+
         //DEBUG this
         //TODO remove icitte quand on a les kingdoms
-        GameManager.fightOpponent = new KingdomCowboy();
-        GameManager.playerKingdom = new Kingdom();
-        GameManager.playerKingdom.BaseUnit = new Unit(baseFighterPrefab.transform.GetChild(0).GetComponent<SpriteRenderer>().sprite, 10, 5, 1);
-        GameManager.playerKingdom.Units = new List<Unit>(){};
-        GameManager.fightOpponent.Units = new List<Unit>(){};
+        if (!GameManager.firstPlay)
+        {
+            GameManager.fightOpponent = new KingdomCowboy();
+            GameManager.playerKingdom = new Kingdom(true);
+            GameManager.playerKingdom.Units = new List<Unit>() { };
+            GameManager.fightOpponent.Units = new List<Unit>() { };
+        }
 
 
 
