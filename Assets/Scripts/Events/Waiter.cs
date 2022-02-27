@@ -18,7 +18,7 @@ public class Waiter : CardEvent
           //  GameManager.playerKingdom.Units.Add(new Unit()); meilleur qu'un soldat normal. sprite de serveur si possible.
             GameManager.AddEventForToday(new Message("Savior","After saving Fest Cerving, he decided to quit being waiter and pursue " +
                 "a safer career, joining the army","Great!"));
-            GameManager.playerKingdom.Units.Add(new Unit(GameManager.playerKingdom.BaseUnit.Sprite, 10, 10, 1.3f, 10));
+            GameManager.playerKingdom.Units.Add(new Unit(Resources.Load<Sprite>("Units/maid"), 75, 20, 1f, 10));
             return false;
         }));
     }
