@@ -25,6 +25,11 @@ public class GameManager
         {
             kingdom.next();
             Debug.Log(kingdom.Name + " | MP : " + kingdom.MilitaryPower);
+            
+            if (kingdom.Relation == 1)
+            {
+                playerKingdom.removeGold(-10);
+            }
         }
         
         Object.FindObjectOfType<Parallax>().TransitionTo(new List<Sprite>()
@@ -112,10 +117,11 @@ public class GameManager
             }
             else
             {
-                
-                Debug.Log("DECK EMPTY!!!!");
-                todaysEventsToPlay.Add(new Message("An uneventful day", "Today, nothing happened. The weather was good, the people were happy. All was well!", "That's all fine and dandy!"));
-
+                if (todaysEventsToPlay.Count == 0)
+                {
+                    Debug.Log("DECK EMPTY!!!! AND TODAYS EVENTS");
+                    todaysEventsToPlay.Add(new Message("An uneventful day", "Today, nothing happened. The weather was good, the people were happy. All was well!", "That's all fine and dandy!"));
+                }
             }
            
         }

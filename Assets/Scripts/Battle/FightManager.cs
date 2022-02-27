@@ -125,9 +125,11 @@ public class FightManager : MonoBehaviour
                     fullDeadAllies.Add(deadUnit);
                     woundedAllies.Remove(deadUnit);
                     losePower += deadUnit.MpValue;
+                    GameManager.playerKingdom.Units.Remove(deadUnit);
                 }
             }
             Debug.Log("Allies Lose "+losePower+" military power from fight");
+            
             int losePowerEn = 0;
             foreach (var deadUnit in woundedEnemies.ToList())
             {
@@ -140,9 +142,11 @@ public class FightManager : MonoBehaviour
             Debug.Log("Ennemies Lose "+losePowerEn+" military power from fight");
             GameManager.playerKingdom.removeMilitaryPower(losePowerEn);
             
+            GameManager.playerKingdom.DecrementRelation();
+            
+            //Affichage
             FindObjectOfType<FightRecapUI>().OpenMenu(whoWon,losePower,losePowerEn);
             Destroy(gameObject);
-            
         }
         
     }
