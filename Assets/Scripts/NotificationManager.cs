@@ -10,8 +10,8 @@ public class NotificationManager : MonoBehaviour
     public GameObject spriteSquare;
     public GameObject textAmount;
     private int state = 0;//0 inactif,1 monte,2 attend, 3 descend
-    private float speed;
-    private float baseCounter = 1.5f;
+    private float speed=300f;
+    private float baseCounter = 0.7f;
     private float counter = 0;
 
     private static List<Notification> toDisplay;
@@ -40,7 +40,7 @@ public class NotificationManager : MonoBehaviour
             RectTransform trans = GetComponent<RectTransform>();
             if (trans.anchoredPosition.y <= -472)
             {
-                trans.anchoredPosition += Vector2.up * (150f * Time.deltaTime);
+                trans.anchoredPosition += Vector2.up * (speed * Time.deltaTime);
             }
             else
             {
@@ -63,7 +63,7 @@ public class NotificationManager : MonoBehaviour
             RectTransform trans = GetComponent<RectTransform>();
             if (trans.anchoredPosition.y >= -605)
             {
-                trans.anchoredPosition += -Vector2.up * (150f * Time.deltaTime);
+                trans.anchoredPosition += -Vector2.up * (speed * Time.deltaTime);
             }
             else
             {

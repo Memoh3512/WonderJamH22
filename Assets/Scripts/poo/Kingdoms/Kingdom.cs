@@ -60,7 +60,7 @@ public class Kingdom
             if (kingdomLife <= 0)
             {
                 GameManager.deathNote = "The people have taken you by assault!";
-                LevelLoader.instance.LoadScene("MainMenuScene", TransitionTypes.CrossFade);
+                LevelLoader.instance.LoadScene("LoseScene", TransitionTypes.CrossFade);
             }
         }
     }
@@ -70,6 +70,11 @@ public class Kingdom
         if (isPlayer && toRemove != 0)
         {
             NotificationManager.startNotification(2,-toRemove);
+            if (militaryPower <= 0)
+            {
+                GameManager.deathNote = "Your army was ran dry.";
+                LevelLoader.instance.LoadScene("LoseScene", TransitionTypes.CrossFade);
+            }
         }
     }
 
@@ -77,14 +82,15 @@ public class Kingdom
     {
 
         relation++;
+        Mathf.Min(1, relation);
 
     }
 
     public void DecrementRelation()
     {
-
+        
         relation--;
-
+        relation = Mathf.Max(-1, relation);
     }
 
     public int Relation => relation;

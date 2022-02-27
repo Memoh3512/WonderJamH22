@@ -2,9 +2,9 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Flood : CardEvent
+public class HorseRace : CardEvent
 {
-    public Flood()
+    public HorseRace()
     {
         
         Name = "Taking bets!";
@@ -27,7 +27,7 @@ public class Flood : CardEvent
         }));
         getChoices.Add(new Choice(0,-0,-0,"Epona",()=> {
             GameManager.AddEventForToday(new Message("Horse race","This horse, also called The Legend in the Cowboy village, made the link between the beginning and the end so fast!"
-                + "Not fast enough tho, it ended 2nd place.","As always..."));
+                + "Not fast enough tho, it ended 2nd place.","Yeeha"));
             return false;//TODO donne des bonnes relations avec les cowboys
         }));
     }
