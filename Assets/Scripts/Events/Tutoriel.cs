@@ -8,15 +8,15 @@ public class Tutoriel : CardEvent
     {
         
         Name = "How to play";
-        Description = "Sur le parchemin, vous retrouverez des évènements auxquelles vous devrez choisir votre action";
+        Description = " Here you will find various events that you will have to choose on, and make difficult decisions to rule your land. Are you up for it?";
 
-        getChoices.Add(new Choice(0,0,0,"J'accepte",()=> {
-            GameManager.AddEventForToday(new Message("L'offre est acceptée","Préparez-vous à défendre votre royaume","Je suis prêt"));
+        getChoices.Add(new Choice(0,0,0,"Hell yea!",()=> {
+            GameManager.AddEventForToday(new Message("Contact accepted","Prepare yourself, you have a kingdom to manage.","I'm ready!"));
             return false;
         }));
 
-        getChoices.Add(new Choice(0,0,0,"Je refuse",()=> {
-            GameManager.AddEventForToday(new Message("L'offre est refusée","Bonne journée!","Bye bye"));
+        getChoices.Add(new Choice(0,0,0,"No, get me out!",()=> {
+            GameManager.AddEventForToday(new Message("Out","Okay, have a great day sir!","See ya"));
             Application.Quit();
             return false;
         }));
