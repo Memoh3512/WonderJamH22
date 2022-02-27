@@ -8,8 +8,8 @@ public class Tutoriel2 : CardEvent
     {
         
         Name = "Money and neighboors";
-        Description = "1. On your right ou have your stats. They are very important. Try not to get them too low or your kingdom will fall! "
-        + "\n2. On your left, it shows the opinion of other kingdoms about you. Try not to anger them too much!";
+        Description = "1. On your left ou have your stats. They are very important. Try not to get them too low or your kingdom will fall! "
+        + "\n2. On your right, it shows the opinion of other kingdoms about you. Try not to anger them too much!";
 
         getChoices.Add(new Choice(0,0,0,"Hell yea!",()=>
         {

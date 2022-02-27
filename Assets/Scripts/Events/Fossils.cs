@@ -16,14 +16,22 @@ public class Fossils : CardEvent
         //Choix + cout + apparait une autre carte
         getChoices.Add(new Choice(0, 0, -40, "East side", () => {
             GameManager.AddEventForToday(new Message("East side", "We found a lot of extremely little and pointy fish bones. " +
-                                                                  "It inspired the botanist to craft poisonous darts that can be shot from a very far distance. ","And shoot them with a blowpipe!"));
+                                                                "It inspired the botanist to craft poisonous darts that can be shot from a very far distance. ","And shoot them with a blowpipe!",() => {
+                                                                    for (int i = 0; i < 20; i++)
+                                                                    {
+                                                                        GameManager.playerKingdom.Units.Add(new Unit(Resources.Load<Sprite>("Units/chevalierSARBACANE"), 10, 10, 1, 2));
+                                                                    }
+                                                                      return false;
+                                                                  }));
+
+
             return false;
         }));
 
         //Choix + cout + apparait une autre carte
         getChoices.Add(new Choice(0, 0, -30, "West side", () => {
             GameManager.AddEventForToday(new Message("West side", "You found a fossil of a huge snake. " +
-                                                                  "The scales inspired the blacksmith to forge better armor for the troops.", "Nice!"));
+                                                                  "The scales inspired the blacksmith to better armors for the troops.", "Nice!"));
             return false;
         }));
         //Choix + cout + apparait une autre carte
