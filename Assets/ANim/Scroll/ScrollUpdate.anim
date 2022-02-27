@@ -909,7 +909,7 @@ AnimationClip:
       value: {fileID: 21300000, guid: f841811453352de409658109b10c1c84, type: 3}
     - time: 1.2333333
       value: {fileID: 21300000, guid: 98827e3a46484af4ca004360581b06cc, type: 3}
-    - time: 1.4333333
+    - time: 1.25
       value: {fileID: 21300000, guid: 98827e3a46484af4ca004360581b06cc, type: 3}
     attribute: m_Sprite
     path: ScrollBG
@@ -1010,7 +1010,7 @@ AnimationClip:
     m_AdditiveReferencePoseClip: {fileID: 0}
     m_AdditiveReferencePoseTime: 0
     m_StartTime: 0
-    m_StopTime: 1.4499999
+    m_StopTime: 1.2666667
     m_OrientationOffsetY: 0
     m_Level: 0
     m_CycleOffset: 0

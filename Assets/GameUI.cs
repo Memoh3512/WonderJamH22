@@ -24,6 +24,7 @@ public class GameUI : MonoBehaviour
         atk.text = GameManager.playerKingdom?.MilitaryPower.ToString();
         health.text = GameManager.playerKingdom?.KingdomLife.ToString();
         days.text = "Day " + GameManager.day;
+        kingdomUIs.RefreshKingdomsUI();
 
     }
     
