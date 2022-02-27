@@ -9,7 +9,7 @@ public class Kingdom
     private string name;
     private bool isPlayer = false;
     
-    private List<Unit> units; //toutes les units
+    private List<Unit> units = new List<Unit>(); //toutes les units
 
     private int gold = 50;
     private int militaryPower = 100;
