@@ -76,7 +76,7 @@ public class Fighter : MonoBehaviour
         
         
         //TODO FLO son perso meurt
-        SoundPlayer.instance.PlaySFX(Resources.Load<>());
+        //SoundPlayer.instance.PlaySFX(Resources.Load<>());
         switch (team)
         {
             

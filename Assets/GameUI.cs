@@ -31,7 +31,8 @@ public class GameUI : MonoBehaviour
     public void PlayBtnSnd()
     {
         
-        //TODO FLO play son bouton
+        
+        SoundPlayer.instance.PlaySFX(Resources.Load<AudioClip>("SFX/SFX_Menu button"));
         
     }
     

@@ -7,7 +7,8 @@ public class Swords : MonoBehaviour
    public void PlaySFX()
    {
       
-      //TODO FLO PLAY SON EPEES LONG DE TRNASITOTIOI
+      
+      SoundPlayer.instance.PlaySFX(Resources.Load<AudioClip>("SFX/SFX_Sword hit"));
       
    }
 }

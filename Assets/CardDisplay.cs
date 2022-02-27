@@ -52,16 +52,19 @@ public class CardDisplay : MonoBehaviour
         opened = !opened;
         if (opened)
         {
+          
+            SoundPlayer.instance.PlaySFX(Resources.Load<AudioClip>("SFX/SFX_Cllose parchemin"));
             
-            //TODO FLO close parchemin
-            
+            /* penis
+             penis
+             penis */
             
         }
         else
         {
             
-            //TODO FLO open parchemin
-            
+           
+            SoundPlayer.instance.PlaySFX(Resources.Load<AudioClip>("SFX/SFX_Open parchemin"));
             
         }
 
