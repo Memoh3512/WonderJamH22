@@ -3,11 +3,20 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
+public enum Stat
+{
+    
+    Gold, MilitaryPower, KingHealth
+    
+}
+
 public class KingdomsUISpawner : MonoBehaviour
 {
-
+    
     public GameObject uiPrefab;
+    public GameObject statChangePrefab;
     public float kingdomSpacing = 150f;
+    private List<GameObject> kingdoms = new List<GameObject>();
     
     // Start is called before the first frame update
     void Start()
@@ -29,8 +38,10 @@ public class KingdomsUISpawner : MonoBehaviour
         //clear children
         foreach (Transform ui in transform)
         {
-            if (ui != this)Destroy(ui.gameObject);
+            if (ui != this) Destroy(ui.gameObject);
         }
+        
+        kingdoms.Clear();
         
         float d = 0;
         if (GameManager.aiKingdoms == null) return;
@@ -38,6 +49,7 @@ public class KingdomsUISpawner : MonoBehaviour
         {
 
             GameObject ui = Instantiate(uiPrefab, transform);
+            kingdoms.Add(ui);
             ui.GetComponent<RectTransform>().localPosition = new Vector3(0, -d);
             ui.transform.Find("kingdomIcon").GetComponent<Image>().sprite = k.icon;
             d += kingdomSpacing;
@@ -55,6 +67,16 @@ public class KingdomsUISpawner : MonoBehaviour
 
         }
         
+    }
+
+    public void StatChange(int k, Stat stat, bool plus)
+    {
+
+        GameObject display = Instantiate(statChangePrefab, kingdoms[k].GetComponent<RectTransform>().position, Quaternion.identity, transform.parent);
+        display.GetComponent<RectTransform>().position = 
+                                                         kingdoms[k].GetComponent<RectTransform>().position;
+        display.GetComponent<StatChange>().SetStat(stat, plus ? 1 : -1);
+
     }
     
 }
