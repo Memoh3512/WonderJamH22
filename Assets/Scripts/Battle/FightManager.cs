@@ -28,14 +28,17 @@ public class FightManager : MonoBehaviour
         woundedAllies = new List<Unit>(){};
         woundedEnemies = new List<Unit>(){};
         fullDeadAllies = new List<Unit>(){};
-        
+       
+
         //DEBUG this
         //TODO remove icitte quand on a les kingdoms
-        GameManager.fightOpponent = new KingdomCowboy();
-        GameManager.playerKingdom = new Kingdom();
-        GameManager.playerKingdom.BaseUnit = new Unit(baseFighterPrefab.GetComponent<SpriteRenderer>().sprite, 10, 5, 1);
-        GameManager.playerKingdom.Units = new List<Unit>(){};
-        GameManager.fightOpponent.Units = new List<Unit>(){};
+        if (GameManager.firstPlay)
+        {
+            GameManager.fightOpponent = new KingdomCowboy();
+            GameManager.playerKingdom = new Kingdom(true);
+            GameManager.playerKingdom.Units = new List<Unit>() { };
+            GameManager.fightOpponent.Units = new List<Unit>() { };
+        }
 
 
 
@@ -86,7 +89,7 @@ public class FightManager : MonoBehaviour
             //Flip le sprite si besoin
             if (flipSprite)
             {
-                currFighter.transform.GetChild(0).GetComponent<SpriteRenderer>().flipX = !currFighter.GetComponent<SpriteRenderer>().flipX;
+                currFighter.transform.GetChild(0).GetComponent<SpriteRenderer>().flipX = !currFighter.transform.GetChild(0).GetComponent<SpriteRenderer>().flipX;
             }
             //Add a liste de spawned
             allSpawned.Add(currFighter);

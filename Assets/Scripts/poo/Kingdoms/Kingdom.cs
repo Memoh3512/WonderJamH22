@@ -30,14 +30,19 @@ public class Kingdom
     {
 
         icon = Resources.Load<Sprite>("Icon/Icon-Human");
+        if (isPlayer)
+        {
+            BaseUnit = new Unit(Resources.Load<Sprite>("Units/chevalier"),10,5,1);
+        }
 
     }
     public Kingdom(Sprite icon, bool isPlayer = false)
     {
+
         this.isPlayer = isPlayer;
         if (isPlayer)
         {
-            BaseUnit = new Unit(Resources.Load<Sprite>("Units/cowboy"),10,5,1);
+            BaseUnit = new Unit(Resources.Load<Sprite>("Units/chevalier"),10,5,1);
         }
     }
     public string Name { get => name; set => name = value; }
@@ -131,5 +136,24 @@ public class Kingdom
             toAdd = (int)((variance - Mathf.Log10(random)) / variance * - greediness)* 1 - (growth/100);
         }
         militaryPower = militaryPower + toAdd;
+
+        float fightOdd = 0.05f;
+        switch (relation)
+        {
+            
+            case 1: fightOdd = 0.01f;
+                break;
+            case -1 : fightOdd = 0.2f;
+                break;
+            
+        }
+
+        if (Random.Range(0f, 1f) <= fightOdd)
+        {
+            
+            GameManager.AddEventForToday(new IncomingAttack(this));
+            
+        }
+        
     }
 }

@@ -5,8 +5,11 @@ using UnityEngine;
 public class Parallax : MonoBehaviour
 {
     public SpriteRenderer[] layers;
+    public SpriteRenderer[] buffers; //Buffers DOIT etre autant d'elements que layers sinon tt va crash
     public float strength = 2f;
     public Vector2 multiplier = Vector2.one;
+
+    public float TransitionDuration = 1f;
 
     private Vector2[] startPos;
     
@@ -39,9 +42,55 @@ public class Parallax : MonoBehaviour
         {
 
             layers[i].transform.position = startPos[i] - strength*displacement * ((i + 1) * multiplier);
+            buffers[i].transform.position = startPos[i] - strength*displacement * ((i + 1) * multiplier);
 
         }
-        //allo pénis 8=====D
 
     }
+
+    public void TransitionTo(List<Sprite> sprites)
+    {
+
+        StartCoroutine(transitionCor(sprites));
+
+    }
+
+    public IEnumerator transitionCor(List<Sprite> newSprites)
+    {
+
+        for (int i = 0; i < newSprites.Count; i++)
+        {
+
+            buffers[i].sprite = newSprites[i];
+
+        }
+        
+        float a = 0;
+        while (a < 1f)
+        {
+
+            for (int i = 0; i < newSprites.Count; i++)
+            {
+
+                Color c = buffers[i].color;
+                buffers[i].color = new Color(c.r, c.g, c.b,a);
+
+            }
+
+            a += Time.deltaTime/TransitionDuration;
+            yield return null;
+
+        }
+
+        for (int i = 0; i < newSprites.Count; i++)
+        {
+
+            layers[i].sprite = newSprites[i];
+            buffers[i].sprite = null;
+            buffers[i].color = Color.white;
+
+        }
+
+    }
+    
 }

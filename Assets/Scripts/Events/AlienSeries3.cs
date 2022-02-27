@@ -15,7 +15,7 @@ public class AlienSeries3 : CardEvent
         getChoices.Add(new Choice(0, 0, -200, "Kill the organism and steal the weapons!", () =>
         {
             GameManager.AddEventForToday(new Message("Alien Invasion", "After killing the poor organism and stealing it's weapons, a message was sent " +
-                "from the flying saucer to a distant civilization. Within a few short hours the an entire alien population landed on earth to wage the " + GameManager.playerKingdom.Name + " kingdom war", "Uh oh..."));
+                "from the flying saucer to a distant civilization. Within a few short hours the an entire alien population landed on earth to wage the " + GameManager.playerKingdom.Name + " Kingdom war", "Uh oh..."));
             GameManager.aiKingdoms.Add(new KingdomAlien());
             GameObject.FindObjectOfType<KingdomsUISpawner>().RefreshKingdomsUI();
             return false;

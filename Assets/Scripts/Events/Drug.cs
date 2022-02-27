@@ -33,15 +33,17 @@ public class Drug : CardEvent
             GameManager.AddEventForToday(new Message("Experimental Drug - Follow up", "After giving the drugs to the soldiers," + text, button, () =>
             {
                 if (success > 0) {
-                    GameManager.playerKingdom.removeMilitaryPower(success * 5);
+                    GameManager.playerKingdom.removeMilitaryPower(-success * 5);
                     for (int i = 0; i < success; i++)
                         GameManager.playerKingdom.Units.Add(new Unit(GameManager.playerKingdom.BaseUnit.Sprite, 30, 15, 3));
                 }
+                GameManager.addEvent(new Drug());
                 return false;
+                
             }));
             return false;
         }));
 
-        getChoices.Add(new Choice(0,0,0,"Drugs are bad",() => { return false; }));
+        getChoices.Add(new Choice(0,0,0,"Drugs are bad",() => { GameManager.addEvent(new Drug()); return false; }));
   }
 }

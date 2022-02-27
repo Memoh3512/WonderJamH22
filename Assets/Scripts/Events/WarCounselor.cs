@@ -9,8 +9,8 @@ public class WarCounselor : CardEvent
     {
         Name = "War Counselor";
         //kingdomToFight = GameManager.aiKingdoms[0];
-        kingdomToFight = new Kingdom();
-        kingdomToFight.Name = "CUNGFU";
+        //kingdomToFight = new Kingdom();
+        //kingdomToFight.Name = "CUNGFU";
         this.Weight = weight;
         
     }
@@ -21,6 +21,7 @@ public class WarCounselor : CardEvent
         int random = Random.Range(0, 101);
         if(random >= 70)
         {
+            kingdomToFight = GameManager.aiKingdoms[0];
             foreach(Kingdom k in GameManager.aiKingdoms)
             {
                 if(k.MilitaryPower < kingdomToFight.MilitaryPower)
@@ -41,7 +42,7 @@ public class WarCounselor : CardEvent
         }
 
         this.Description = "You have received a message from your army commander : \n" +
-            "\"Your excellency, " + kingdomToFight.Name + " as shown signs of weakness. I believe we should take this opportunity to attack them while they're at a low point!\"\n" +
+            "\"Your excellency, " + kingdomToFight.Name + " Kingdom has shown signs of weakness. I believe we should take this opportunity to attack them while they're at a low point!\"\n" +
             "(While the commander's intel is usually right, mistakes always happen.)";
 
         Choice choice1 = new Choice(0, 0, 0, "ALATAK!", () => {
