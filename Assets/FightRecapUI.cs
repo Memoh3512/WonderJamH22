@@ -17,9 +17,19 @@ public class FightRecapUI : MonoBehaviour
         c.enabled = false;
     }
 
-    public void OpenMenu(string whowon)
+    public void OpenMenu(string whowon,int loseAll,int loseEn)
     {
-        UpdateText(whowon);
+        string won = whowon == "Enemies" ? "Won!" : "Lost!";
+
+        string enemies = FightManager.woundedEnemies.Count == 0 ? "no" : FightManager.woundedEnemies.Count.ToString();
+        enemyStats.text = $"ENEMY \n\n Lost {enemies} soldiers. \n\n {won} ";
+         
+        won = whowon == "Allies" ? "Won!" : "Lost!";
+        
+        string player = FightManager.woundedAllies.Count == 0 ? "no" : (FightManager.woundedAllies.Count+FightManager.fullDeadAllies.Count).ToString();
+        kingdomStats.text = $"OUR KINGDOM \n\n Lost {player} soldiers. \n\n {won} \n\n Lost {loseAll} military power";
+
+        c.enabled = true;
     }
 
     public void EndFight()
@@ -28,25 +38,7 @@ public class FightRecapUI : MonoBehaviour
         LevelLoader.instance.LoadScene("GameplayScene", TransitionTypes.CrossFade);
         
     }
-
-    private void UpdateText(string whowon)
-    {
-
-        string won = whowon == "Enemies" ? "Won!" : "Lost!";
-
-        string enemies = FightManager.woundedEnemies.Count == 0 ? "no" : FightManager.woundedEnemies.Count.ToString();
-        enemyStats.text = $"ENEMY \n\n Lost {enemies} soldiers. \n\n {won}";
-         
-        won = whowon == "Allies" ? "Won!" : "Lost!";
-        
-        string player = FightManager.woundedAllies.Count == 0 ? "no" : (FightManager.woundedAllies.Count+FightManager.fullDeadAllies.Count).ToString();
-        kingdomStats.text = $"OUR KINGDOM \n\n Lost {player} soldiers. \n\n {won}";
-
-        c.enabled = true;
-        
-        
-        
-    }
+    
 
     public void PlayBtnSFX()
     {

@@ -11,6 +11,7 @@ public class CardDisplay : MonoBehaviour
     private CardEvent currentCard;
 
     public GameObject choicePrefab;
+    public GameObject buttonContainer;
     
     public TextMeshProUGUI title, desc;
 
@@ -37,7 +38,7 @@ public class CardDisplay : MonoBehaviour
     {
         
         //update choices
-        foreach (Button b in transform.GetComponentsInChildren<Button>())
+        foreach (Button b in buttonContainer.transform.GetComponentsInChildren<Button>())
         {
             
             Destroy(b.gameObject);
@@ -52,19 +53,14 @@ public class CardDisplay : MonoBehaviour
         opened = !opened;
         if (opened)
         {
-          
-            SoundPlayer.instance.PlaySFX(Resources.Load<AudioClip>("SFX/SFX_Cllose parchemin"));
             
-            /* penis
-             penis
-             penis */
+            SoundPlayer.instance.PlaySFX(Resources.Load<AudioClip>("SFX/SFX_Cllose parchemin"), 2f);
             
         }
         else
         {
             
-           
-            SoundPlayer.instance.PlaySFX(Resources.Load<AudioClip>("SFX/SFX_Open parchemin"));
+            SoundPlayer.instance.PlaySFX(Resources.Load<AudioClip>("SFX/SFX_Open parchemin"), 2f);
             
         }
 
@@ -98,7 +94,7 @@ public class CardDisplay : MonoBehaviour
         foreach (Choice c in currentCard.getChoices)
         {
 
-            GameObject choice = Instantiate(choicePrefab, transform);
+            GameObject choice = Instantiate(choicePrefab, buttonContainer.transform);
             choice.GetComponent<RectTransform>().sizeDelta = new Vector2(btnWidth, choice.GetComponent<RectTransform>().sizeDelta.y);
             choice.GetComponent<RectTransform>().localPosition = new Vector3(startPos, -400);
             choice.GetComponentInChildren<TextMeshProUGUI>().text = c.Description;

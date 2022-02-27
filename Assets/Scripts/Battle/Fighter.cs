@@ -85,9 +85,9 @@ public class Fighter : MonoBehaviour
         switch (team)
         {
             
-            case 0: FightManager.woundedAllies.Add(new Unit(GetComponent<SpriteRenderer>().sprite,life,damage,(int)transform.localScale.x));
+            case 0: FightManager.woundedAllies.Add(new Unit(transform.GetChild(0).GetComponent<SpriteRenderer>().sprite,life,damage,(int)transform.localScale.x));
                 break;
-            case 1: FightManager.woundedEnemies.Add(new Unit(GetComponent<SpriteRenderer>().sprite,life,damage,(int)transform.localScale.x));
+            case 1: FightManager.woundedEnemies.Add(new Unit(transform.GetChild(0).GetComponent<SpriteRenderer>().sprite,life,damage,(int)transform.localScale.x));
                 break;
             
         }
@@ -106,6 +106,7 @@ public class Fighter : MonoBehaviour
     {
         //Debug.Log("Attacked");
         toAttack.GetComponent<Fighter>().getDamaged(damage);
+        SoundPlayer.instance.PlaySFX(Resources.Load<AudioClip>("SFX/SFX_Sword hit short"), 0.3f);
         attackCoolDown = baseCoolDown;
         getClosestTarget();
     }
