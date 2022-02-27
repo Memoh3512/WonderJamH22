@@ -41,7 +41,7 @@ public class WarCounselor : CardEvent
         }
 
         this.Description = "You have received a message from your army commander : \n" +
-            "\"Your excellency, " + kingdomToFight.Name + " as shown signs of weakness. I believe we should take this opportunity to attack them while they're at a low point!\"\n" +
+            "\"Your excellency, " + kingdomToFight.Name + " Kingdom has shown signs of weakness. I believe we should take this opportunity to attack them while they're at a low point!\"\n" +
             "(While the commander's intel is usually right, mistakes always happen.)";
 
         Choice choice1 = new Choice(0, 0, 0, "ALATAK!", () => {
