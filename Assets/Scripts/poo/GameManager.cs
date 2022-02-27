@@ -38,7 +38,7 @@ public class GameManager
             AddEventForToday(new Flood());
             Kingdom.costFlood += 100;
         }
-        if (playerKingdom.KingdomLife >= 100 && !successorDid)
+        if (playerKingdom.KingdomLife >= 150 && !successorDid)
         {
             AddEventForToday(new Succesor());
             successorDid = true;
@@ -82,7 +82,9 @@ public class GameManager
         playerKingdom = new Kingdom(Resources.Load<Sprite>("Icon/Human"),true);
         
         playerKingdom.Name = name;
-        
+
+        successorDid = false;
+        Kingdom.costFlood = 100;
         firstPlay = false;
         
         day = 1;

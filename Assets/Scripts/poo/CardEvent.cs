@@ -69,7 +69,7 @@ public class CardEvent
         else
         {
             
-            Debug.Log("RESET ANIM");
+            //Debug.Log("RESET ANIM");
             c.GetComponent<Animator>().SetTrigger("Update");
 
         }
