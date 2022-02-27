@@ -123,6 +123,50 @@ NavMeshSettings:
     debug:
       m_Flags: 0
   m_NavMeshData: {fileID: 0}
+--- !u!1 &59800127
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 59800129}
+  - component: {fileID: 59800128}
+  m_Layer: 0
+  m_Name: Trumpet
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &59800128
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 59800127}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1c7384d39a559124d89bcd3f869b4cdc, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  time: 1
+--- !u!4 &59800129
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 59800127}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: -0.16516519, y: 1.676435, z: -3.3292592}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 9
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1001 &122614393
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -379,6 +423,18 @@ MonoBehaviour:
       - m_Target: {fileID: 723563149}
         m_TargetAssemblyTypeName: FightRecapUI, Assembly-CSharp
         m_MethodName: EndFight
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+      - m_Target: {fileID: 723563149}
+        m_TargetAssemblyTypeName: FightRecapUI, Assembly-CSharp
+        m_MethodName: PlayBtnSFX
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -1215,7 +1271,7 @@ MonoBehaviour:
     Won!'
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: e1b9af218a3aa5449b994afd4688b0eb, type: 2}
-  m_sharedMaterial: {fileID: 7655571216745254636, guid: e1b9af218a3aa5449b994afd4688b0eb, type: 2}
+  m_sharedMaterial: {fileID: -5025850481866284862, guid: e1b9af218a3aa5449b994afd4688b0eb, type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
   m_fontMaterials: []
@@ -1357,7 +1413,7 @@ MonoBehaviour:
 '
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: e1b9af218a3aa5449b994afd4688b0eb, type: 2}
-  m_sharedMaterial: {fileID: 7655571216745254636, guid: e1b9af218a3aa5449b994afd4688b0eb, type: 2}
+  m_sharedMaterial: {fileID: -5025850481866284862, guid: e1b9af218a3aa5449b994afd4688b0eb, type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
   m_fontMaterials: []
@@ -1537,7 +1593,7 @@ MonoBehaviour:
   m_text: Continue
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: e1b9af218a3aa5449b994afd4688b0eb, type: 2}
-  m_sharedMaterial: {fileID: 7655571216745254636, guid: e1b9af218a3aa5449b994afd4688b0eb, type: 2}
+  m_sharedMaterial: {fileID: -5025850481866284862, guid: e1b9af218a3aa5449b994afd4688b0eb, type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
   m_fontMaterials: []
@@ -1671,7 +1727,7 @@ MonoBehaviour:
   m_text: Fight complete!
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: e1b9af218a3aa5449b994afd4688b0eb, type: 2}
-  m_sharedMaterial: {fileID: 7655571216745254636, guid: e1b9af218a3aa5449b994afd4688b0eb, type: 2}
+  m_sharedMaterial: {fileID: -5025850481866284862, guid: e1b9af218a3aa5449b994afd4688b0eb, type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
   m_fontMaterials: []

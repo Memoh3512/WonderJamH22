@@ -17,4 +17,11 @@ public class MainMenuButtons : MonoBehaviour
         Application.Quit();
     }
 
+    public void PlayBtnSnd()
+    {
+        
+        SoundPlayer.instance.PlaySFX(Resources.Load<AudioClip>("SFX/SFX_Menu button"));
+        
+    }
+
 }

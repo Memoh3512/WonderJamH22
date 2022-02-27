@@ -10,7 +10,7 @@ public class Unit
     private float scale;
     private int mpValue;
 
-    public Unit(Sprite sprite, int hp, int damage, int scale) 
+    public Unit(Sprite sprite, int hp, int damage, float scale) 
     {
         this.Sprite = sprite;
         this.Hp = hp;
@@ -19,7 +19,7 @@ public class Unit
         this.mpValue = 1;
     }
 
-    public Unit(Sprite sprite, int hp, int damage, int scale,int mpValue) : this(sprite,hp,damage,scale)
+    public Unit(Sprite sprite, int hp, int damage, float scale,int mpValue) : this(sprite,hp,damage,scale)
     {
         this.mpValue = mpValue;
     }

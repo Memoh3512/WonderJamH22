@@ -77,11 +77,20 @@ public class GameUI : MonoBehaviour
 
 
 
-            days.text = "Day " + GameManager.day;
+            string k = GameManager.playerKingdom == null ? "" : GameManager.playerKingdom.Name;
+            if (!k.Contains("Kingdom")) k += " Kingdom";
+            days.text =  k + "\nDay " + GameManager.day;
             kingdomUIs.RefreshKingdomsUI();
             yield return new WaitForSeconds(0.025f);
         }
 
+    }
+
+    public void PlayBtnSnd()
+    {
+        
+        SoundPlayer.instance.PlaySFX(Resources.Load<AudioClip>("SFX/SFX_Menu button"));
+        
     }
     
 }

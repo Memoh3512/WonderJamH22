@@ -176,6 +176,19 @@ public class SoundPlayer : MonoBehaviour
 
     }
 
+    public void PlaySFX(AudioClip clip, float vol = 1f)
+    {
+
+        if (clip != null)
+        {
+            
+            source.PlayOneShot(clip, 2*globalVolume*vol);
+            
+        }
+        
+    }
+    
+
     void InitializeSounds()
     {
         

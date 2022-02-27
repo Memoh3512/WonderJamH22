@@ -45,4 +45,11 @@ public class FightRecapUI : MonoBehaviour
         c.enabled = true;
 
     }
+
+    public void PlayBtnSFX()
+    {
+        
+        SoundPlayer.instance.PlaySFX(Resources.Load<AudioClip>("SFX/SFX_Menu button"));
+        
+    }
 }
