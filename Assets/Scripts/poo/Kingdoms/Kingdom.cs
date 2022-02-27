@@ -26,6 +26,8 @@ public class Kingdom
     public int MilitaryPower => militaryPower;
     public int KingdomLife => kingdomLife;
 
+    public static int costFlood = 100;
+    
     public Kingdom(bool isPlayer = false)
     {
 
@@ -239,6 +241,17 @@ public class Kingdom
             GameManager.aiKingdoms.Remove(this);
             Object.FindObjectOfType<GameUI>().UpdateUIValues();
             GameManager.AddEventForToday(new Message("Fallen kingdom","The kingdom "+this.name+" has fallen, bad decisions were made.","Good for me"));
+        }
+        //SPAWN LES EVENTS DU JOUEUR QUI ARRIVENT QUAND X RESSOURCEs
+        if (isPlayer)
+        {
+            if (gold >= costFlood)
+            {
+                GameManager.AddEventForToday(new Flood());
+                costFlood += 100;
+            }
+            
+            
         }
         
 

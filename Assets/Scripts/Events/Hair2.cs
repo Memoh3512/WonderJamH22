@@ -12,20 +12,33 @@ public class Hair2 : CardEvent
 
         DaysToPlay = 2;
         
-        getChoices.Add(new Choice(0,0,0,"Tell the hairdresser herself to take care of these. ",()=> {
-            GameManager.AddEventForToday(new Message("Tell the hairdresser herself to take care of these. ","The hairdresser stopped her salon and now have to cut hair for the rest of her life. ","Too bad"));
+        getChoices.Add(new Choice(0,5,0,"Tell the hairdresser herself to take care of these. ",()=> {
+            GameManager.AddEventForToday(new Message("Hairdresser vs hair monster. ", "The hairdresser stopped her salon and now have to cut hair for the rest of her life. ","Too bad"));
             return false;
         }));
 
         getChoices.Add(new Choice(0,0,0,"Ask the magician to do something",()=> {
-            GameManager.AddEventForToday(new Message("Ask the magician to do something","The magician transforms the hairs into spaghettis. The man opened an Italian restaurant that became famous. Even among others villages. ","So imaginative"));
+            GameManager.AddEventForToday(new Message("Magician vs hair monster","The magician transforms the hairs into spaghetti. The man opened an Italian restaurant and became famous. Even among others Kingdoms. ","So imaginative"));
            GameManager.playerKingdom.removeKingdomLife(-15);
            Kingdom kd = GameManager.aiKingdoms[Random.Range(0, GameManager.aiKingdoms.Count)];
            kd.IncrementRelation();
             return false;
         }));
-        getChoices.Add(new Choice(0,0,0,"Using the hairs to make an industry and exploit them. ",()=> {
-            GameManager.AddEventForToday(new Message("Using the hairs to make an industry and exploit them. ","The hairs became all sorts of things: paint brushes, carpets, and even blankets. But one morning, the long-haired man has disappeared... we suspect the Furries to have stolen him for his \"fur\"....","Oh no"));
+        getChoices.Add(new Choice(-200,0,0,"Use the hairs to make an industry and exploit them. ",()=> {
+            GameManager.AddEventForToday(new Message("Hair Kingdom. ","The hairs became all sorts of things: paint brushes, carpets, and even blankets. But one morning, the long-haired man has disappeared... we suspect the Furries have stolen him for his \"fur\"....","ALATAK!",() => {
+
+                foreach (Kingdom k in GameManager.aiKingdoms)
+                {
+                    if(k.Name == "Furry")
+                    {
+                        GameManager.fightOpponent = k;
+                        return true;
+                    }
+                }
+                return false;
+
+            }));
+
             return false;
         }));
        
