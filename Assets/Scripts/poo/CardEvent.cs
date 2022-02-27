@@ -23,9 +23,9 @@ public class CardEvent
     {
         choices.Add(choice);
     }
-    public CardEvent()
+    public CardEvent(int daysToPlay=-10)
     {
-        daysToPlay = -10;
+        this.daysToPlay = daysToPlay;
         Weight = 1;
     }
 
