@@ -16,6 +16,8 @@ public class CardDisplay : MonoBehaviour
 
     public float btnPadding = 10f;
     public float xOffset = 50f;
+
+    private static bool opened = false;
     
     // Start is called before the first frame update
     void Start()
@@ -44,6 +46,27 @@ public class CardDisplay : MonoBehaviour
         
     }
 
+    private void PlaySound()
+    {
+        
+        opened = !opened;
+        if (opened)
+        {
+            
+            //TODO FLO close parchemin
+            
+            
+        }
+        else
+        {
+            
+            //TODO FLO open parchemin
+            
+            
+        }
+
+    }
+    
     private void UpdateUI()
     {
 
