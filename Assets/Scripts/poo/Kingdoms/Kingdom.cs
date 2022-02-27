@@ -11,7 +11,7 @@ public class Kingdom
     
     private List<Unit> units; //toutes les units
 
-    private int gold = 0;
+    private int gold = 50;
     private int militaryPower = 100;
     private int kingdomLife = 100;
 

@@ -24,7 +24,7 @@ public class Classes1 : CardEvent
             return false;
         }));
         getChoices.Add(new Choice(10,-10,-10,"Musicians",()=> {
-            GameManager.AddEventForToday(new Message("Musicians","Musicians have brightened up the mood in the village! They've even brought some men from other villages!","As always..."));
+            GameManager.AddEventForToday(new Message("Musicians","Musicians have brightened up the mood in the village! They've even brought some men from other villages!","Love me some music"));
             return false;//TODO donne des bonnes relations avec les autres
         }));
     }
