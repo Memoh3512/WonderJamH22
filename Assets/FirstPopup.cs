@@ -7,6 +7,7 @@ using UnityEngine;
 public class FirstPopup : MonoBehaviour
 {
     public TMP_InputField kingName;
+    public GameObject tut2;
 
     private void Start()
     {
@@ -23,6 +24,7 @@ public class FirstPopup : MonoBehaviour
     {
         
         GameManager.startGame(kingName.text);
+        tut2.SetActive(true);
         Destroy(gameObject);
         
     }
