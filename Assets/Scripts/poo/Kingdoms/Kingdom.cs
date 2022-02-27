@@ -34,10 +34,11 @@ public class Kingdom
     }
     public Kingdom(Sprite icon, bool isPlayer = false)
     {
+
         this.isPlayer = isPlayer;
         if (isPlayer)
         {
-            BaseUnit = new Unit(Resources.Load<Sprite>("Units/cowboy"),10,5,1);
+            BaseUnit = new Unit(Resources.Load<Sprite>("Units/chevalier"),10,5,1);
         }
     }
     public string Name { get => name; set => name = value; }
