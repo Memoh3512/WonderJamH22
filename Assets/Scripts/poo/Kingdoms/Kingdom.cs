@@ -31,7 +31,7 @@ public class Kingdom
     public void removeGold(int toRemove)
     {
         gold -= toRemove;
-        if (isPlayer)
+        if (isPlayer && toRemove != 0)
         {
             NotificationManager.startNotification(0,-toRemove);
         }
@@ -39,7 +39,7 @@ public class Kingdom
     public void removeKingdomLife(int toRemove)
     {
         kingdomLife -= toRemove;
-        if (isPlayer)
+        if (isPlayer && toRemove != 0)
         {
             NotificationManager.startNotification(1,-toRemove);
             if (kingdomLife <= 0)
@@ -52,7 +52,7 @@ public class Kingdom
     public void removeMilitaryPower(int toRemove)
     {
         militaryPower -= toRemove;
-        if (isPlayer)
+        if (isPlayer && toRemove != 0)
         {
             NotificationManager.startNotification(2,-toRemove);
         }
