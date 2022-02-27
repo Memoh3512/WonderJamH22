@@ -14,6 +14,7 @@ public class EventDeck
         eventList.Add(new WarCounselor(1, -10));
         eventList.Add(new HugeEgg());
         eventList.Add(new Waiter());
+        eventList.Add(new Pigeon());
     }
 
     public CardEvent getEvent()
