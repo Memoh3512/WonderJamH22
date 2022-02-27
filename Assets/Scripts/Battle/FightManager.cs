@@ -33,7 +33,7 @@ public class FightManager : MonoBehaviour
         //TODO remove icitte quand on a les kingdoms
         GameManager.fightOpponent = new KingdomCowboy();
         GameManager.playerKingdom = new Kingdom();
-        GameManager.playerKingdom.BaseUnit = new Unit(baseFighterPrefab.GetComponent<SpriteRenderer>().sprite, 10, 5, 1);
+        GameManager.playerKingdom.BaseUnit = new Unit(baseFighterPrefab.transform.GetChild(0).GetComponent<SpriteRenderer>().sprite, 10, 5, 1);
         GameManager.playerKingdom.Units = new List<Unit>(){};
         GameManager.fightOpponent.Units = new List<Unit>(){};
 
