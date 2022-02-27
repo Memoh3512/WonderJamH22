@@ -153,13 +153,11 @@ public class FightManager : MonoBehaviour
             Debug.Log("Ennemies Lose "+losePowerEn+" military power from fight");
             GameManager.playerKingdom.removeMilitaryPower(losePowerEn);
             
-            GameManager.playerKingdom.DecrementRelation();
             int goldGained = 0;
             if (whoWon != "Allies")
             {
                 GameManager.playerKingdom.removeKingdomLife(15);
                 GameManager.fightOpponent.DecrementRelation();
-                
             }
             else
             {
