@@ -35,6 +35,10 @@ public class Joute: CardEvent
                     {
                         GameManager.playerKingdom.removeGold(-5 * bet);
                     }
+                    else
+                    {
+                        GameManager.playerKingdom.removeGold(bet);
+                    }
                     return false;
                 }));
                 GameManager.addEvent(new Joute());
@@ -50,6 +54,10 @@ public class Joute: CardEvent
                 {
                     not = "";
                     dot = "Great!";
+                }
+                else
+                {
+                    GameManager.playerKingdom.removeGold(bet);
                 }
                 GameManager.AddEventForToday(new Message("Joust result", "And the victor was... " + not + "Lancelot", dot, () =>
                 {
@@ -72,6 +80,10 @@ public class Joute: CardEvent
                     not = "";
                     dot = "Great!";
                 }
+                else
+                {
+                    GameManager.playerKingdom.removeGold(bet);
+                }
                 GameManager.AddEventForToday(new Message("Joust result", "And the victor was... " + not + "Bob", dot, () =>
                 {
                     if (win)
@@ -92,6 +104,10 @@ public class Joute: CardEvent
                 {
                     not = "";
                     dot = "Great!";
+                }
+                else
+                {
+                    GameManager.playerKingdom.removeGold(bet);
                 }
                 GameManager.AddEventForToday(new Message("Joust result", "And the victor was... " + not + "Percival", dot, () =>
                 {
