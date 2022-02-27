@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
+using System.Threading.Tasks;
 using UnityEngine;
 
 public class GameManager
@@ -16,7 +17,7 @@ public class GameManager
 
     public static bool firstPlay = true;
 
-    public static void nextDay()
+    public static async void nextDay()
     {
         day++;
         foreach (var kingdom in aiKingdoms)
@@ -24,8 +25,13 @@ public class GameManager
             kingdom.next();
             Debug.Log(kingdom.Name + " | MP : " + kingdom.MilitaryPower);
         }
-        
-        
+
+        await Task.Delay(1500);
+        Debug.Log("TODAYEVENT DAY2");
+        Object.FindObjectOfType<GameUI>().UpdateUIValues();
+        CardDisplay c = Object.FindObjectOfType<CardDisplay>();
+        if (c != null) MonoBehaviour.Destroy(c.gameObject);
+        await Task.Delay(100);
         playTodaysEvents();
         
     }
@@ -82,14 +88,23 @@ public class GameManager
             }
         }
         // Random nombre d'events 
-        for (int i = Random.Range(0, 3); i < 3; i++)
+        for (int i = Random.Range(1, 3); i < 3; i++)
         {
             if(currentDeck.Count() > 0)
             {
                 todaysEventsToPlay.Add(currentDeck.getEvent());
             }
+            else
+            {
+                
+                Debug.Log("DECK EMPYT!!!!");
+                
+            }
            
         }
+        
+        
+        
         playNextEvent();
     }
     public static void playNextEvent()
@@ -117,9 +132,14 @@ public class GameManager
     {
         //TODO draw le bouton dans le bas et bybye scroll
         CardDisplay c = Object.FindObjectOfType<CardDisplay>();
-        c.DeleteButtons();
-        c.SetCardEvent(null);
-        c.GetComponent<Animator>().SetTrigger("Bebye");
+        if (c != null)
+        {
+            
+            c.DeleteButtons();
+            c.SetCardEvent(null);
+            c.GetComponent<Animator>().SetTrigger("Bebye");   
+            
+        }
         CanvasGroup endDay = GameObject.FindGameObjectWithTag("EndDay").GetComponent<CanvasGroup>();
         endDay.alpha = 1;
         endDay.interactable = true;
