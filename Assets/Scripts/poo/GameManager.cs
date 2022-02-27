@@ -31,6 +31,12 @@ public class GameManager
                 playerKingdom.removeGold(-10);
             }
         }
+        if (playerKingdom.Gold >= Kingdom.costFlood)
+        {
+            AddEventForToday(new Flood());
+            Kingdom.costFlood += 100;
+        }
+        
         Object.FindObjectOfType<Parallax>().TransitionTo(new List<Sprite>()
         {
 
