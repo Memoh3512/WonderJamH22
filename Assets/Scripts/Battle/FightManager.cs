@@ -1,6 +1,7 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using System.Linq;
 using JetBrains.Annotations;
 using UnityEngine;
 using Random = UnityEngine.Random;
@@ -13,8 +14,9 @@ public class FightManager : MonoBehaviour
     public GameObject baseFighterPrefab;
     private List<GameObject> allEnemies;
     private List<GameObject> allAllies;
-    public static int soldiersDead;
-    public static int enemiesDead;
+    public static List<Unit> woundedAllies;
+    public static List<Unit> woundedEnemies;
+    public static List<Unit> fullDeadAllies;
     
     
     // Start is called before the first frame update
@@ -23,19 +25,21 @@ public class FightManager : MonoBehaviour
         allEnemies = new List<GameObject>();
         allAllies = new List<GameObject>();
 
-        soldiersDead = 0;
-        enemiesDead = 0;
+        woundedAllies = new List<Unit>(){};
+        woundedEnemies = new List<Unit>(){};
+        fullDeadAllies = new List<Unit>(){};
         
         //DEBUG this
         //TODO remove icitte quand on a les kingdoms
-        GameManager.fightOpponent = new KingdomAlien();
+        GameManager.fightOpponent = new KingdomCowboy();
         GameManager.playerKingdom = new Kingdom();
+        GameManager.playerKingdom.BaseUnit = new Unit(baseFighterPrefab.GetComponent<SpriteRenderer>().sprite, 10, 5, 1);
         GameManager.playerKingdom.Units = new List<Unit>(){};
         GameManager.fightOpponent.Units = new List<Unit>(){};
         for (int i = 0; i < 100; i++)
         {
-            GameManager.playerKingdom.Units.Add(new Unit(baseFighterPrefab.GetComponent<SpriteRenderer>().sprite,10,3,1));
-            GameManager.fightOpponent.Units.Add(new Unit(baseFighterPrefab.GetComponent<SpriteRenderer>().sprite,10,3,1));
+            GameManager.playerKingdom.Units.Add(GameManager.playerKingdom.BaseUnit);
+            GameManager.fightOpponent.Units.Add(GameManager.fightOpponent.BaseUnit);
         }
         
         
@@ -69,6 +73,9 @@ public class FightManager : MonoBehaviour
             currFighter.GetComponent<Fighter>().Damage = toInstantiate.Damage;
             currFighter.GetComponent<Fighter>().Life = toInstantiate.Hp;
             currFighter.GetComponent<Fighter>().Team = team;
+
+            currFighter.GetComponent<Fighter>().ResetToBaseValues();
+            
             currFighter.GetComponent<Transform>().localScale = Vector3.one * toInstantiate.Scale;
             currFighter.GetComponent<SpriteRenderer>().sprite = toInstantiate.Sprite;
             
@@ -100,6 +107,29 @@ public class FightManager : MonoBehaviour
         if (done)
         {
             Debug.Log("Fight is done : "+whoWon + " Won");
+            
+            int powerBefore = GameManager.playerKingdom.MilitaryPower;
+            int losePower = 0;
+            foreach (var deadUnit in woundedAllies.ToList())
+            {
+                if(Random.Range(0, 4)==1)
+                {
+                    fullDeadAllies.Add(deadUnit);
+                    woundedAllies.Remove(deadUnit);
+                    losePower += deadUnit.MpValue;
+                }
+            }
+            foreach (var deadUnit in woundedEnemies.ToList())
+            {
+                if(Random.Range(0, 4)==1)
+                {
+                    GameManager.fightOpponent.removeMilitaryPower(deadUnit.MpValue);
+                    losePower += deadUnit.MpValue;
+                }
+            }
+            Debug.Log("Lose "+losePower+" military power from fight");
+            GameManager.playerKingdom.removeMilitaryPower(losePower);
+            
             FindObjectOfType<FightRecapUI>().OpenMenu(whoWon);
             Destroy(gameObject);
             

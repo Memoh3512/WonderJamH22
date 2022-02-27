@@ -34,28 +34,18 @@ public class FightRecapUI : MonoBehaviour
 
         string won = whowon == "Enemies" ? "Won!" : "Lost!";
 
-        string enemies = FightManager.enemiesDead == 0 ? "no" : FightManager.enemiesDead.ToString();
+        string enemies = FightManager.woundedEnemies.Count == 0 ? "no" : FightManager.woundedEnemies.Count.ToString();
         enemyStats.text = $"ENEMY \n\n Lost {enemies} soldiers. \n\n {won}";
          
         won = whowon == "Allies" ? "Won!" : "Lost!";
         
-        string player = FightManager.soldiersDead == 0 ? "no" : FightManager.soldiersDead.ToString();
+        string player = FightManager.woundedAllies.Count == 0 ? "no" : (FightManager.woundedAllies.Count+FightManager.fullDeadAllies.Count).ToString();
         kingdomStats.text = $"OUR KINGDOM \n\n Lost {player} soldiers. \n\n {won}";
 
         c.enabled = true;
-        if (whowon == "Enemies")
-        {
-            int power = GameManager.playerKingdom.MilitaryPower;
-            if (power / 5 > 20)
-            {
-                GameManager.playerKingdom.removeMilitaryPower(power / 5);
-            }
-            else
-            {
-                GameManager.playerKingdom.removeMilitaryPower(20);
-            }
-            
-        }
+        
+        
+        
     }
 
     public void PlayBtnSFX()

@@ -19,7 +19,7 @@ public class Unit
         this.mpValue = 1;
     }
 
-    public Unit(Sprite sprite, int hp, int damage, int scale,int mpValue) : this(sprite,hp,damage,scale)
+    public Unit(Sprite sprite, int hp, int damage, int scale,int mpValue = 1) : this(sprite,hp,damage,scale)
     {
         this.mpValue = mpValue;
     }
@@ -28,4 +28,5 @@ public class Unit
     public int Hp { get => hp; set => hp = value; }
     public int Damage { get => damage; set => damage = value; }
     public float Scale { get => scale; set => scale = value; }
+    public int MpValue { get => mpValue; set => mpValue = value; }
 }

@@ -44,7 +44,16 @@ public class Fighter : MonoBehaviour
     {
         attackCoolDown = baseCoolDown;
     }
-
+    public void ResetToBaseValues()
+    {
+        
+    }
+    private Fighter(int maxLife,int attackDamage,float cd=0.5f)
+    {
+        life = maxLife;
+        damage = attackDamage;
+        baseCoolDown = cd;
+    }
     // Update is called once per frame
     void Update()
     {
@@ -79,9 +88,9 @@ public class Fighter : MonoBehaviour
         switch (team)
         {
             
-            case 0: FightManager.soldiersDead++;
+            case 0: FightManager.woundedAllies.Add(new Unit(GetComponent<SpriteRenderer>().sprite,life,damage,(int)transform.localScale.x));
                 break;
-            case 1: FightManager.enemiesDead++;
+            case 1: FightManager.woundedEnemies.Add(new Unit(GetComponent<SpriteRenderer>().sprite,life,damage,(int)transform.localScale.x));
                 break;
             
         }
