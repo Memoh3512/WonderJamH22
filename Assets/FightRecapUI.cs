@@ -17,8 +17,16 @@ public class FightRecapUI : MonoBehaviour
         c.enabled = false;
     }
 
+    public void EndFight()
+    {
+        SoundPlayer.instance.SetMusic(Songs.Village, 1f, TransitionBehavior.Stop);
+        LevelLoader.instance.LoadScene("GameplayScene", TransitionTypes.CrossFade);
+        
+    }
+
     public void OpenMenu(string whowon,int loseAll,int loseEn)
     {
+
         string won = whowon == "Enemies" ? "Won!" : "Lost!";
 
         string enemies = FightManager.woundedEnemies.Count == 0 ? "no" : FightManager.woundedEnemies.Count.ToString();
@@ -31,14 +39,6 @@ public class FightRecapUI : MonoBehaviour
 
         c.enabled = true;
     }
-
-    public void EndFight()
-    {
-        
-        LevelLoader.instance.LoadScene("GameplayScene", TransitionTypes.CrossFade);
-        
-    }
-    
 
     public void PlayBtnSFX()
     {

@@ -35,7 +35,11 @@ public class Choice
         
         bool war = onChoose.Invoke();
         if (!war) GameManager.playNextEvent();
-        else LevelLoader.instance.LoadScene("Combat", TransitionTypes.Fight);
+        else
+        {
+            SoundPlayer.instance.SetMusic(Songs.War, 1f, TransitionBehavior.Continue);
+            LevelLoader.instance.LoadScene("Combat", TransitionTypes.Fight);
+        }
         
         GameManager.playerKingdom.removeGold(mMoney);
         GameManager.playerKingdom.removeKingdomLife(mKingLife);
