@@ -39,7 +39,7 @@ public class IncomingAttack : CardEvent
             return true;
         });
         getChoices.Add(choice1);
-        getChoices.Add(new Choice(0, 0, 0, "I'll try to pay my way to peace...", () =>
+        getChoices.Add(new Choice(40, 0, 0, "I'll try to pay my way to peace...", () =>
         {
             if (Random.Range(0f, 1f) <= 0.5f)
             {

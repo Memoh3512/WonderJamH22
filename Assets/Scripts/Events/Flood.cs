@@ -11,14 +11,14 @@ public class Flood : CardEvent
                       "We need to reconstruct the village, otherwise we'll die. How do you want to deal with this?";
 
         //Choix + cout + apparait une autre carte
-        getChoices.Add(new Choice(Kingdom.costFlood, 30, -0, "Host everyone in the castle", () => {
+        getChoices.Add(new Choice(Kingdom.costFlood, 0, -0, "Host everyone in the castle", () => {
             GameManager.AddEventForToday(new Message("Host everybody", "You invited everybody to live ine the castle meanwhile they try to rebuild everything." +
-                                                                       "But there is not enough rooms in the castle, so everyone are tighten everywhere.", "I did the best I could..."));
+                                                                       "But there is not enough room in the castle, so everyone is really squeezed.", "I did the best I could..."));
             return false;
         }));
 
         //Choix + cout
-        getChoices.Add(new Choice(0, 50, 0, "Make the villagers rebuild everything themselves.", () => {
+        getChoices.Add(new Choice(0, 30, 0, "Make the villagers rebuild everything themselves.", () => {
             return false;
         }));
 

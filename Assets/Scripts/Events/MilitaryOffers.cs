@@ -29,7 +29,7 @@ public class MilitaryOffers: CardEvent
             return false;
         }));
         //Choix + cout
-        getChoices.Add(new Choice(0, 0, 0, "Not buy anything.", () => {
+        getChoices.Add(new Choice(0, 0, 0, "Don't buy anything.", () => {
             GameManager.addEvent(new MilitaryOffers());
             return false;
         }));
