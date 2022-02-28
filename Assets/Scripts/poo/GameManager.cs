@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class GameManager
 {
@@ -70,6 +71,7 @@ public class GameManager
         CardDisplay c = Object.FindObjectOfType<CardDisplay>();
         if (c != null) MonoBehaviour.Destroy(c.gameObject);
         await Task.Delay(100);
+        Object.FindObjectOfType<EndDayBtn>().GetComponent<Button>().interactable = true;
         playTodaysEvents();
         
     }
