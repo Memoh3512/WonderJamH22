@@ -21,7 +21,7 @@ public class Deserters : CardEvent
             {
                 GameManager.playerKingdom.Units.Add(new Unit(kd.BaseUnit));
             }
-            GameManager.addEvent(new Deserters());
+            //GameManager.addEvent(new Deserters());
             return false;
         }));
 
