@@ -15,7 +15,10 @@ public class DragonRepeat : CardEvent
             {
                 dragon.Hp += 20;
                 dragon.Damage += 10;
-                dragon.Scale += 0.5f;
+                if(dragon.Scale < 3)
+                {
+                    dragon.Scale += 0.5f;
+                }              
                 dragon.MpValue += 2;
                 GameManager.addPlannedEvent(new DragonRepeat(dragon));
                 return false;
