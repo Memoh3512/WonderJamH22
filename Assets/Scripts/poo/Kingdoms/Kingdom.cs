@@ -119,7 +119,7 @@ public class Kingdom
             NotificationManager.startNotification(2,-toRemove);
             if (militaryPower <= 0)
             {
-                GameManager.deathNote = "Your army was ran dry.";
+                GameManager.deathNote = "Your army has run dry.";
                 LevelLoader.instance.LoadScene("LoseScene", TransitionTypes.CrossFade);
             }
         }       
