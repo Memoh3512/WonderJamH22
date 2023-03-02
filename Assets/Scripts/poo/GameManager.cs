@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class GameManager
 {
@@ -35,7 +36,7 @@ public class GameManager
         // Player 
         if (playerKingdom.Gold >= Kingdom.costFlood)
         {
-            if (Random.Range(0f, 1f) <= 0.1f)
+            if (Random.Range(0f, 1f) <= 0.2f)
             {
                 AddEventForToday(new Flood());
                 Kingdom.costFlood += 25;
@@ -70,6 +71,7 @@ public class GameManager
         CardDisplay c = Object.FindObjectOfType<CardDisplay>();
         if (c != null) MonoBehaviour.Destroy(c.gameObject);
         await Task.Delay(100);
+        Object.FindObjectOfType<EndDayBtn>().GetComponent<Button>().interactable = true;
         playTodaysEvents();
         
     }
@@ -91,6 +93,8 @@ public class GameManager
         firstPlay = false;
         
         day = 1;
+        
+        currentDeck.ResetEventList();
         
         Object.FindObjectOfType<GameUI>().UpdateUIValues();
         

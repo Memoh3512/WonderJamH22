@@ -15,6 +15,14 @@ public class EventDeck
     public EventDeck()
     {
         eventList = new List<CardEvent>();
+        ResetEventList();
+
+    }
+
+    public void ResetEventList()
+    {
+        
+        eventList.Clear();
         eventList.Add(new AlienSeries1());
         eventList.Add(new WarCounselor(1, -10));
         eventList.Add(new HugeEgg());
@@ -37,6 +45,7 @@ public class EventDeck
         eventList.Add(new MilitaryOffers());
         eventList.Add(new Author());
         eventList.Add(new Fossils());
+        
     }
 
     public CardEvent getEvent()

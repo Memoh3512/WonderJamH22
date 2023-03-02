@@ -80,6 +80,7 @@ public class FightManager : MonoBehaviour
             currFighter.GetComponent<Fighter>().Damage = toInstantiate.Damage;
             currFighter.GetComponent<Fighter>().Life = toInstantiate.Hp;
             currFighter.GetComponent<Fighter>().Team = team;
+            currFighter.GetComponent<Fighter>().RepresentedUnit = toInstantiate;
             currFighter.GetComponent<Transform>().localScale = Vector3.one * toInstantiate.Scale;
             currFighter.transform.GetChild(0).GetComponent<SpriteRenderer>().sprite = toInstantiate.Sprite;
             
@@ -134,7 +135,7 @@ public class FightManager : MonoBehaviour
                 if(Random.Range(0, 4)==1)
                 {
                     fullDeadAllies.Add(deadUnit);
-                    woundedAllies.Remove(deadUnit);
+                    if (woundedAllies.Contains(deadUnit)) woundedAllies.Remove(deadUnit);
                     losePower += deadUnit.MpValue;
                     GameManager.playerKingdom.Units.Remove(deadUnit);
                 }
